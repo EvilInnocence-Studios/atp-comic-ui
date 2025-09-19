@@ -1,0 +1,19 @@
+@use "@styles/globals.module.scss";
+
+.arcEditor {
+    .header {
+
+        :global(.ant-switch) {
+            margin-top: 10px;
+        }
+    }
+    .updateButtons {
+        float: right;
+    }
+    .images {
+        padding-top: 18px;
+    }
+    .thumbnail, .banner {
+        max-width: 100%;
+    }
+}

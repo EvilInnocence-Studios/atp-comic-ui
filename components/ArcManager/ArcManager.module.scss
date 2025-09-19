@@ -1,0 +1,36 @@
+@use "@styles/globals.module.scss";
+
+.arcManager {
+    .treeCol {
+        .arcNode {
+            position: relative;
+            .arcName {
+                display: inline-block;
+                width: calc(100% - 13px);
+                color: globals.$error;
+                padding: globals.$padding-sm globals.$padding;
+                &.enabled {
+                    color: globals.$success;
+                }
+                &:hover {
+                    background-color: globals.$brand-border;
+                }
+                &.selected {
+                    background-color: globals.$brand-secondary;
+                    color: globals.$brand-bg;
+                }
+            }
+            .actions {
+                position: absolute;
+                right: 12px;
+                top: 8px;
+                > * {
+                    margin-left: globals.$padding;
+                }
+            }
+            .nodeChildren {
+                padding-left: globals.$padding-lg;
+            }
+        }
+    }
+}
