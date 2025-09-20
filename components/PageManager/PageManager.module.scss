@@ -1,1 +1,28 @@
 @use "@styles/globals.module.scss";
+
+.pageManager {
+    ul.pageList {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 1rem;
+        > * {
+            flex: 1 1 calc(33.333% - 1rem);
+            .pageEditor {
+                img {
+                    max-width: 100%;
+                    height: auto;
+                }
+                .date {
+                    float: left;
+                    padding: globals.$padding-sm;
+                }
+                .controls {
+                    float: right;
+                }
+            }
+        }
+    }
+}

@@ -13,6 +13,22 @@ const injectArcManagerProps = createInjector(({arcId}:IArcManagerInputProps):IAr
     const loader = useLoaderAsync();
     const navigate = useNavigate();
 
+    // Make sure the current arc and all parents are open
+    useEffect(() => {
+        if(arcId && arcs.length > 0) {
+            const arc = arcs.find(a => a.id === arcId);
+            if(arc) {
+                const newSet = new Set(isOpen);
+                let currentArc:IComicArc | undefined = arc;
+                while(currentArc) {
+                    newSet.add(currentArc.id);
+                    currentArc = currentArc.parentId ? arcs.find(a => a.id === (currentArc as IComicArc).parentId) || undefined : undefined;
+                }
+                setIsOpen(newSet);
+            }
+        }
+    }, [arcs, arcId]);
+
     const arc = arcId ? arcs.find(a => a.id === arcId) || null : null;
 
     const goToArc = (id:string) => () => {

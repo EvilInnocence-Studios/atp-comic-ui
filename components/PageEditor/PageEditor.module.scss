@@ -1,0 +1,15 @@
+@use "@styles/globals.module.scss";
+
+.pageEditor {
+    :global(.ant-col) {
+        padding-bottom: globals.$padding;
+    }
+    .controls {
+        text-align: right;
+    }
+    .image {
+        img {
+            max-width: 100%;
+        }
+    }
+}
