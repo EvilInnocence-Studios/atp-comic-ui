@@ -5,6 +5,8 @@ export declare interface IPageManagerProps {
     isLoading: boolean;
     refresh: () => void;
     remove: (pageId:string) => () => void;
+    upload: (file:File) => Promise<IComicPage>;
+    onUploadSuccess: (pages: IComicPage[]) => void;
 }
 
 // What gets passed into the component from the parent as attributes

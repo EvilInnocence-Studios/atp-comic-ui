@@ -1,12 +1,14 @@
-import { Button, Card, Col, Row } from "antd";
-import {ArcManagerProps, IArcNodeProps} from "./ArcManager.d";
-import styles from './ArcManager.module.scss';
+import { IComicArc } from "@comic-shared/arc/types";
+import { DeleteBtn } from "@core/components/DeleteBtn";
+import { noProp } from "@core/lib/util";
+import { faCaretDown, faCaretRight, faPlus, faSitemap } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCaretDown, faCaretRight, faPlus, faSitemap, faTrash } from "@fortawesome/free-solid-svg-icons";
+import { Button, Card, Col, Row } from "antd";
 import clsx from "clsx";
 import { prop, sort } from "ts-functional";
-import { IComicArc } from "@comic-shared/arc/types";
 import { ArcEditor } from "../ArcEditor";
+import { ArcManagerProps, IArcNodeProps } from "./ArcManager.d";
+import styles from './ArcManager.module.scss';
 
 const sortArcs = sort.by(prop<IComicArc, "sortOrder">("sortOrder")).asc;
 
@@ -23,8 +25,8 @@ const ArcNode = ({
             style={{visibility: allArcs.some(a => a.parentId === arc.id) ? 'visible' : 'hidden'}}
         />&nbsp;
         <div className={styles.actions}>
-            <FontAwesomeIcon color="green" icon={faPlus} onClick={onCreate(arc.id)} />
-            <FontAwesomeIcon color="red" icon={faTrash} onClick={onRemove(arc.id)} />
+            <FontAwesomeIcon color="green" icon={faPlus} onClick={noProp(onCreate(arc.id))} />
+            <DeleteBtn entityType="arc" onClick={onRemove(arc.id)} />
         </div>
         <div
             className={clsx([styles.arcName, arcId && arcId === arc.id && styles.selected, arc.enabled && styles.enabled])}

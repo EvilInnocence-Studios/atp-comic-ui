@@ -1,17 +1,22 @@
 import { IComicPage } from "@comic-shared/page/types";
 import { DeleteBtn } from "@core/components/DeleteBtn";
 import { S3Image } from "@core/components/S3Image";
+import { Uploader } from "@core/components/Uploader";
 import { Card, Typography } from "antd";
+import { Link } from "react-router";
 import { prop, sort } from "ts-functional";
 import { PageManagerProps } from "./PageManager.d";
 import styles from './PageManager.module.scss';
-import { Link } from "react-router";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faInfoCircle } from "@fortawesome/free-solid-svg-icons";
 
-export const PageManagerComponent = ({arcId, pages, isLoading, refresh, remove}:PageManagerProps) =>
+export const PageManagerComponent = ({arcId, pages, isLoading, remove, upload, onUploadSuccess}:PageManagerProps) =>
     <div className={styles.pageManager}>
         <Card size="small" title="Pages">
             {isLoading && <div>Loading...</div>}
-            {!isLoading && pages.length === 0 && <div>No pages found.</div>}
+            {!isLoading && pages.length === 0 && <div className={styles.noPages}>
+                <FontAwesomeIcon icon={faInfoCircle} /> No pages yet. Use the uploader below to add pages.
+            </div>}
             {!isLoading && pages.length > 0 && 
                 <ul className={styles.pageList}>
                     {pages.sort(sort.by(prop<IComicPage, "sortOrder">("sortOrder")).asc).map(page => <li key={page.id}>
@@ -31,5 +36,6 @@ export const PageManagerComponent = ({arcId, pages, isLoading, refresh, remove}:
                     </li>)}
                 </ul>
             }
+            <Uploader upload={upload} onUploadSuccess={onUploadSuccess} />
         </Card>
     </div>;

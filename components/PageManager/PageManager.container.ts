@@ -20,7 +20,41 @@ const injectPageManagerProps = createInjector(({arcId}:IPageManagerInputProps):I
 
     useEffect(refresh, [arcId]);
 
-    return {pages, isLoading: loader.isLoading, refresh, remove};
+    const upload = (file:File):Promise<IComicPage> => 
+        services().page.create({
+            name: "",
+            enabled: false,
+            url: null,
+            sortOrder: 0,
+            imageUrl: null,
+            transcript: null,
+            postDate: null,
+            arcId
+        }, file);
+
+    const onUploadSuccess = (newPages: IComicPage[]) => {
+        console.log("Uploaded pages:", newPages);
+        console.log("Sorting pages");
+        // Get the current maximum sortOrder for the arc's pages
+        const currentMaxSortOrder = pages.reduce((max, page) => page.sortOrder > max ? page.sortOrder : max, 0);
+
+        // Make sure pages are in the right order based on file name
+        // Extract any numbers from the url field, sort the pages based on that number,
+        // set the sortOrder accordingly, then update the pages
+        const pageNumbers = newPages.map(page => page.imageUrl ? page.imageUrl.replace(/\D/g, '') : 0);
+        console.log("Page numbers extracted from URLs:", pageNumbers);
+        const sorted = newPages.sort((a, b) => {
+            const aNum = a.imageUrl ? parseInt(a.imageUrl.replace(/\D/g, '')) : 0;
+            const bNum = b.imageUrl ? parseInt(b.imageUrl.replace(/\D/g, '')) : 0;
+            return aNum - bNum;
+        }).map((page, index) => ({...page, sortOrder: index + 1 + currentMaxSortOrder}));
+
+        // Update the pages with their new sortOrder, then refresh
+        Promise.all(sorted.map(page => services().page.update(page.id, {sortOrder: page.sortOrder})))
+            .then(refresh);
+    }
+
+    return {pages, isLoading: loader.isLoading, refresh, remove, upload, onUploadSuccess};
 });
 
 const connect = inject<IPageManagerInputProps, PageManagerProps>(mergeProps(

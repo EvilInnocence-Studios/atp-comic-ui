@@ -1,6 +1,12 @@
 @use "@styles/globals.module.scss";
 
 .pageManager {
+    .noPages {
+        text-align: center;
+        padding: globals.$padding 0;
+        font-size: globals.$text-xl;
+        color: globals.$brand-primary;
+    }
     ul.pageList {
         list-style: none;
         padding: 0;
@@ -10,6 +16,7 @@
         gap: 1rem;
         > * {
             flex: 1 1 calc(33.333% - 1rem);
+            max-width: calc(33% - 1rem);
             .pageEditor {
                 img {
                     max-width: 100%;

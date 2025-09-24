@@ -11,7 +11,7 @@ export const pageServices = ({get, post, /*put,*/ patch, remove}: IMethods) => (
             const formData = new FormData();
             formData.append('file', file);
             return post("page", newPage).then(getResults<IComicPage>).then((page:IComicPage) => 
-                post(`page/${page.id}`, formData).then(getResults)
+                post(`page/${page.id}/image`, formData).then(getResults)
             );
         },
         search: (arcId:string, q:Query = {}): Promise<IComicPage[]> => get(`page`, {...q, arcId}).then(getResults),
