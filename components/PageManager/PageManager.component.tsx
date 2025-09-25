@@ -9,6 +9,7 @@ import { PageManagerProps } from "./PageManager.d";
 import styles from './PageManager.module.scss';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faInfoCircle } from "@fortawesome/free-solid-svg-icons";
+import { ComicImage } from "../ComicImage";
 
 export const PageManagerComponent = ({arcId, pages, isLoading, remove, upload, onUploadSuccess}:PageManagerProps) =>
     <div className={styles.pageManager}>
@@ -22,7 +23,7 @@ export const PageManagerComponent = ({arcId, pages, isLoading, remove, upload, o
                     {pages.sort(sort.by(prop<IComicPage, "sortOrder">("sortOrder")).asc).map(page => <li key={page.id}>
                         <Card className={styles.pageEditor} size="small" title={page.name || page.url}>
                             <Link to={`/comic/arc/${arcId}/page/${page.id}`}>
-                                <S3Image folderSetting="comicMediaFolder" fileName={page.imageUrl || ""} />
+                                <ComicImage fileName={page.imageUrl || ""} />
                             </Link>
                             <div className={styles.date}>
                                 <Typography.Text type={page.enabled ? "success" : "danger"}>

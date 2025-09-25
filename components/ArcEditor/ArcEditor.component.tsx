@@ -9,6 +9,7 @@ import { PageManager } from "../PageManager";
 import { ArcEditorProps } from "./ArcEditor.d";
 import styles from './ArcEditor.module.scss';
 import { DeleteBtn } from "@core/components/DeleteBtn";
+import { ComicImage } from "../ComicImage";
 
 export const ArcEditorComponent = ({
     history:{entity:arc}, updateString, updateToggle, UpdateButtons,
@@ -38,7 +39,7 @@ export const ArcEditorComponent = ({
             </Col>
             <Col className={styles.images} span={8}>
                 <Card size="small" title="Thumbnail" extra={<DeleteBtn entityType="arc thumbnail" onClick={removeThumbnail} />}>
-                    {arc.thumbnailUrl && <S3Image className={styles.thumbnail} folderSetting="comicMediaFolder" fileName={arc.thumbnailUrl} />}
+                    {arc.thumbnailUrl && <ComicImage className={styles.thumbnail} fileName={arc.thumbnailUrl} />}
                     <br/>
                     <Upload.Dragger
                         showUploadList={false}
@@ -49,7 +50,7 @@ export const ArcEditorComponent = ({
                 </Card>
                 <br/>
                 <Card size="small" title="Banner" extra={<DeleteBtn entityType="arc banner" onClick={removeBanner} />}>
-                    {arc.bannerUrl && <S3Image className={styles.banner} folderSetting="comicMediaFolder" fileName={arc.bannerUrl} />}
+                    {arc.bannerUrl && <ComicImage className={styles.banner} fileName={arc.bannerUrl} />}
                     <br/>
                     <Upload.Dragger
                         showUploadList={false}

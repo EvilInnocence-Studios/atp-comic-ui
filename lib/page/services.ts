@@ -15,6 +15,7 @@ export const pageServices = ({get, post, /*put,*/ patch, remove}: IMethods) => (
             );
         },
         search: (arcId:string, q:Query = {}): Promise<IComicPage[]> => get(`page`, {...q, arcId}).then(getResults),
+        searchAll: (q:Query = {}): Promise<IComicPage[]> => get(`page`, q).then(getResults),
         get: (pageId: string):Promise<IComicPage> => get(`page/${pageId}`).then(getResults),
         update: (pageId: string, page: Partial<IComicPage>):Promise<IComicPage> => patch(`page/${pageId}`, page).then(getResults),
         remove: (pageId: string):Promise<any> => remove(`page/${pageId}`),

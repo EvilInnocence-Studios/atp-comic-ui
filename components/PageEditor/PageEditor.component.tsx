@@ -7,6 +7,7 @@ import dayjs from "dayjs";
 import { S3Image } from "@core/components/S3Image";
 import { MarkdownEditor } from "@core/components/MarkdownEditor";
 import { CharacterAssigner } from "../CharacterAssigner";
+import { ComicImage } from "../ComicImage";
 
 export const PageEditorComponent = ({arcId, page, updateNumber, updateString, updateToggle, UpdateButtons, isLoading}:PageEditorProps) =>
     <div className={styles.pageEditor}>
@@ -35,7 +36,7 @@ export const PageEditorComponent = ({arcId, page, updateNumber, updateString, up
             </Col>
             <Col xs={8}>
                 <Card className={styles.image} size="small" title="Page Image">
-                    <S3Image folderSetting="comicMediaFolder" fileName={page.imageUrl || ""} />
+                    <ComicImage fileName={page.imageUrl || ""} />
                 </Card>
             </Col>
             <Col xs={16}>
