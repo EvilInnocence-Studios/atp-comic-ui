@@ -1,1 +1,44 @@
 @use "@styles/globals.module.scss";
+
+.arcContainer {
+    padding: globals.$padding;
+    max-width: 800px;
+    margin: auto;
+    img {
+        max-width: 100%;
+    }
+    .breadCrumbs {
+        list-style-type: none;
+        padding: 16px;
+        li {
+            display: inline;
+            font-weight: bold;
+            ::after {
+                content: "/";
+                padding: 0 8px;
+                color: globals.$brand-text;
+            }
+            &:last-child {
+                ::after {
+                    content: "";
+                }
+            }
+        }
+    }
+    .subArcs, .arcPages {
+        width: 100%;
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+        justify-content: space-evenly;
+        .listItem {
+            padding: 16px;
+            position: relative;
+            .title {
+                text-align: center;
+                border: solid 2px globals.$brand-bg-light;
+                background-color: globals.$brand-primary;
+                color: globals.$brand-text;
+            }
+        }
+    }
+}

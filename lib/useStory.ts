@@ -32,6 +32,17 @@ export const useStory = () => {
             }
             return currentArc;
         },
+        parents: (arcId: string):IComicArc[] => {
+            const parents: IComicArc[] = [];
+            let currentArc = arcs.find(a => a.id === arcId) || null;
+            while (currentArc?.parentId) {
+                const parentArc = arcs.find(a => a.id === currentArc?.parentId) || null;
+                if (!parentArc) break;
+                parents.unshift(parentArc);
+                currentArc = parentArc;
+            }
+            return parents;
+        },
         subArcs: (parentId?:string) => parentId
             ? arcs.filter(a => a.parentId === parentId && a.enabled).sort((a,b) => (a.sortOrder || 0) - (b.sortOrder || 0))
             : [],
