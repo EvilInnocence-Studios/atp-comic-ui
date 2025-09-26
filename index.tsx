@@ -1,6 +1,6 @@
 import { useSetting } from "@common/lib/setting/services";
 import { IModule } from "@core/lib/module";
-import { sitePlugins } from "@public/index";
+import { sitePlugins } from "@common/index";
 import { LatestPage } from "./components/LatestPage";
 import { comicMenus } from "./lib/menus";
 import { comicRoutes } from "./lib/routes";
