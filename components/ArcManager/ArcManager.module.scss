@@ -7,17 +7,17 @@
             .arcName {
                 display: inline-block;
                 width: calc(100% - 13px);
-                color: globals.$error;
+                color: var(--errorColor);
                 padding: globals.$padding-sm globals.$padding;
                 &.enabled {
-                    color: globals.$success;
+                    color: var(--successColor);
                 }
                 &:hover {
-                    background-color: globals.$brand-border;
+                    background-color: var(--borderColor);
                 }
                 &.selected {
-                    background-color: globals.$brand-secondary;
-                    color: globals.$brand-bg;
+                    background-color: var(--secondaryColor);
+                    color: var(--bgColor);
                 }
             }
             .actions {

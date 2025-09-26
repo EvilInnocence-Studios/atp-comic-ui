@@ -5,7 +5,7 @@
         text-align: center;
         padding: globals.$padding 0;
         font-size: globals.$text-xl;
-        color: globals.$brand-primary;
+        color: var(--primaryColor);
     }
     ul.pageList {
         list-style: none;

@@ -16,7 +16,7 @@
             ::after {
                 content: "/";
                 padding: 0 8px;
-                color: globals.$brand-text;
+                color: var(--textColor);
             }
             &:last-child {
                 ::after {
@@ -35,9 +35,9 @@
             position: relative;
             .title {
                 text-align: center;
-                border: solid 2px globals.$brand-bg-light;
-                background-color: globals.$brand-primary;
-                color: globals.$brand-text;
+                border: solid 2px var(--bgLightColor);
+                background-color: var(--primaryColor);
+                color: var(--textColor);
             }
         }
     }
