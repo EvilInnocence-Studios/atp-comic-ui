@@ -3,8 +3,8 @@
 .pageManager {
     .noPages {
         text-align: center;
-        padding: globals.$padding 0;
-        font-size: globals.$text-xl;
+        padding: var(--padding) 0;
+        font-size: var(--textSizeXL);
         color: var(--primaryColor);
     }
     ul.pageList {
@@ -24,7 +24,7 @@
                 }
                 .date {
                     float: left;
-                    padding: globals.$padding-sm;
+                    padding: var(--paddingSmall);
                 }
                 .controls {
                     float: right;

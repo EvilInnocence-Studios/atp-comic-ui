@@ -2,7 +2,7 @@
 
 .pageEditor {
     :global(.ant-col) {
-        padding-bottom: globals.$padding;
+        padding-bottom: var(--padding);
     }
     .controls {
         text-align: right;

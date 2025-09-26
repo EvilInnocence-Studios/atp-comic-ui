@@ -8,7 +8,7 @@
                 display: inline-block;
                 width: calc(100% - 13px);
                 color: var(--errorColor);
-                padding: globals.$padding-sm globals.$padding;
+                padding: var(--paddingSmall) var(--padding);
                 &.enabled {
                     color: var(--successColor);
                 }
@@ -25,11 +25,11 @@
                 right: 12px;
                 top: 8px;
                 > * {
-                    margin-left: globals.$padding;
+                    margin-left: var(--padding);
                 }
             }
             .nodeChildren {
-                padding-left: globals.$padding-lg;
+                padding-left: var(--paddingLarge);
             }
         }
     }

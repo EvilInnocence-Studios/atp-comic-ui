@@ -3,7 +3,7 @@
 .comicNavLinksContainer {
     display: grid;
     grid-template-columns: 15% 15% auto 15% 15%;
-    margin: globals.$padding;
+    margin: var(--padding);
     .noShow {
         display: none;
     }

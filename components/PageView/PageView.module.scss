@@ -3,7 +3,7 @@
 .comicPage {
     max-width: 800px;
     margin: auto;
-    padding: globals.$padding;
+    padding: var(--padding);
     img {
         display: block;
         max-width: 100%;

@@ -1,7 +1,7 @@
 @use "@styles/globals.module.scss";
 
 .arcContainer {
-    padding: globals.$padding;
+    padding: var(--padding);
     max-width: 800px;
     margin: auto;
     img {
