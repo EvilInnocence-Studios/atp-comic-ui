@@ -10,7 +10,6 @@ const injectPageNavProps = createInjector(({page}:IPageNavInputProps):IPageNavPr
     const nextPage = story.page.next(page?.id);
     const prevPage = story.page.previous(page?.id);
     const allPages = arc ? story.arc.allPages(story.arc.root(arc.id)?.id) : [];
-    console.log("All pages", allPages);
     const firstPage = arc ? allPages[0] || null : null;
     const lastPage = arc ? allPages.slice(-1)[0] || null : null;
     

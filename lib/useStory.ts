@@ -63,7 +63,6 @@ export const useStory = () => {
         latestPage: (arcId?:string) => {
             if (!arcId) return null;
             const arcPages = arc.allPages(arc.root(arcId)?.id);
-            console.log("Arc pages for latest", arcPages);
             return arcPages.slice(-1)[0] || null;
         },
         firstPage: (arcId?:string) => {

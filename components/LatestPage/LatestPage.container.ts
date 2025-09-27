@@ -11,9 +11,6 @@ const injectLatestPageProps = createInjector(({arcId}:ILatestPageInputProps):ILa
     const currentArc = arcId || defaultArc;
     const pageUrl = story.arc.latestPage(currentArc)?.url || null;
 
-    console.log("Default arc", defaultArc);
-    console.log("Current arc", currentArc);
-    console.log("Latest page URL", pageUrl);
     return {pageUrl};
 });
 
