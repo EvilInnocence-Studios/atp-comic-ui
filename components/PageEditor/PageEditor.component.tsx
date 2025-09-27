@@ -1,15 +1,14 @@
-import { Card, Col, DatePicker, Row, Switch } from "antd";
-import {PageEditorProps} from "./PageEditor.d";
-import styles from './PageEditor.module.scss';
 import { Editable } from "@core/components/Editable";
 import { Label } from "@core/components/Label";
-import dayjs from "dayjs";
-import { S3Image } from "@core/components/S3Image";
 import { MarkdownEditor } from "@core/components/MarkdownEditor";
+import { Card, Col, DatePicker, Row, Switch } from "antd";
+import dayjs from "dayjs";
 import { CharacterAssigner } from "../CharacterAssigner";
 import { ComicImage } from "../ComicImage";
+import { PageEditorProps } from "./PageEditor.d";
+import styles from './PageEditor.module.scss';
 
-export const PageEditorComponent = ({arcId, page, updateNumber, updateString, updateToggle, UpdateButtons, isLoading}:PageEditorProps) =>
+export const PageEditorComponent = ({page, updateString, updateToggle, UpdateButtons}:PageEditorProps) =>
     <div className={styles.pageEditor}>
         <Row gutter={16}>
             <Col xs={12}>

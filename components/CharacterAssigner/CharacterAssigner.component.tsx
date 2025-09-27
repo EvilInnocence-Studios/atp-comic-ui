@@ -2,7 +2,7 @@ import { Card, Transfer } from "antd";
 import {CharacterAssignerProps} from "./CharacterAssigner.d";
 import styles from './CharacterAssigner.module.scss';
 
-export const CharacterAssignerComponent = ({allCharacters, assigned, onChange, isLoading}:CharacterAssignerProps) =>
+export const CharacterAssignerComponent = ({allCharacters, assigned, onChange}:CharacterAssignerProps) =>
     <Card size="small" title="Characters">
         <Transfer
             className={styles.characterAssigner}

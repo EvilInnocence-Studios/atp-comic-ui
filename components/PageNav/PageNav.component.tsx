@@ -1,10 +1,9 @@
-import { Link } from "react-router";
-import {PageNavProps} from "./PageNav.d";
-import styles from './PageNav.module.scss';
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faAngleDoubleLeft, faAngleDoubleRight, faAngleLeft, faAngleRight } from "@fortawesome/free-solid-svg-icons";
-import { S3Image } from "@core/components/S3Image";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { Link } from "react-router";
 import { ComicImage } from "../ComicImage";
+import { PageNavProps } from "./PageNav.d";
+import styles from './PageNav.module.scss';
 
 export const PageNavComponent = ({firstPage, prevPage, lastPage, nextPage, arc}:PageNavProps) =>
     <div className={styles.comicNavLinksContainer} style={{textAlign: "center", fontSize: "x-large"}}>

@@ -1,15 +1,14 @@
 import { IComicPage } from "@comic-shared/page/types";
 import { DeleteBtn } from "@core/components/DeleteBtn";
-import { S3Image } from "@core/components/S3Image";
 import { Uploader } from "@core/components/Uploader";
+import { faInfoCircle } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Card, Typography } from "antd";
 import { Link } from "react-router";
 import { prop, sort } from "ts-functional";
+import { ComicImage } from "../ComicImage";
 import { PageManagerProps } from "./PageManager.d";
 import styles from './PageManager.module.scss';
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faInfoCircle } from "@fortawesome/free-solid-svg-icons";
-import { ComicImage } from "../ComicImage";
 
 export const PageManagerComponent = ({arcId, pages, isLoading, remove, upload, onUploadSuccess}:PageManagerProps) =>
     <div className={styles.pageManager}>

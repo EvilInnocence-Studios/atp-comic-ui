@@ -1,15 +1,14 @@
+import { DeleteBtn } from "@core/components/DeleteBtn";
 import { Editable } from "@core/components/Editable";
 import { Label } from "@core/components/Label";
 import { MarkdownEditor } from "@core/components/MarkdownEditor";
-import { S3Image } from "@core/components/S3Image";
 import { faUpload } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Card, Col, Row, Switch, Upload } from "antd";
+import { ComicImage } from "../ComicImage";
 import { PageManager } from "../PageManager";
 import { ArcEditorProps } from "./ArcEditor.d";
 import styles from './ArcEditor.module.scss';
-import { DeleteBtn } from "@core/components/DeleteBtn";
-import { ComicImage } from "../ComicImage";
 
 export const ArcEditorComponent = ({
     history:{entity:arc}, updateString, updateToggle, UpdateButtons,
