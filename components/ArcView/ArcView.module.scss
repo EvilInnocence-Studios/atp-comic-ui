@@ -37,7 +37,9 @@
                 text-align: center;
                 border: solid 2px var(--bgLightColor);
                 background-color: var(--primaryColor);
-                color: var(--textColor);
+                color: #ffffff;
+                font-weight: bold;
+                padding: var(--paddingSmall);
             }
         }
     }
