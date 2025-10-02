@@ -22,11 +22,21 @@ export const comicSettings:ISettingContainer = {
             },
         },
         Display: {
-            comicArcName: {
+            "comic.arcNames": {
                 displayName: "Arc Names",
                 type: "string",
                 defaultValue: "Arc",
                 description: "Comma-separated names for the levels of story arcs."
+            },
+            "comic.defaultArchiveView": {
+                displayName: "Default Archive View",
+                type: "select",
+                defaultValue: "list",
+                description: "The default view for the comic archive.",
+                options: () => Promise.resolve([
+                    { value: 'list', label: 'List' },
+                    { value: 'grid', label: 'Grid' },
+                ]),
             },
         }
     },
