@@ -2,28 +2,38 @@
 
 .arcContainer {
     padding: var(--padding);
-    max-width: 800px;
+    max-width: var(--comicPageWidth);
     margin: auto;
-    .switch {
-        text-align: right;
-    }
     img {
-        max-width: 100%;
+        width: 100%;
+    }
+    .arcDetails {
+        max-width: var(--comicArcDetailsWidth);
+        margin: auto;
     }
     .breadCrumbs {
-        list-style-type: none;
-        padding: 16px;
-        li {
-            display: inline;
-            font-weight: bold;
-            ::after {
-                content: "/";
-                padding: 0 8px;
-                color: var(--textColor);
-            }
-            &:last-child {
+        background-color: var(--bgColor);
+        position: relative;
+        .switch {
+            position: absolute;
+            right: 8px;
+            top: 12px;
+        }
+        ul {
+            list-style-type: none;
+            padding: 16px;
+            li {
+                display: inline;
+                font-weight: bold;
                 ::after {
-                    content: "";
+                    content: "/";
+                    padding: 0 8px;
+                    color: var(--textColor);
+                }
+                &:last-child {
+                    ::after {
+                        content: "";
+                    }
                 }
             }
         }

@@ -9,20 +9,13 @@ import { faList, faTableCellsLarge } from "@fortawesome/free-solid-svg-icons";
 
 export const ArcViewComponent = ({arc, subArcs, pages, subPages, pageNumber, arcTypeName, parents, mode, setMode}:ArcViewProps) =>  <div className={styles.arcContainer}>
     {!!arc && <>
+        {!!arc.bannerUrl && <ComicImage fileName={arc.bannerUrl} className={styles.banner}/>}
         <div className={styles.arcDetails}>
-            {!!arc.bannerUrl && <ComicImage fileName={arc.bannerUrl} className={styles.banner}/>}
             <h1>{arc.name}</h1>
             <Markdown>{arc.summary}</Markdown>
-            <ul className={styles.breadCrumbs}>
-                {parents.map(({id, name, url}) =>
-                    <li key={id}>
-                        <Link to={`/comic/arc/${url}`}>{name}</Link>
-                    </li>
-                )}
-            </ul>
         </div>
-        {subArcs.length > 0 && <>
-            <div className={styles.switch}>
+        <div className={styles.breadCrumbs}>
+            {subArcs.length > 0 && <div className={styles.switch}>
                 <Switch checked={mode === "list"}
                     checkedChildren={<><FontAwesomeIcon icon={faList} /> List View</>}
                     unCheckedChildren={<><FontAwesomeIcon icon={faTableCellsLarge} /> Grid View</>}
@@ -31,14 +24,27 @@ export const ArcViewComponent = ({arc, subArcs, pages, subPages, pageNumber, arc
                     }}
                     defaultChecked={mode === "list"}
                 />
-            </div>
+            </div>}
+            <ul>
+                {parents.map(({id, name, url}) =>
+                    <li key={id}>
+                        <Link to={`/comic/arc/${url}`}>{name}</Link>
+                    </li>
+                )}
+                <li>{arc.name}</li>
+            </ul>
+        </div>
+        {subArcs.length > 0 && <>
             {mode === "grid" && <div className={styles.subArcGrid}>
                 {subArcs.map((subArc, index) =>
                     <div key={subArc.id} className={styles.listItem}>
                         <Link to={`/comic/arc/${subArc.url}`}>
                             {!!subArc.thumbnailUrl && <ComicImage fileName={subArc.thumbnailUrl} className={styles.thumbnail}/>}
                             {!subArc.thumbnailUrl && <>Need missing thumbnail image TaggedImage</>}
-                            <div className={styles.title}>{arcTypeName(subArc)} {index + 1}: {subArc.name}</div>
+                            <div className={styles.title}>
+                                {arcTypeName(subArc)} {index + 1}:<br/>
+                                {subArc.name}
+                            </div>
                         </Link>
                     </div>
                 )}

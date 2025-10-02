@@ -1,7 +1,7 @@
 @use "@styles/globals.module.scss";
 
 .comicPage {
-    max-width: 800px;
+    max-width: var(--comicPageWidth);
     margin: auto;
     padding: var(--padding);
     img {
