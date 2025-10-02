@@ -1,15 +1,16 @@
 import { BlueskyFeed } from "@common/components/BlueskyFeed";
+import { Col, Row } from "antd";
 import { PageView } from "../PageView";
 import { LatestPageProps } from "./LatestPage.d";
-import { Col, Row } from "antd";
+import styles from "./LatestPage.module.scss";
 
 export const LatestPageComponent = ({pageUrl}:LatestPageProps) => <>
     <Row gutter={16}>
-        <Col xs={8}>
+        <Col xs={6} className={styles.newsFeed}>
             <h2>News Feed</h2>
-            <BlueskyFeed />
+            <BlueskyFeed pageSize={5} />
         </Col>
-        <Col xs={16}>
+        <Col xs={18}>
             {pageUrl && <PageView url={pageUrl} />}
         </Col>
     </Row>    
