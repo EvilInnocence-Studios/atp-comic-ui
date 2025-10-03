@@ -5,35 +5,49 @@ import styles from './ArcView.module.scss';
 import Markdown from 'react-markdown';
 import { Col, Row, Switch } from "antd";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faList, faTableCellsLarge } from "@fortawesome/free-solid-svg-icons";
+import { faList, faTableCellsLarge, faTurnUp } from "@fortawesome/free-solid-svg-icons";
 
-export const ArcViewComponent = ({arc, subArcs, pages, subPages, pageNumber, arcTypeName, parents, mode, setMode}:ArcViewProps) =>  <div className={styles.arcContainer}>
+export const ArcViewComponent = ({
+    arc, subArcs, pages,
+    subPages, pageNumber, arcTypeName,
+    parents,
+    showDetails, showBanner, showViewModeToggle, breadCrumbMode, showBar, showDivider,
+    mode, setMode,
+}:ArcViewProps) =>  <div className={styles.arcContainer}>
+    <h1>Archives</h1>
+    {showDivider && <hr />}
     {!!arc && <>
-        {!!arc.bannerUrl && <ComicImage fileName={arc.bannerUrl} className={styles.banner}/>}
-        <div className={styles.arcDetails}>
+        {showBanner && !!arc.bannerUrl && <ComicImage fileName={arc.bannerUrl} className={styles.banner}/>}
+        {showDetails && <div className={styles.arcDetails}>
             <h1>{arc.name}</h1>
             <Markdown>{arc.summary}</Markdown>
-        </div>
-        <div className={styles.breadCrumbs}>
+        </div>}
+        {showBar && <div className={styles.breadCrumbs}>
             {subArcs.length > 0 && <div className={styles.switch}>
-                <Switch checked={mode === "list"}
+                {showViewModeToggle && <Switch checked={mode === "list"}
                     checkedChildren={<><FontAwesomeIcon icon={faList} /> List View</>}
                     unCheckedChildren={<><FontAwesomeIcon icon={faTableCellsLarge} /> Grid View</>}
                     onChange={(checked) => {
                         setMode(checked ? "list" : "grid");
                     }}
                     defaultChecked={mode === "list"}
-                />
+                />}
             </div>}
             <ul>
-                {parents.map(({id, name, url}) =>
-                    <li key={id}>
+                {breadCrumbMode === "full" && <>
+                    {parents.map(({id, name, url}) => <li key={id}>
                         <Link to={`/comic/arc/${url}`}>{name}</Link>
-                    </li>
-                )}
-                <li>{arc.name}</li>
+                    </li>)}
+                    <li>{arc.name}</li>
+                </>}
+
+                {breadCrumbMode === "parent" && parents.length > 0 && <li>
+                    <Link to={`/comic/arc/${parents[parents.length - 1].url}`}>
+                        <FontAwesomeIcon icon={faTurnUp} flip="horizontal" /> {parents[parents.length - 1].name}
+                    </Link>
+                </li>}
             </ul>
-        </div>
+        </div>}
         {subArcs.length > 0 && <>
             {mode === "grid" && <div className={styles.subArcGrid}>
                 {subArcs.map((subArc, index) =>

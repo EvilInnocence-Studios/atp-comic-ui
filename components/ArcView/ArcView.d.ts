@@ -2,14 +2,25 @@ import { IComicArc } from "@comic-shared/arc/types";
 import { IComicPage } from "@comic-shared/page/types";
 import { Setter } from "unstateless";
 
+export declare type BreadCrumbMode = "full" | "parent" | "none";
+
 export declare interface IArcViewProps {
     arc: IComicArc | null;
     parents: IComicArc[];
     subArcs: IComicArc[];
     pages: IComicPage[];
+
+    showDetails: boolean;
+    showBanner: boolean;
+    showViewModeToggle: boolean;
+    breadCrumbMode: BreadCrumbMode;
+    showBar: boolean;
+    showDivider: boolean;
+
     subPages: (arcId: string) => IComicPage[];
     pageNumber: (pageId: string) => number | null;
     arcTypeName: (arc?: IComicArc | null) => string;
+
     mode: string;
     setMode: Setter<string>;
 }
