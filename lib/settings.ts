@@ -28,6 +28,19 @@ export const comicSettings:ISettingContainer = {
                 defaultValue: "100%",
                 description: "The width of comic pages as displayed on the site."
             },
+            "comic.ArchiveLinkLevel": {
+                displayName: "Archive Link Level",
+                type: "select",
+                defaultValue: "",
+                description: "Determines which level of arc to link to in the archive link on comic pages.",
+                options: () => services().setting.get("comic.arcNames").then(setting => {
+                    const arcNames = setting ? setting.split(',').map((name:string) => name.trim()) : [];
+                    return [
+                        { value: '', label: 'Parent' },
+                        ...arcNames.map((name:string, index:number) => ({ value: (index).toString(), label: name }))
+                    ];
+                }),
+            }
         },
         Arcs: {
             "comic.arcNames": {
@@ -49,12 +62,6 @@ export const comicSettings:ISettingContainer = {
                 type: "boolean",
                 defaultValue: true,
                 description: "Show banner image in the comic archive."
-            },
-            "comic.showArchiveViewModeToggle": {
-                displayName: "Show View Mode Toggle",
-                type: "boolean",
-                defaultValue: true,
-                description: "Show a toggle to switch between list and grid views in the comic archive."
             },
             "comic.archiveBreadCrumbMode": {
                 displayName: "Breadcrumb Mode",
@@ -82,6 +89,28 @@ export const comicSettings:ISettingContainer = {
                     { value: 'list', label: 'List' },
                     { value: 'grid', label: 'Grid' },
                 ]),
+            },
+            "comic.showArchiveViewModeToggle": {
+                displayName: "Show View Mode Toggle",
+                type: "boolean",
+                defaultValue: true,
+                description: "Show a toggle to switch between list and grid views in the comic archive."
+            },
+            "comic.defaultArchivesSortOrder": {
+                displayName: "Archives Sort Order",
+                type: "select",
+                defaultValue: "desc",
+                description: "The sort order for comics in the archive.",
+                options: () => Promise.resolve([
+                    { value: 'asc', label: 'Oldest to Newest' },
+                    { value: 'desc', label: 'Newest to Oldest' },
+                ]),
+            },
+            "comic.showArchiveSortOrderToggle": {
+                displayName: "Show Sort Order Toggle",
+                type: "boolean",
+                defaultValue: true,
+                description: "Show a toggle to change the sort order in the comic archive."
             },
         }
     },
