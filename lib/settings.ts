@@ -21,24 +21,57 @@ export const comicSettings:ISettingContainer = {
                 description: "Folder to store comic media files."
             },
         },
-        Display: {
+        Pages: {
             "theme.comicPageWidth": {
                 displayName: "Comic Page Width",
                 type: "string",
                 defaultValue: "100%",
                 description: "The width of comic pages as displayed on the site."
             },
-            "theme.comicArcDetailsWidth": {
-                displayName: "Comic Arc Details Width",
-                type: "string",
-                defaultValue: "600px",
-                description: "The width of the comic arc details section."
-            },
+        },
+        Arcs: {
             "comic.arcNames": {
                 displayName: "Arc Names",
                 type: "string",
                 defaultValue: "Arc",
                 description: "Comma-separated names for the levels of story arcs."
+            },
+        },
+        Archives: {
+            "comic.showArchiveDetails": {
+                displayName: "Show Archive Details",
+                type: "boolean",
+                defaultValue: true,
+                description: "Show details section in the comic archive."
+            },
+            "comic.showArchiveBanner": {
+                displayName: "Show Archive Banner",
+                type: "boolean",
+                defaultValue: true,
+                description: "Show banner image in the comic archive."
+            },
+            "comic.showArchiveViewModeToggle": {
+                displayName: "Show View Mode Toggle",
+                type: "boolean",
+                defaultValue: true,
+                description: "Show a toggle to switch between list and grid views in the comic archive."
+            },
+            "comic.archiveBreadCrumbMode": {
+                displayName: "Breadcrumb Mode",
+                type: "select",
+                defaultValue: "full",
+                description: "The mode for displaying breadcrumbs on comic pages.",
+                options: () => Promise.resolve([
+                    { value: 'none', label: 'None' },
+                    { value: 'parent', label: 'Parent Only' },
+                    { value: 'full', label: 'Full' },
+                ]),
+            },
+            "theme.comicArcDetailsWidth": {
+                displayName: "Archive Details Width",
+                type: "string",
+                defaultValue: "600px",
+                description: "The width of the details section in the archives."
             },
             "comic.defaultArchiveView": {
                 displayName: "Default Archive View",
