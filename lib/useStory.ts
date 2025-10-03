@@ -46,7 +46,7 @@ export const useStory = () => {
             }
             return currentArc;
         },
-        parents: (arcId: string):IComicArc[] => {
+        parents: (arcId?: string | null):IComicArc[] => {
             const parents: IComicArc[] = [];
             let currentArc = arcs.find(a => a.id === arcId) || null;
             while (currentArc?.parentId) {
@@ -83,6 +83,16 @@ export const useStory = () => {
             if (!arcId) return null;
             const arcPages = arc.allPages(arc.root(arcId)?.id);
             return arcPages[0] || null;
+        },
+        arcNumber: (arcId?:string) => {
+            if (!arcId) return null;
+            const arcToFind = arcs.find(a => a.id === arcId);
+            if (!arcToFind) return null;
+            const parentArc = arcs.find(a => a.id === arcToFind.parentId) || null;
+            const siblingArcs = parentArc
+                ? arcs.filter(a => a.parentId === parentArc.id).sort((a,b) => (a.sortOrder || 0) - (b.sortOrder || 0))
+                : arcs.filter(a => !a.parentId).sort((a,b) => (a.sortOrder || 0) - (b.sortOrder || 0));
+            return siblingArcs.findIndex(a => a.id === arcId) + 1 || null;
         },
     };
     const page = {

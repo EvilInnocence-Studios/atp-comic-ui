@@ -5,21 +5,23 @@ import styles from './ArcView.module.scss';
 import Markdown from 'react-markdown';
 import { Col, Row, Switch } from "antd";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faList, faTableCellsLarge, faTurnUp } from "@fortawesome/free-solid-svg-icons";
+import { faArrowDown19, faArrowUp91, faList, faTableCellsLarge, faTurnUp } from "@fortawesome/free-solid-svg-icons";
+import { sort } from "ts-functional";
 
 export const ArcViewComponent = ({
     arc, subArcs, pages,
-    subPages, pageNumber, arcTypeName,
+    subPages, pageNumber, arcTypeName, arcNumber,
     parents,
-    showDetails, showBanner, showViewModeToggle, breadCrumbMode, showBar, showDivider,
+    showDetails, showBanner, showViewModeToggle, showSortOrderToggle, breadCrumbMode, showBar, showDivider,
     mode, setMode,
+    sortOrder, setSortOrder,
 }:ArcViewProps) =>  <div className={styles.arcContainer}>
     <h1>Archives</h1>
     {showDivider && <hr />}
     {!!arc && <>
         {showBanner && !!arc.bannerUrl && <ComicImage fileName={arc.bannerUrl} className={styles.banner}/>}
         {showDetails && <div className={styles.arcDetails}>
-            <h1>{arc.name}</h1>
+            <h1>{arcTypeName(arc)} {arcNumber(arc.id) }: {arc.name}</h1>
             <Markdown>{arc.summary}</Markdown>
         </div>}
         {showBar && <div className={styles.breadCrumbs}>
@@ -32,31 +34,40 @@ export const ArcViewComponent = ({
                     }}
                     defaultChecked={mode === "list"}
                 />}
+                &nbsp;
+                {showSortOrderToggle && <>
+                    <FontAwesomeIcon
+                        icon={sortOrder === "asc" ? faArrowDown19 : faArrowUp91}
+                        onClick={() => setSortOrder(sortOrder === "asc" ? "desc" : "asc")}
+                    />
+                </>}
             </div>}
             <ul>
                 {breadCrumbMode === "full" && <>
-                    {parents.map(({id, name, url}) => <li key={id}>
-                        <Link to={`/comic/arc/${url}`}>{name}</Link>
+                    {parents.map(parent => <li key={parent.id}>
+                        <Link to={`/comic/arc/${parent.url}`}>{arcTypeName(parent)} {arcNumber(parent.id) }: {parent.name}</Link>
                     </li>)}
-                    <li>{arc.name}</li>
+                    <li>{arcTypeName(arc)} {arcNumber(arc.id) }: {arc.name}</li>
                 </>}
 
                 {breadCrumbMode === "parent" && parents.length > 0 && <li>
                     <Link to={`/comic/arc/${parents[parents.length - 1].url}`}>
-                        <FontAwesomeIcon icon={faTurnUp} flip="horizontal" /> {parents[parents.length - 1].name}
+                        <FontAwesomeIcon icon={faTurnUp} flip="horizontal" />&nbsp;
+                        {arcTypeName(parents[parents.length - 1])} {arcNumber(parents[parents.length - 1].id) }:&nbsp;
+                        {parents[parents.length - 1].name}
                     </Link>
                 </li>}
             </ul>
         </div>}
         {subArcs.length > 0 && <>
             {mode === "grid" && <div className={styles.subArcGrid}>
-                {subArcs.map((subArc, index) =>
+                {subArcs.map(subArc =>
                     <div key={subArc.id} className={styles.listItem}>
                         <Link to={`/comic/arc/${subArc.url}`}>
                             {!!subArc.thumbnailUrl && <ComicImage fileName={subArc.thumbnailUrl} className={styles.thumbnail}/>}
                             {!subArc.thumbnailUrl && <>Need missing thumbnail image TaggedImage</>}
                             <div className={styles.title}>
-                                {arcTypeName(subArc)} {index + 1}:<br/>
+                                {arcTypeName(subArc)} {arcNumber(subArc.id) }:<br/>
                                 {subArc.name}
                             </div>
                         </Link>
@@ -64,7 +75,7 @@ export const ArcViewComponent = ({
                 )}
             </div>}
             {mode === "list" && <ul className={styles.subArcList}>
-                {subArcs.map((subArc, index) =>
+                {subArcs.map(subArc =>
                     <li key={subArc.id}>
                         <Row gutter={16}>
                             <Col span={6}>
@@ -74,7 +85,7 @@ export const ArcViewComponent = ({
                             </Col>
                             <Col span={18}>
                                 <h2><Link to={`/comic/arc/${subArc.url}`}>
-                                    {arcTypeName(subArc)} {index + 1}: {subArc.name}
+                                    {arcTypeName(subArc)} {arcNumber(subArc.id)}: {subArc.name}
                                 </Link></h2>
                                 <Markdown>{subArc.summary}</Markdown>
                                 {subPages(subArc.id).length > 0 && <ul className={styles.pageList}>

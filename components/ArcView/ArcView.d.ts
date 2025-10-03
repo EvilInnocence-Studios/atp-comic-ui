@@ -3,6 +3,7 @@ import { IComicPage } from "@comic-shared/page/types";
 import { Setter } from "unstateless";
 
 export declare type BreadCrumbMode = "full" | "parent" | "none";
+export declare type SortOrder = "asc" | "desc";
 
 export declare interface IArcViewProps {
     arc: IComicArc | null;
@@ -13,6 +14,7 @@ export declare interface IArcViewProps {
     showDetails: boolean;
     showBanner: boolean;
     showViewModeToggle: boolean;
+    showSortOrderToggle: boolean;
     breadCrumbMode: BreadCrumbMode;
     showBar: boolean;
     showDivider: boolean;
@@ -20,9 +22,12 @@ export declare interface IArcViewProps {
     subPages: (arcId: string) => IComicPage[];
     pageNumber: (pageId: string) => number | null;
     arcTypeName: (arc?: IComicArc | null) => string;
+    arcNumber: (arcId:string) => number | null;
 
     mode: string;
     setMode: Setter<string>;
+    sortOrder: SortOrder;
+    setSortOrder: Setter<SortOrder>;
 }
 
 // What gets passed into the component from the parent as attributes
