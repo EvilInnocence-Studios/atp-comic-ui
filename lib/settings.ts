@@ -22,6 +22,18 @@ export const comicSettings:ISettingContainer = {
             },
         },
         Display: {
+            "theme.comicPageWidth": {
+                displayName: "Comic Page Width",
+                type: "string",
+                defaultValue: "100%",
+                description: "The width of comic pages as displayed on the site."
+            },
+            "theme.comicArcDetailsWidth": {
+                displayName: "Comic Arc Details Width",
+                type: "string",
+                defaultValue: "600px",
+                description: "The width of the comic arc details section."
+            },
             "comic.arcNames": {
                 displayName: "Arc Names",
                 type: "string",
