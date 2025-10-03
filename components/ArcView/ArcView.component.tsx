@@ -1,12 +1,11 @@
+import { faArrowDown19, faArrowUp91, faList, faTableCellsLarge, faTurnUp } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { Col, Row, Switch } from "antd";
+import Markdown from 'react-markdown';
 import { Link } from "react-router";
 import { ComicImage } from "../ComicImage";
-import {ArcViewProps} from "./ArcView.d";
+import { ArcViewProps } from "./ArcView.d";
 import styles from './ArcView.module.scss';
-import Markdown from 'react-markdown';
-import { Col, Row, Switch } from "antd";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faArrowDown19, faArrowUp91, faList, faTableCellsLarge, faTurnUp } from "@fortawesome/free-solid-svg-icons";
-import { sort } from "ts-functional";
 
 export const ArcViewComponent = ({
     arc, subArcs, pages,
