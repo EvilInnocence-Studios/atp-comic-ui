@@ -1,19 +1,11 @@
-import { createInjector, inject, mergeProps } from "unstateless";
-import {ArcViewComponent} from "./ArcView.component";
-import {IArcViewInputProps, ArcViewProps, IArcViewProps, BreadCrumbMode, SortOrder} from "./ArcView.d";
 import { useStory } from "@comic/lib/useStory";
+import { IComicUserPreferences, injectUserPreferences } from "@comic/lib/useUserPreferences";
 import { useSetting } from "@common/lib/setting/services";
-import { useEffect, useState } from "react";
+import { createInjector, inject, mergeProps } from "unstateless";
+import { ArcViewComponent } from "./ArcView.component";
+import { ArcViewProps, BreadCrumbMode, IArcViewInputProps, IArcViewProps } from "./ArcView.d";
 
-const injectArcViewProps = createInjector(({url}:IArcViewInputProps):IArcViewProps => {
-    const defaultMode = useSetting("comic.defaultArchiveView");
-    const [mode, setMode] = useState<string>(defaultMode);
-    useEffect(() => {setMode(defaultMode);}, [defaultMode]);
-
-    const defaultSortOrder = useSetting("comic.defaultArchivesSortOrder");
-    const [sortOrder, setSortOrder] = useState<SortOrder>(defaultSortOrder as SortOrder);
-    useEffect(() => {setSortOrder(defaultSortOrder as SortOrder);}, [defaultSortOrder]);
-
+const injectArcViewProps = createInjector(({url, archive:{sortOrder}}:IArcViewInputProps & IComicUserPreferences):IArcViewProps => {
     const story = useStory();
     
     const arc = story.arc.get(url);
@@ -43,13 +35,12 @@ const injectArcViewProps = createInjector(({url}:IArcViewInputProps):IArcViewPro
         subArcs, pages,
         subPages, pageNumber, arcTypeName, arcNumber,
         arc, parents,
-        mode, setMode,
-        sortOrder, setSortOrder,
         showDetails, showBanner, showViewModeToggle, showSortOrderToggle, breadCrumbMode, showBar, showDivider,
     };
 });
 
 const connect = inject<IArcViewInputProps, ArcViewProps>(mergeProps(
+    injectUserPreferences,
     injectArcViewProps,
 ));
 

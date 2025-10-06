@@ -5,6 +5,9 @@ import { LatestPage } from "./components/LatestPage";
 import { comicMenus } from "./lib/menus";
 import { comicRoutes } from "./lib/routes";
 import { comicSettings } from "./lib/settings";
+import { uacPlugins } from "@uac/lib/plugin/slots";
+import { faImage } from "@fortawesome/free-solid-svg-icons";
+import { UserPreferences } from "./components/UserPreferences";
 
 export const module:IModule = {
     name: "comic",
@@ -17,3 +20,11 @@ sitePlugins.homepage.register(75, () => {
     const showLatestPage = useSetting("homepage.showLatestComicPage") === "true";
     return showLatestPage ? <LatestPage /> : null;
 })
+
+uacPlugins.myAccount.tabs.register({
+    key: "comics",
+    title: "Comic Preferences",
+    icon: faImage,
+    priority: 500,
+    component: UserPreferences,
+});

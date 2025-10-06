@@ -6,14 +6,15 @@ import { Link } from "react-router";
 import { ComicImage } from "../ComicImage";
 import { ArcViewProps } from "./ArcView.d";
 import styles from './ArcView.module.scss';
+import { ArchiveViewModeToggle } from "../ArchiveViewModeToggle";
+import { ArchiveSortOrderToggle } from "../ArchiveSortOrderToggle";
 
 export const ArcViewComponent = ({
     arc, subArcs, pages,
     subPages, pageNumber, arcTypeName, arcNumber,
     parents,
     showDetails, showBanner, showViewModeToggle, showSortOrderToggle, breadCrumbMode, showBar, showDivider,
-    mode, setMode,
-    sortOrder, setSortOrder,
+    archive:{mode}
 }:ArcViewProps) =>  <div className={styles.arcContainer}>
     <h1>Archives</h1>
     {showDivider && <hr />}
@@ -25,21 +26,9 @@ export const ArcViewComponent = ({
         </div>}
         {showBar && <div className={styles.breadCrumbs}>
             {subArcs.length > 0 && <div className={styles.switch}>
-                {showViewModeToggle && <Switch checked={mode === "list"}
-                    checkedChildren={<><FontAwesomeIcon icon={faList} /> List View</>}
-                    unCheckedChildren={<><FontAwesomeIcon icon={faTableCellsLarge} /> Grid View</>}
-                    onChange={(checked) => {
-                        setMode(checked ? "list" : "grid");
-                    }}
-                    defaultChecked={mode === "list"}
-                />}
+                {showViewModeToggle && <ArchiveViewModeToggle />}
                 &nbsp;
-                {showSortOrderToggle && <>
-                    <FontAwesomeIcon
-                        icon={sortOrder === "asc" ? faArrowDown19 : faArrowUp91}
-                        onClick={() => setSortOrder(sortOrder === "asc" ? "desc" : "asc")}
-                    />
-                </>}
+                {showSortOrderToggle && <ArchiveSortOrderToggle />}
             </div>}
             <ul>
                 {breadCrumbMode === "full" && <>
