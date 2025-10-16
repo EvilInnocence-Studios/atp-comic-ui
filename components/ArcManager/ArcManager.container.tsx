@@ -67,7 +67,7 @@ const injectArcManagerProps = createInjector(({arcId}:IArcManagerInputProps):IAr
         newSet.delete(id);
         setIsOpen(newSet);
     }
-    
+
     return {arcs, arc, isLoading: loader.isLoading, create, remove, isOpen, open, close, goToArc, refresh};
 });
 

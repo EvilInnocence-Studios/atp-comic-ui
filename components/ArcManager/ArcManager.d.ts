@@ -11,6 +11,7 @@ export declare interface IArcNodeProps {
     open: (id:string) => () => void;
     close: (id:string) => () => void;
     goToArc: (id:string) => () => void;
+    setParent: (parentId: string | null) => void;
 }
 
 export declare interface IArcManagerProps {

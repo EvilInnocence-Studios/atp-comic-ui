@@ -1,7 +1,7 @@
 import { IComicArc } from "@comic-shared/arc/types";
 import { DeleteBtn } from "@core/components/DeleteBtn";
 import { noProp } from "@core/lib/util";
-import { faCaretDown, faCaretRight, faPlus, faSitemap } from "@fortawesome/free-solid-svg-icons";
+import { faCaretDown, faCaretRight, faCaretUp, faPlus, faSitemap, faTurnUp } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Button, Card, Col, Row } from "antd";
 import clsx from "clsx";
@@ -83,7 +83,7 @@ export const ArcManagerComponent = ({arcId, arcs, arc, isLoading, create, remove
                 </Card>
             </Col>
             <Col span={18} className={styles.detailCol}>
-                {arc && <ArcEditor arc={arc} refresh={refresh}/>}
+                {arc && <ArcEditor arc={arc} refresh={refresh} allArcs={arcs} />}
             </Col>
         </Row>
 

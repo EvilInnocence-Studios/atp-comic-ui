@@ -41,12 +41,31 @@ const injectArcEditorProps = createInjector(({arc, refresh}:IArcEditorInputProps
             .then(updater.refresh)
         );
     };
+
+    const setParent = (parentId: string | null) => {
+        if(arc) {
+            loader(() => services().arc.update(arc.id, {...arc, parentId}).then(refresh));
+        }
+    }    
+
+    const moveUp = () => {
+        if (arc && arc.parentId) {
+            loader(() => services().arc.sort(arc.parentId as string, arc.id, arc.sortOrder - 1).then(refresh));
+        }
+    }
+
+    const moveDown = () => {
+        if (arc && arc.parentId) {
+            loader(() => services().arc.sort(arc.parentId as string, arc.id, arc.sortOrder + 1).then(refresh));
+        }
+    }
     
     return {
         ...updater,
         uploadThumbnail, removeThumbnail,
         uploadBanner, removeBanner,
         isLoading: updater.isLoading || loader.isLoading,
+        setParent, moveUp, moveDown,
     };
 });
 

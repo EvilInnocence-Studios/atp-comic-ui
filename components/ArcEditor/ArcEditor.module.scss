@@ -2,9 +2,12 @@
 
 .arcEditor {
     .header {
-
-        :global(.ant-switch) {
-            margin-top: 10px;
+        .parentSelect {
+            margin: 0 var(--padding);
+            width: 256px;
+        }
+        .moveBtn {
+            margin: 0 var(--paddingSmall);
         }
     }
     .updateButtons {

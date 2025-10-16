@@ -2,9 +2,9 @@ import { DeleteBtn } from "@core/components/DeleteBtn";
 import { Editable } from "@core/components/Editable";
 import { Label } from "@core/components/Label";
 import { MarkdownEditor } from "@core/components/MarkdownEditor";
-import { faUpload } from "@fortawesome/free-solid-svg-icons";
+import { faCaretDown, faCaretUp, faUpload } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { Card, Col, Row, Switch, Upload } from "antd";
+import { Button, Card, Col, Row, Select, Switch, Upload } from "antd";
 import { ComicImage } from "../ComicImage";
 import { PageManager } from "../PageManager";
 import { ArcEditorProps } from "./ArcEditor.d";
@@ -13,12 +13,29 @@ import styles from './ArcEditor.module.scss';
 export const ArcEditorComponent = ({
     history:{entity:arc}, updateString, updateToggle, UpdateButtons,
     uploadBanner, uploadThumbnail, removeThumbnail, removeBanner,
+    allArcs,
+    setParent, moveUp, moveDown,
 }:ArcEditorProps) =>
     <div className={styles.arcEditor}>
         <Row gutter={16}>
             <Col className={styles.header} span={24}>
                 <UpdateButtons className={styles.updateButtons} />
                 <Switch checked={arc.enabled} onChange={updateToggle("enabled")} checkedChildren="Enabled" unCheckedChildren="Disabled"/>
+                <Select
+                    className={styles.parentSelect}
+                    style={{width:200}}
+                    onChange={setParent}
+                    allowClear
+                    placeholder="Set Parent"
+                    showSearch
+                    optionFilterProp="label"
+                    options={[
+                        {value:null, label:"--Root Arc--"},
+                        ...allArcs.filter(a => a.id !== arc.id).map(a => ({value:a.id, label:a.name}))
+                    ]}
+                />
+                <Button className={styles.moveBtn} onClick={moveUp}><FontAwesomeIcon icon={faCaretUp} /> Move up</Button>
+                <Button className={styles.moveBtn} onClick={moveDown}><FontAwesomeIcon icon={faCaretDown} /> Move down</Button>
             </Col>
             <Col span={16}>
                 <h1><Label label="Name">
