@@ -1,7 +1,7 @@
 import { IComicArc } from "@comic-shared/arc/types";
 import { DeleteBtn } from "@core/components/DeleteBtn";
 import { noProp } from "@core/lib/util";
-import { faCaretDown, faCaretRight, faCaretUp, faPlus, faSitemap, faTurnUp } from "@fortawesome/free-solid-svg-icons";
+import { faCaretDown, faCaretRight, faPlus, faSitemap } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Button, Card, Col, Row } from "antd";
 import clsx from "clsx";
