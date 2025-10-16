@@ -1,13 +1,13 @@
-import { faArrowDown19, faArrowUp91, faList, faTableCellsLarge, faTurnUp } from "@fortawesome/free-solid-svg-icons";
+import { faTurnUp } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { Col, Row, Switch } from "antd";
+import { Col, Row } from "antd";
 import Markdown from 'react-markdown';
 import { Link } from "react-router";
+import { ArchiveSortOrderToggle } from "../ArchiveSortOrderToggle";
+import { ArchiveViewModeToggle } from "../ArchiveViewModeToggle";
 import { ComicImage } from "../ComicImage";
 import { ArcViewProps } from "./ArcView.d";
 import styles from './ArcView.module.scss';
-import { ArchiveViewModeToggle } from "../ArchiveViewModeToggle";
-import { ArchiveSortOrderToggle } from "../ArchiveSortOrderToggle";
 
 export const ArcViewComponent = ({
     arc, subArcs, pages,
