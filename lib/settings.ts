@@ -74,6 +74,12 @@ export const comicSettings:ISettingContainer = {
                     { value: 'full', label: 'Full' },
                 ]),
             },
+            "theme.comicArchiveWidth": {
+                displayName: "Archive Width",
+                type: "string",
+                defaultValue: "768px",
+                description: "The width of the archives."
+            },
             "theme.comicArcDetailsWidth": {
                 displayName: "Archive Details Width",
                 type: "string",
