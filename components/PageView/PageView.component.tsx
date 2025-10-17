@@ -13,6 +13,7 @@ export const PageViewComponent = ({page, pageNumber, nextPage, transcript}:PageV
         <PageNav page={page} />
         {!!nextPage && <Link to={`/comic/page/${nextPage.url}`}><ComicImage fileName={page.imageUrl || ""} /></Link>}
         {!nextPage && <ComicImage fileName={page.imageUrl || ""} />}
+        <PageNav page={page} />
         <div className={styles.pageDetails}>
             <h1>Page {pageNumber}: {page.name}</h1>
             <p><Date date={page.postDate} /></p>
@@ -23,6 +24,5 @@ export const PageViewComponent = ({page, pageNumber, nextPage, transcript}:PageV
                 <Markdown>{page.transcript}</Markdown>
             </div>}
         </div>
-        <PageNav page={page} />
     </div>}
 </>;

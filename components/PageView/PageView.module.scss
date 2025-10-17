@@ -17,6 +17,7 @@
         display: inline-block;
         width: 50%;
         vertical-align: top;
+        margin-top: var(--padding);
         p {
             margin: 0 0 8px 0;
             * {
@@ -28,6 +29,7 @@
         display: inline-block;
         width: 50%;
         vertical-align: top;
+        margin-top: var(--padding);
         h1 {
             cursor:pointer;
         }

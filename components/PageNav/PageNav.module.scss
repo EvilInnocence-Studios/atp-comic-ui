@@ -3,7 +3,8 @@
 .comicNavLinksContainer {
     display: grid;
     grid-template-columns: 15% 15% auto 15% 15%;
-    margin: var(--padding);
+    padding: var(--padding) 0;
+    background-color: var(--comicNavBackgroundColor);
     .noShow {
         display: none;
     }
