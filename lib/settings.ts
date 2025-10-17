@@ -20,6 +20,12 @@ export const comicSettings:ISettingContainer = {
                 defaultValue: "media/comics",
                 description: "Folder to store comic media files."
             },
+            "theme.comicNavBackgroundColor": {
+                displayName: "Comic Navigation Background Color",
+                type: "color",
+                defaultValue: "#f0f0f0",
+                description: "Background color for comic navigation elements."
+            },
         },
         Pages: {
             "theme.comicPageWidth": {
