@@ -5,6 +5,10 @@
     grid-template-columns: 15% 15% auto 15% 15%;
     padding: var(--padding) 0;
     background-color: var(--comicNavBackgroundColor);
+    img {
+        height: 64px;
+        width: auto;
+    }
     .noShow {
         display: none;
     }

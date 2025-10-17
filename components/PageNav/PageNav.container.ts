@@ -6,6 +6,7 @@ import { IPageNavInputProps, IPageNavProps, PageNavProps } from "./PageNav.d";
 
 const injectPageNavProps = createInjector(({page}:IPageNavInputProps):IPageNavProps => {
     const story = useStory();
+    const linkType = useSetting("comic.navLinkStyle");
     
     const pageArc = story.arc.getById(page.arcId);
     const nextPage = story.page.next(page?.id);
@@ -24,7 +25,7 @@ const injectPageNavProps = createInjector(({page}:IPageNavInputProps):IPageNavPr
         ? pageArc
         : parents[parseInt(archiveLinkLevel, 10)];    
     
-    return {nextPage, prevPage, firstPage, lastPage, arc};
+    return {nextPage, prevPage, firstPage, lastPage, arc, linkType};
 });
 
 const connect = inject<IPageNavInputProps, PageNavProps>(mergeProps(

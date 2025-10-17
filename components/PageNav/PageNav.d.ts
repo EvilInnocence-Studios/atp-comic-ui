@@ -7,6 +7,7 @@ export declare interface IPageNavProps {
     firstPage: IComicPage | null;
     lastPage: IComicPage | null;
     arc: IComicArc | null;
+    linkType: string;
 }
 
 // What gets passed into the component from the parent as attributes
