@@ -1,6 +1,11 @@
 import { ISettingContainer } from "@common/lib/setting/types";
 import { services } from "@core/lib/api";
 
+const mediaOptions = () => services().media.search({}).then(images => [
+    { value: '', label: 'None' },
+    ...images.map(img => ({ value: img.id, label: img.url }))
+]);
+
 export const comicSettings:ISettingContainer = {
     Comic: {
         General: {
@@ -20,11 +25,59 @@ export const comicSettings:ISettingContainer = {
                 defaultValue: "media/comics",
                 description: "Folder to store comic media files."
             },
+        },
+        Nav: {
             "theme.comicNavBackgroundColor": {
                 displayName: "Comic Navigation Background Color",
                 type: "color",
                 defaultValue: "#f0f0f0",
                 description: "Background color for comic navigation elements."
+            },
+            "comic.navLinkStyle": {
+                displayName: "Comic Navigation Link Style",
+                type: "select",
+                defaultValue: "text",
+                description: "Style of links in the comic navigation.",
+                options: () => Promise.resolve([
+                    { value: 'text', label: 'Text' },
+                    { value: 'image', label: 'Image' },
+                    { value: 'icon', label: 'Icon' },
+                ]),
+            },
+            "comic.firstPageIcon": {
+                displayName: "First Page Icon Image",
+                type: "select",
+                defaultValue: "",
+                description: "Icon image for the 'First Page' navigation button.",
+                options: mediaOptions,
+            },
+            "comic.lastPageIcon": {
+                displayName: "Last Page Icon Image",
+                type: "select",
+                defaultValue: "",
+                description: "Icon image for the 'Last Page' navigation button.",
+                options: mediaOptions,
+            },
+            "comic.nextPageIcon": {
+                displayName: "Next Page Icon Image",
+                type: "select",
+                defaultValue: "",
+                description: "Icon image for the 'Next Page' navigation button.",
+                options: mediaOptions,
+            },
+            "comic.previousPageIcon": {
+                displayName: "Previous Page Icon Image",
+                type: "select",
+                defaultValue: "",
+                description: "Icon image for the 'Previous Page' navigation button.",
+                options: mediaOptions,
+            },
+            "comic.archiveIcon": {
+                displayName: "Archive Icon Image",
+                type: "select",
+                defaultValue: "",
+                description: "Icon image for the 'Archive' navigation button.",
+                options: mediaOptions,
             },
         },
         Pages: {
