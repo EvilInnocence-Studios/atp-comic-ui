@@ -79,6 +79,12 @@ export const comicSettings:ISettingContainer = {
                 description: "Icon image for the 'Archive' navigation button.",
                 options: mediaOptions,
             },
+            "theme.comicNavIconSize": {
+                displayName: "Comic Navigation Icon Size",
+                type: "string",
+                defaultValue: "24px",
+                description: "Size of the icons used in comic navigation."
+            },
         },
         Pages: {
             "theme.comicPageWidth": {
