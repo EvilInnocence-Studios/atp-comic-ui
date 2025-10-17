@@ -6,7 +6,7 @@
     padding: var(--padding) 0;
     background-color: var(--comicNavBackgroundColor);
     img {
-        height: 64px;
+        height: var(--comicNavIconSize);
         width: auto;
     }
     .noShow {
