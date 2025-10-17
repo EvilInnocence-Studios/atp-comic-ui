@@ -4,9 +4,10 @@ import { Link } from "react-router";
 import { ComicImage } from "../ComicImage";
 import { PageNavProps } from "./PageNav.d";
 import styles from './PageNav.module.scss';
+import clsx from "clsx";
 
-export const PageNavComponent = ({firstPage, prevPage, lastPage, nextPage, arc}:PageNavProps) =>
-    <div className={styles.comicNavLinksContainer} style={{textAlign: "center", fontSize: "x-large"}}>
+export const PageNavComponent = ({firstPage, prevPage, lastPage, nextPage, arc, top, bottom}:PageNavProps) =>
+    <div className={clsx([styles.comicNavLinksContainer, top && styles.top, bottom && styles.bottom])} style={{textAlign: "center", fontSize: "x-large"}}>
         <div>
             {firstPage && prevPage && <Link to={`/comic/page/${(firstPage.url)}`}><FontAwesomeIcon icon={faAngleDoubleLeft} /></Link>}
             {firstPage && firstPage.imageUrl && <ComicImage className={styles.noShow} fileName={firstPage.imageUrl} />}

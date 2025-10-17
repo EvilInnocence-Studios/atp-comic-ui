@@ -12,6 +12,8 @@ export declare interface IPageNavProps {
 // What gets passed into the component from the parent as attributes
 export declare interface IPageNavInputProps {
     page: IComicPage;
+    top?: boolean;
+    bottom?: boolean;
 }
 
 export type PageNavProps = IPageNavInputProps & IPageNavProps;

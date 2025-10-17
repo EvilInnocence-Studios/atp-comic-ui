@@ -10,10 +10,10 @@ import styles from './PageView.module.scss';
 
 export const PageViewComponent = ({page, pageNumber, nextPage, transcript}:PageViewProps) => <>
     {!!page && <div className={styles.comicPage}>
-        <PageNav page={page} />
+        <PageNav page={page} top />
         {!!nextPage && <Link to={`/comic/page/${nextPage.url}`}><ComicImage fileName={page.imageUrl || ""} /></Link>}
         {!nextPage && <ComicImage fileName={page.imageUrl || ""} />}
-        <PageNav page={page} />
+        <PageNav page={page} bottom />
         <div className={styles.pageDetails}>
             <h1>Page {pageNumber}: {page.name}</h1>
             <p><Date date={page.postDate} /></p>
