@@ -1,0 +1,6 @@
+@use "@styles/globals.module.scss";
+
+.characterPage {
+    max-width: var(--comicArchiveWidth);
+    margin: auto;
+}
