@@ -1,0 +1,14 @@
+@use "@styles/globals.module.scss";
+
+.characterMediaList {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--padding);
+    margin-bottom: var(--padding);
+    .mediaItem {
+        position: relative;
+        img {
+            width: 256px;
+        }
+    }
+}

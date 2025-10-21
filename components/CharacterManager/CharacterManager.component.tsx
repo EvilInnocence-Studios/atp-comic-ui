@@ -16,7 +16,11 @@ const CharacterItem = ({item:character, setSelectedCharacter}:any) =>
         {character.name}
     </div>
 
-export const CharacterManagerComponent = ({characters, isLoading, selectedCharacter, setSelectedCharacter, sort}:CharacterManagerProps) =>
+export const CharacterManagerComponent = ({
+    characters, isLoading,
+    selectedCharacter, setSelectedCharacter,
+    sort, refresh,
+}:CharacterManagerProps) =>
     <div className={styles.characterManager}>
         <Spin spinning={isLoading}>
             <h1><FontAwesomeIcon icon={faUsers} /> Characters</h1>
@@ -35,7 +39,7 @@ export const CharacterManagerComponent = ({characters, isLoading, selectedCharac
                     />
                 </Col>
                 <Col xs={21}>
-                    {selectedCharacter && <CharacterEditor character={selectedCharacter} />}
+                    {selectedCharacter && <CharacterEditor character={selectedCharacter} refresh={refresh} />}
                 </Col>
             </Row>
         </Spin>
