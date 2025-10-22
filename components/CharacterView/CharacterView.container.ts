@@ -22,7 +22,10 @@ const injectCharacterViewProps = createInjector(({character}:ICharacterViewInput
             setAttributes(atts.sort((a, b) => (a.sortOrder || 0) - (b.sortOrder || 0)));
         });
         services().character.media.search(character.id).then(mediaItems => {
-            setMedia(mediaItems.sort((a, b) => (a.order || 0) - (b.order || 0)));
+            setMedia(mediaItems
+                .filter(m => ![character.mainImageId, character.thumbnailId].includes(m.id))
+                .sort((a, b) => (a.order || 0) - (b.order || 0))
+            );
         });
         services().character.pages(character.id).then(pageIds => {
             setPages(pageIds
