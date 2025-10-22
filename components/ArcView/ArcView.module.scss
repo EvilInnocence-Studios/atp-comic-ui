@@ -60,6 +60,9 @@
     .subArcList {
         list-style-type: none;
         padding: 0;
+        h2 {
+            margin-top: 0;
+        }
         > li {
             margin-bottom: var(--padding);
             padding-bottom: var(--padding);

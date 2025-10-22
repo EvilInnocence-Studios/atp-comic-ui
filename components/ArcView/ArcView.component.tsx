@@ -21,7 +21,7 @@ export const ArcViewComponent = ({
     {!!arc && <>
         {showBanner && !!arc.bannerUrl && <ComicImage fileName={arc.bannerUrl} className={styles.banner}/>}
         {showDetails && <div className={styles.arcDetails}>
-            <h1>{arcTypeName(arc)} {arcNumber(arc.id) }: {arc.name}</h1>
+            <h2>{arcTypeName(arc)} {arcNumber(arc.id) }: {arc.name}</h2>
             <Markdown>{arc.summary}</Markdown>
         </div>}
         {showBar && <div className={styles.breadCrumbs}>
