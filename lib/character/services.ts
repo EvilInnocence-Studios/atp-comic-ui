@@ -10,6 +10,7 @@ export const characterServices = ({get, post, /*put,*/ patch, remove}: IMethods)
         update: (id: string, character: Partial<IComicCharacter>):Promise<IComicCharacter> => patch(`character/${id}`, character).then(getResults),
         remove: (id: string):Promise<any> => remove(`character/${id}`),
         sort: (characterId:string, newIndex:number):Promise<IComicCharacter[]> => post(`character/sort`, {characterId, newIndex}).then(getResults),
+        pages: (characterId:string):Promise<string[]> => get(`character/${characterId}/pages`).then(getResults),
         attribute: {
             search: (characterId:string):Promise<ICharacterAttribute[]> => get(`character/${characterId}/attribute`).then(getResults),
             create: (characterId:string, name:string, value:string):Promise<ICharacterAttribute> => post(`character/${characterId}/attribute`, {name, value}).then(getResults),

@@ -9,6 +9,8 @@ export const useStory = () => {
     const [arcs, setArcs] = useSharedState<IComicArc[]>("comicArcs", [])();
     const [pages, setPages] = useSharedState<IComicPage[]>("comicPages", [])();
     const arcNames = (useSetting("comic.arcNames") || "").split(",");
+    const arcsLoaded = arcs.length > 0;
+    const pagesLoaded = pages.length > 0;
 
     useEffect(() => {
         if (arcs.length === 0) {
@@ -20,6 +22,7 @@ export const useStory = () => {
     }, []);
 
     const arc = {
+        isLoaded: arcsLoaded,
         get: (url?:string) => url ? arcs.find(a => a.url === url) || null : null,
         getById: (id?:string) => id ? arcs.find(a => a.id === id) || null : null,
         list: () => arcs,
@@ -96,6 +99,7 @@ export const useStory = () => {
         },
     };
     const page = {
+        isLoaded: pagesLoaded,
         get: (url:string) => pages.find(p => p.url === url) || null,
         getById: (id?:string) => id ? pages.find(p => p.id === id) || null : null,
         pageNumber: (id:string) => {

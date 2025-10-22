@@ -1,1 +1,7 @@
 @use "@styles/globals.module.scss";
+
+.characterView {
+    max-width: var(--comicArchiveWidth);
+    margin: auto;
+    margin-bottom: 128px;
+}

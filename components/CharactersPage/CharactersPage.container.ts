@@ -15,7 +15,10 @@ const injectCharactersPageProps = createInjector(({}:ICharactersPageInputProps):
         loader(() => services().character.search({}).then(setCharacters));
     }, []);
     
-    return {characters: characters.sort(sort.by(prop<any, any>("order")).asc), isLoading: loader.isLoading};
+    return {
+        characters: characters.filter(prop("enabled")).sort(sort.by(prop<any, any>("sortOrder")).asc),
+        isLoading: loader.isLoading,
+    };
 });
 
 const connect = inject<ICharactersPageInputProps, CharactersPageProps>(mergeProps(
