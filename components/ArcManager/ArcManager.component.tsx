@@ -9,6 +9,7 @@ import { prop, sort } from "ts-functional";
 import { ArcEditor } from "../ArcEditor";
 import { ArcManagerProps, IArcNodeProps } from "./ArcManager.d";
 import styles from './ArcManager.module.scss';
+import { ClearCacheButton } from "@common/components/ClearCacheButton";
 
 const sortArcs = sort.by(prop<IComicArc, "sortOrder">("sortOrder")).asc;
 
@@ -58,6 +59,8 @@ export const ArcManagerComponent = ({arcId, arcs, arc, isLoading, create, remove
     <div className={styles.arcManager}>
         <Row gutter={16}>
             <Col span={6} className={styles.treeCol}>
+                <ClearCacheButton entity="story" cacheType="arc,page" />
+                <br/><br/>
                 <Card
                     size="small"
                     title={<><FontAwesomeIcon icon={faSitemap} /> Arcs</>}

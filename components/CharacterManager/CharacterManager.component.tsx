@@ -7,6 +7,7 @@ import { IComicCharacter } from "@comic-shared/character/types";
 import { prop } from "ts-functional";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUsers } from "@fortawesome/free-solid-svg-icons";
+import { ClearCacheButton } from "@common/components/ClearCacheButton";
 
 const CharacterItem = ({item:character, setSelectedCharacter}:any) =>
     <div
@@ -24,6 +25,7 @@ export const CharacterManagerComponent = ({
     <div className={styles.characterManager}>
         <Spin spinning={isLoading}>
             <h1><FontAwesomeIcon icon={faUsers} /> Characters</h1>
+            <ClearCacheButton entity="character" cacheType="character" />
             <Row gutter={[16, 16]}>
                 <Col xs={3}>
                     <SortableList<IComicCharacter>
