@@ -16,11 +16,7 @@ const injectPageNavProps = createInjector(({page}:IPageNavInputProps):IPageNavPr
     const lastPage = pageArc ? allPages.slice(-1)[0] || null : null;
 
     const archiveLinkLevel = useSetting("comic.ArchiveLinkLevel");
-    const arcNames = useSetting("comic.arcNames")?.split(",") || [];
     const parents = [...story.arc.parents(pageArc?.id), pageArc].filter(a => a !== null);
-    console.log(parents);
-    console.log(arcNames);
-    console.log(archiveLinkLevel);
     const arc = archiveLinkLevel === ""
         ? pageArc
         : parents[parseInt(archiveLinkLevel, 10)];    

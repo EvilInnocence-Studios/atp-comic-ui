@@ -1,9 +1,32 @@
 @use "@styles/globals.module.scss";
 
-.newsFeed {
-    max-height: 1272px;
-    overflow-y: scroll;
-    scrollbar-width: thin;
-    scrollbar-color: var(--bgColor) var(--bgLightColor);
+.latestPage {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 3fr 1fr;
+    align-items: start; 
+    .pageView {
 
+    }
+    .newsFeed {
+        overflow-y: auto;
+        aspect-ratio: 2/9;
+        scrollbar-width: thin;
+        padding-right: var(--padding);
+        scrollbar-color: var(--bgColor) var(--bgLightColor);
+    }
+}
+
+// Stack vertically under 700px and make newsFeed auto height
+@media (max-width: 700px) {
+    .latestPage {
+        grid-template-columns: 1fr;
+        .newsFeed {
+            overflow-y: visible;
+            aspect-ratio: auto;
+            max-width: 378px;
+            padding: var(--padding);
+            margin: auto;
+        }
+    }
 }
