@@ -1,0 +1,7 @@
+@use "@styles/globals.module.scss";
+
+.ad {
+    border: solid 1px var(--borderColor);
+    background-color: var(--bgColor);
+    max-width: 100%;
+}
