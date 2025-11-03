@@ -7,9 +7,11 @@ import { prop, sort } from "ts-functional";
 import { createInjector, inject, mergeProps } from "unstateless";
 import { CharactersPageComponent } from "./CharactersPage.component";
 import { CharactersPageProps, ICharactersPageInputProps, ICharactersPageProps } from "./CharactersPage.d";
+import { useSetting } from "@common/lib/setting/services";
 
 const injectCharactersPageProps = createInjector(({}:ICharactersPageInputProps):ICharactersPageProps => {
     const [characters, setCharacters] = useState<IComicCharacter[]>([]);
+    const mode = useSetting("comic.CharacterPageDisplayMode");
     const loader = useLoaderAsync();
 
     useEffect(() => {
@@ -19,6 +21,7 @@ const injectCharactersPageProps = createInjector(({}:ICharactersPageInputProps):
     return {
         characters: characters.filter(prop("enabled")).sort(sort.by(prop<any, any>("sortOrder")).asc),
         isLoading: loader.isLoading,
+        mode,
     };
 });
 

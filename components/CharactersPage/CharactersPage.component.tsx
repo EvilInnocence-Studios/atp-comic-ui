@@ -4,12 +4,12 @@ import styles from './CharactersPage.module.scss';
 import { CharacterGrid } from "../CharacterGrid";
 import { CharacterView } from "../CharacterView";
 
-export const CharactersPageComponent = ({characters, isLoading}:CharactersPageProps) =>
+export const CharactersPageComponent = ({characters, isLoading, mode}:CharactersPageProps) =>
     <Spin spinning={isLoading}>
         <div className={styles.characterPage}>
             <h1>Characters</h1>
             <CharacterGrid characters={characters} />
 
-            {characters.map(char => <CharacterView key={char.id} character={char} />)}
+            {mode === "list" && characters.map(char => <CharacterView key={char.id} character={char} />)}
         </div>
     </Spin>;
