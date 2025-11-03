@@ -183,6 +183,18 @@ export const comicSettings:ISettingContainer = {
                 defaultValue: true,
                 description: "Show a toggle to change the sort order in the comic archive."
             },
+        },
+        Characters: {
+            "comic.CharacterPageDisplayMode": {
+                displayName: "Character Page Display Mode",
+                type: "select",
+                defaultValue: "list",
+                description: "The display mode for character pages.",
+                options: () => Promise.resolve([
+                    { value: 'list', label: 'List' },
+                    { value: 'popup', label: 'Popup' },
+                ]),
+            },
         }
     },
     Layout: {
