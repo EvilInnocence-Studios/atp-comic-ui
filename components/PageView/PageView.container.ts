@@ -1,4 +1,5 @@
 import { useStory } from "@comic/lib/useStory";
+import { overridable } from "@core/lib/overridable";
 import { useToggle } from "@core/lib/useToggle";
 import { createInjector, inject, mergeProps } from "unstateless";
 import { PageViewComponent } from "./PageView.component";
@@ -19,4 +20,4 @@ const connect = inject<IPageViewInputProps, PageViewProps>(mergeProps(
     injectPageViewProps,
 ));
 
-export const PageView = connect(PageViewComponent);
+export const PageView = overridable<IPageViewInputProps>(connect(PageViewComponent));

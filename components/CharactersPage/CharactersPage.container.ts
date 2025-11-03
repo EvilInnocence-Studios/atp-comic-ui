@@ -1,11 +1,12 @@
-import { createInjector, inject, mergeProps } from "unstateless";
-import {CharactersPageComponent} from "./CharactersPage.component";
-import {ICharactersPageInputProps, CharactersPageProps, ICharactersPageProps} from "./CharactersPage.d";
-import { useEffect, useState } from "react";
 import { IComicCharacter } from "@comic-shared/character/types";
-import { useLoaderAsync } from "@core/lib/useLoader";
 import { services } from "@core/lib/api";
+import { overridable } from "@core/lib/overridable";
+import { useLoaderAsync } from "@core/lib/useLoader";
+import { useEffect, useState } from "react";
 import { prop, sort } from "ts-functional";
+import { createInjector, inject, mergeProps } from "unstateless";
+import { CharactersPageComponent } from "./CharactersPage.component";
+import { CharactersPageProps, ICharactersPageInputProps, ICharactersPageProps } from "./CharactersPage.d";
 
 const injectCharactersPageProps = createInjector(({}:ICharactersPageInputProps):ICharactersPageProps => {
     const [characters, setCharacters] = useState<IComicCharacter[]>([]);
@@ -25,4 +26,4 @@ const connect = inject<ICharactersPageInputProps, CharactersPageProps>(mergeProp
     injectCharactersPageProps,
 ));
 
-export const CharactersPage = connect(CharactersPageComponent);
+export const CharactersPage = overridable<ICharactersPageInputProps>(connect(CharactersPageComponent));

@@ -1,6 +1,7 @@
 import { ICharacterMedia } from "@comic-shared/character/types";
 import { services } from "@core/lib/api";
 import { flash } from "@core/lib/flash";
+import { overridable } from "@core/lib/overridable";
 import { useLoaderAsync } from "@core/lib/useLoader";
 import { useEffect, useState } from "react";
 import { createInjector, inject, mergeProps } from "unstateless";
@@ -54,4 +55,4 @@ const connect = inject<ICharacterMediaEditorInputProps, CharacterMediaEditorProp
     injectCharacterMediaEditorProps,
 ));
 
-export const CharacterMediaEditor = connect(CharacterMediaEditorComponent);
+export const CharacterMediaEditor = overridable<ICharacterMediaEditorInputProps>(connect(CharacterMediaEditorComponent));

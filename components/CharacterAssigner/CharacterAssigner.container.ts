@@ -1,10 +1,11 @@
-import { createInjector, inject, mergeProps } from "unstateless";
-import {CharacterAssignerComponent} from "./CharacterAssigner.component";
-import {ICharacterAssignerInputProps, CharacterAssignerProps, ICharacterAssignerProps} from "./CharacterAssigner.d";
-import { Key, useEffect, useState } from "react";
 import { IComicCharacter } from "@comic-shared/character/types";
-import { useLoaderAsync } from "@core/lib/useLoader";
 import { services } from "@core/lib/api";
+import { overridable } from "@core/lib/overridable";
+import { useLoaderAsync } from "@core/lib/useLoader";
+import { Key, useEffect, useState } from "react";
+import { createInjector, inject, mergeProps } from "unstateless";
+import { CharacterAssignerComponent } from "./CharacterAssigner.component";
+import { CharacterAssignerProps, ICharacterAssignerInputProps, ICharacterAssignerProps } from "./CharacterAssigner.d";
 
 const injectCharacterAssignerProps = createInjector(({pageId}:ICharacterAssignerInputProps):ICharacterAssignerProps => {
     // key, title
@@ -45,4 +46,4 @@ const connect = inject<ICharacterAssignerInputProps, CharacterAssignerProps>(mer
     injectCharacterAssignerProps,
 ));
 
-export const CharacterAssigner = connect(CharacterAssignerComponent);
+export const CharacterAssigner = overridable<ICharacterAssignerInputProps>(connect(CharacterAssignerComponent));

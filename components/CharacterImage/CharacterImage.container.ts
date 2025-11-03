@@ -1,4 +1,5 @@
 import { useCharacterImage, useComicImageHost } from "@comic/lib/caching";
+import { overridable } from "@core/lib/overridable";
 import { createInjector, inject, mergeProps } from "unstateless";
 import { CharacterImageComponent } from "./CharacterImage.component";
 import { CharacterImageProps, ICharacterImageInputProps, ICharacterImageProps } from "./CharacterImage.d";
@@ -14,4 +15,4 @@ const connect = inject<ICharacterImageInputProps, CharacterImageProps>(mergeProp
     injectCharacterImageProps,
 ));
 
-export const CharacterImage = connect(CharacterImageComponent);
+export const CharacterImage = overridable<ICharacterImageInputProps>(connect(CharacterImageComponent));

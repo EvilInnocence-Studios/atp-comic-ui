@@ -1,12 +1,13 @@
 import { IComicCharacter } from "@comic-shared/character/types";
 import { services } from "@core/lib/api";
+import { overridable } from "@core/lib/overridable";
 import { useLoaderAsync } from "@core/lib/useLoader";
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router";
 import { prop, sort } from "ts-functional";
 import { createInjector, inject, mergeProps } from "unstateless";
 import { CharacterManagerComponent } from "./CharacterManager.component";
 import { CharacterManagerProps, ICharacterManagerInputProps, ICharacterManagerProps } from "./CharacterManager.d";
-import { useNavigate } from "react-router";
 
 const injectCharacterManagerProps = createInjector(({characterId}:ICharacterManagerInputProps):ICharacterManagerProps => {
     const [characters, setCharacters] = useState<IComicCharacter[]>([]);
@@ -46,4 +47,4 @@ const connect = inject<ICharacterManagerInputProps, CharacterManagerProps>(merge
     injectCharacterManagerProps,
 ));
 
-export const CharacterManager = connect(CharacterManagerComponent);
+export const CharacterManager = overridable<ICharacterManagerInputProps>(connect(CharacterManagerComponent));

@@ -1,9 +1,10 @@
+import { IComicPage } from "@comic-shared/page/types";
+import { services } from "@core/lib/api";
+import { overridable } from "@core/lib/overridable";
+import { useUpdater } from "@core/lib/useUpdater";
 import { createInjector, inject, mergeProps } from "unstateless";
 import { PageEditorComponent } from "./PageEditor.component";
 import { IPageEditorInputProps, IPageEditorProps, PageEditorProps } from "./PageEditor.d";
-import { useUpdater } from "@core/lib/useUpdater";
-import { IComicPage } from "@comic-shared/page/types";
-import { services } from "@core/lib/api";
 
 const injectPageEditorProps = createInjector(({arcId, pageId}:IPageEditorInputProps):IPageEditorProps => {
     const updater = useUpdater<IComicPage>(
@@ -22,4 +23,4 @@ const connect = inject<IPageEditorInputProps, PageEditorProps>(mergeProps(
     injectPageEditorProps,
 ));
 
-export const PageEditor = connect(PageEditorComponent);
+export const PageEditor = overridable<IPageEditorInputProps>(connect(PageEditorComponent));

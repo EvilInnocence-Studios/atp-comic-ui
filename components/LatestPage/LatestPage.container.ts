@@ -1,8 +1,9 @@
-import { createInjector, inject, mergeProps } from "unstateless";
-import {LatestPageComponent} from "./LatestPage.component";
-import {ILatestPageInputProps, LatestPageProps, ILatestPageProps} from "./LatestPage.d";
-import { useSetting } from "@common/lib/setting/services";
 import { useStory } from "@comic/lib/useStory";
+import { useSetting } from "@common/lib/setting/services";
+import { overridable } from "@core/lib/overridable";
+import { createInjector, inject, mergeProps } from "unstateless";
+import { LatestPageComponent } from "./LatestPage.component";
+import { ILatestPageInputProps, ILatestPageProps, LatestPageProps } from "./LatestPage.d";
 
 const injectLatestPageProps = createInjector(({arcId}:ILatestPageInputProps):ILatestPageProps => {
     const defaultArc = useSetting("defaultStoryArc");
@@ -18,4 +19,4 @@ const connect = inject<ILatestPageInputProps, LatestPageProps>(mergeProps(
     injectLatestPageProps,
 ));
 
-export const LatestPage = connect(LatestPageComponent);
+export const LatestPage = overridable<ILatestPageInputProps>(connect(LatestPageComponent));

@@ -1,6 +1,7 @@
 import { ICharacterAttribute } from "@comic-shared/character/types";
 import { services } from "@core/lib/api";
 import { flash } from "@core/lib/flash";
+import { overridable } from "@core/lib/overridable";
 import { useLoaderAsync } from "@core/lib/useLoader";
 import { appendTo, clear } from "@core/lib/util";
 import { useEffect, useState } from "react";
@@ -74,4 +75,4 @@ const connect = inject<ICharacterAttributeEditorInputProps, CharacterAttributeEd
     injectCharacterAttributeEditorProps,
 ));
 
-export const CharacterAttributeEditor = connect(CharacterAttributeEditorComponent);
+export const CharacterAttributeEditor = overridable<ICharacterAttributeEditorInputProps>(connect(CharacterAttributeEditorComponent));

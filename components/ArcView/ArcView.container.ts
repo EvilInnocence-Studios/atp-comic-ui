@@ -1,6 +1,7 @@
 import { useStory } from "@comic/lib/useStory";
 import { IComicUserPreferences, injectUserPreferences } from "@comic/lib/useUserPreferences";
 import { useSetting } from "@common/lib/setting/services";
+import { overridable } from "@core/lib/overridable";
 import { createInjector, inject, mergeProps } from "unstateless";
 import { ArcViewComponent } from "./ArcView.component";
 import { ArcViewProps, BreadCrumbMode, IArcViewInputProps, IArcViewProps } from "./ArcView.d";
@@ -44,4 +45,4 @@ const connect = inject<IArcViewInputProps, ArcViewProps>(mergeProps(
     injectArcViewProps,
 ));
 
-export const ArcView = connect(ArcViewComponent);
+export const ArcView = overridable<IArcViewInputProps>(connect(ArcViewComponent));

@@ -1,11 +1,12 @@
 import { IComicArc } from "@comic-shared/arc/types";
 import { services } from "@core/lib/api";
+import { overridable } from "@core/lib/overridable";
 import { useLoaderAsync } from "@core/lib/useLoader";
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router";
 import { createInjector, inject, mergeProps } from "unstateless";
 import { ArcManagerComponent } from "./ArcManager.component";
 import { ArcManagerProps, IArcManagerInputProps, IArcManagerProps } from "./ArcManager.d";
-import { useNavigate } from "react-router";
 
 const injectArcManagerProps = createInjector(({arcId}:IArcManagerInputProps):IArcManagerProps => {
     const [arcs, setArcs] = useState<IComicArc[]>([]);
@@ -75,4 +76,4 @@ const connect = inject<IArcManagerInputProps, ArcManagerProps>(mergeProps(
     injectArcManagerProps,
 ));
 
-export const ArcManager = connect(ArcManagerComponent);
+export const ArcManager = overridable<IArcManagerInputProps>(connect(ArcManagerComponent));

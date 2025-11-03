@@ -1,4 +1,5 @@
 import { injectUserPreferences } from "@comic/lib/useUserPreferences";
+import { overridable } from "@core/lib/overridable";
 import { createInjector, inject, mergeProps } from "unstateless";
 import { ArchiveViewModeToggleComponent } from "./ArchiveViewModeToggle.component";
 import { ArchiveViewModeToggleProps, IArchiveViewModeToggleInputProps, IArchiveViewModeToggleProps } from "./ArchiveViewModeToggle.d";
@@ -12,4 +13,4 @@ const connect = inject<IArchiveViewModeToggleInputProps, ArchiveViewModeTogglePr
     injectUserPreferences,
 ));
 
-export const ArchiveViewModeToggle = connect(ArchiveViewModeToggleComponent);
+export const ArchiveViewModeToggle = overridable<IArchiveViewModeToggleInputProps>(connect(ArchiveViewModeToggleComponent));

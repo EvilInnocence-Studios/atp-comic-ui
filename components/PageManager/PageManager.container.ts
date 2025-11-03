@@ -1,5 +1,6 @@
 import { IComicPage } from "@comic-shared/page/types";
 import { services } from "@core/lib/api";
+import { overridable } from "@core/lib/overridable";
 import { useLoaderAsync } from "@core/lib/useLoader";
 import { useEffect, useState } from "react";
 import { createInjector, inject, mergeProps } from "unstateless";
@@ -61,4 +62,4 @@ const connect = inject<IPageManagerInputProps, PageManagerProps>(mergeProps(
     injectPageManagerProps,
 ));
 
-export const PageManager = connect(PageManagerComponent);
+export const PageManager = overridable<IPageManagerInputProps>(connect(PageManagerComponent));

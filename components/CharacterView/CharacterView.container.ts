@@ -8,6 +8,7 @@ import { IComicPage } from "@comic-shared/page/types";
 import { useStory } from "@comic/lib/useStory";
 import { useSetting } from "@common/lib/setting/services";
 import { useNavigate } from "react-router";
+import { overridable } from "@core/lib/overridable";
 
 const injectCharacterViewProps = createInjector(({character}:ICharacterViewInputProps):ICharacterViewProps => {
     const [attributes, setAttributes] = useState<ICharacterAttribute[]>([]);
@@ -52,4 +53,4 @@ const connect = inject<ICharacterViewInputProps, CharacterViewProps>(mergeProps(
     injectCharacterViewProps,
 ));
 
-export const CharacterView = connect(CharacterViewComponent);
+export const CharacterView = overridable<ICharacterViewInputProps>(connect(CharacterViewComponent));

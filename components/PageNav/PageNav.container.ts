@@ -1,5 +1,6 @@
 import { useStory } from "@comic/lib/useStory";
 import { useSetting } from "@common/lib/setting/services";
+import { overridable } from "@core/lib/overridable";
 import { createInjector, inject, mergeProps } from "unstateless";
 import { PageNavComponent } from "./PageNav.component";
 import { IPageNavInputProps, IPageNavProps, PageNavProps } from "./PageNav.d";
@@ -28,4 +29,4 @@ const connect = inject<IPageNavInputProps, PageNavProps>(mergeProps(
     injectPageNavProps,
 ));
 
-export const PageNav = connect(PageNavComponent);
+export const PageNav = overridable<IPageNavInputProps>(connect(PageNavComponent));
