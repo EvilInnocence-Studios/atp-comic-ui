@@ -25,7 +25,6 @@ const injectArcViewProps = createInjector(({url, archive:{sortOrder}}:IArcViewIn
 
     const hasNoBreadcrumbs = breadCrumbMode === "none" || (breadCrumbMode === "parent" && parents.length === 0);
     const showBar = (showViewModeToggle && subArcs.length > 0) || !hasNoBreadcrumbs || (showSortOrderToggle && subArcs.length > 0);
-    const showDivider = !showBanner && !showBar;
 
     const subPages = story.arc.allPages;
     const pageNumber = story.page.pageNumber;
@@ -36,7 +35,7 @@ const injectArcViewProps = createInjector(({url, archive:{sortOrder}}:IArcViewIn
         subArcs, pages,
         subPages, pageNumber, arcTypeName, arcNumber,
         arc, parents,
-        showDetails, showBanner, showViewModeToggle, showSortOrderToggle, breadCrumbMode, showBar, showDivider,
+        showDetails, showBanner, showViewModeToggle, showSortOrderToggle, breadCrumbMode, showBar,
     };
 });
 

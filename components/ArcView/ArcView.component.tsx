@@ -14,12 +14,11 @@ export const ArcViewComponent = ({
     arc, subArcs, pages,
     subPages, pageNumber, arcTypeName, arcNumber,
     parents,
-    showDetails, showBanner, showViewModeToggle, showSortOrderToggle, breadCrumbMode, showBar, showDivider,
+    showDetails, showBanner, showViewModeToggle, showSortOrderToggle, breadCrumbMode, showBar,
     archive:{mode}
 }:ArcViewProps) => 
     <div className={styles.arcContainer}>
         <ArchivesHeader />
-        {showDivider && <hr />}
         {!!arc && <>
             {showBanner && !!arc.bannerUrl && <ComicImage fileName={arc.bannerUrl} className={styles.banner}/>}
             {showDetails && <div className={styles.arcDetails}>
@@ -68,15 +67,17 @@ export const ArcViewComponent = ({
                     {subArcs.map(subArc =>
                         <li key={subArc.id}>
                             <Row gutter={16}>
+                                <Col span={24}>
+                                    <h2><Link to={`/comic/arc/${subArc.url}`}>
+                                        {arcTypeName(subArc)} {arcNumber(subArc.id)}: {subArc.name}
+                                    </Link></h2>
+                                </Col>
                                 <Col span={6}>
                                     <Link to={`/comic/arc/${subArc.url}`}>
                                         {!!subArc.thumbnailUrl && <ComicImage fileName={subArc.thumbnailUrl} className={styles.thumbnail}/>}
                                     </Link>
                                 </Col>
                                 <Col span={18}>
-                                    <h2><Link to={`/comic/arc/${subArc.url}`}>
-                                        {arcTypeName(subArc)} {arcNumber(subArc.id)}: {subArc.name}
-                                    </Link></h2>
                                     <Markdown>{subArc.summary}</Markdown>
                                     {subPages(subArc.id).length > 0 && <ul className={styles.pageList}>
                                         {subPages(subArc.id).map(page =>

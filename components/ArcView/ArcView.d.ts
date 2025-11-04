@@ -17,7 +17,6 @@ export declare interface IArcViewProps {
     showSortOrderToggle: boolean;
     breadCrumbMode: BreadCrumbMode;
     showBar: boolean;
-    showDivider: boolean;
 
     subPages: (arcId: string) => IComicPage[];
     pageNumber: (pageId: string) => number | null;
