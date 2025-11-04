@@ -19,7 +19,7 @@ export const CharacterGridComponent = ({characters, mode, selectedCharacter, set
     </Modal>}
     <div className={styles.characterGrid}>
         {characters.map(char => <div className={styles.characterCard} key={char.id}>
-            <a href={`#character-${char.id}`} className={styles.anchor} onClick={mode === "popup" ? handle(setSelectedCharacter)(char) : undefined}>
+            <a href={mode !== 'popup' ? `#character-${char.id}` : undefined} className={styles.anchor} onClick={mode === "popup" ? handle(setSelectedCharacter)(char) : undefined}>
                 {char.thumbnailId && <CharacterImage characterId={char.id} imageId={char.thumbnailId} />}
                 {!char.thumbnailId && <div className={styles.placeholderImage}>No Image</div>}
                 <h3>{char.name}</h3>
