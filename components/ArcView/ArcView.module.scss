@@ -1,6 +1,7 @@
 @use "@styles/globals.module.scss";
 
 .arcContainer {
+    position: relative;
     padding: var(--padding);
     max-width: var(--comicArchiveWidth);
     margin: auto;
