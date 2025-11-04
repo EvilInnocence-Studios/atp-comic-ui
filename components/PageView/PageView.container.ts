@@ -21,3 +21,4 @@ const connect = inject<IPageViewInputProps, PageViewProps>(mergeProps(
 ));
 
 export const PageView = overridable<IPageViewInputProps>(connect(PageViewComponent));
+export const connectPageView = connect;
