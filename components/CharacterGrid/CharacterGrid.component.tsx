@@ -6,6 +6,7 @@ import { CharacterImage } from "../CharacterImage";
 import { CharacterView } from "../CharacterView";
 import { CharacterGridProps } from "./CharacterGrid.d";
 import styles from './CharacterGrid.module.scss';
+import clsx from "clsx";
 
 export const CharacterGridComponent = ({characters, mode, selectedCharacter, setSelectedCharacter, close, next, prev}:CharacterGridProps) => <>
     {mode === "popup" && !!selectedCharacter && <Modal open={!!selectedCharacter} onCancel={close} footer={null} width={800}>
@@ -19,7 +20,11 @@ export const CharacterGridComponent = ({characters, mode, selectedCharacter, set
     </Modal>}
     <div className={styles.characterGrid}>
         {characters.map(char => <div className={styles.characterCard} key={char.id}>
-            <a href={mode !== 'popup' ? `#character-${char.id}` : undefined} className={styles.anchor} onClick={mode === "popup" ? handle(setSelectedCharacter)(char) : undefined}>
+            <a
+                href={mode !== 'popup' ? `#character-${char.id}` : undefined}
+                className={clsx([styles.anchor, !char.showDetails && styles.disabled])}
+                onClick={mode === "popup" && char.showDetails ? handle(setSelectedCharacter)(char) : undefined}
+            >
                 {char.thumbnailId && <CharacterImage characterId={char.id} imageId={char.thumbnailId} />}
                 {!char.thumbnailId && <div className={styles.placeholderImage}>No Image</div>}
                 <h3>{char.name}</h3>

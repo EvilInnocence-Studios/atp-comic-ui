@@ -5,6 +5,7 @@ import { useState } from "react";
 import { createInjector, inject, mergeProps } from "unstateless";
 import { CharacterGridComponent } from "./CharacterGrid.component";
 import { CharacterGridProps, ICharacterGridInputProps, ICharacterGridProps } from "./CharacterGrid.d";
+import { prop } from "ts-functional";
 
 const injectCharacterGridProps = createInjector(({characters}:ICharacterGridInputProps):ICharacterGridProps => {
     const [selectedCharacter, setSelectedCharacter] = useState<IComicCharacter | null>(null);
@@ -14,16 +15,18 @@ const injectCharacterGridProps = createInjector(({characters}:ICharacterGridInpu
 
     const next = () => {
         if (!selectedCharacter) return;
-        const currentIndex = characters.findIndex(c => c.id === selectedCharacter.id);
-        const nextIndex = (currentIndex + 1) % characters.length;
-        setSelectedCharacter(characters[nextIndex]);
+        const visibleChars = characters.filter(prop("showDetails"));
+        const currentIndex = visibleChars.findIndex(c => c.id === selectedCharacter.id);
+        const nextIndex = (currentIndex + 1) % visibleChars.length;
+        setSelectedCharacter(visibleChars[nextIndex]);
     };
 
     const prev = () => {
         if (!selectedCharacter) return;
-        const currentIndex = characters.findIndex(c => c.id === selectedCharacter.id);
-        const prevIndex = (currentIndex - 1 + characters.length) % characters.length;
-        setSelectedCharacter(characters[prevIndex]);
+        const visibleChars = characters.filter(prop("showDetails"));
+        const currentIndex = visibleChars.findIndex(c => c.id === selectedCharacter.id);
+        const prevIndex = (currentIndex - 1 + visibleChars.length) % visibleChars.length;
+        setSelectedCharacter(visibleChars[prevIndex]);
     };
 
     return {mode, selectedCharacter, setSelectedCharacter, close, next, prev};

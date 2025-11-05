@@ -4,6 +4,7 @@ import { CharacterView } from "../CharacterView";
 import { CharacterPageHeader } from "./CharacterPageHeader";
 import { CharactersPageProps } from "./CharactersPage.d";
 import styles from './CharactersPage.module.scss';
+import { prop } from "ts-functional";
 
 export const CharactersPageComponent = ({characters, isLoading, mode}:CharactersPageProps) =>
     <Spin spinning={isLoading}>
@@ -12,7 +13,7 @@ export const CharactersPageComponent = ({characters, isLoading, mode}:Characters
             <CharacterGrid characters={characters} />
 
             {mode === "list" && <div className={styles.characterList}>
-                {characters.map(char => <CharacterView key={char.id} character={char} />)}
+                {characters.filter(prop("showDetails")).map(char => <CharacterView key={char.id} character={char} />)}
             </div>}
         </div>
     </Spin>;
