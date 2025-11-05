@@ -19,7 +19,9 @@ export const CharacterEditorComponent = ({
                 <h1><Label label="Name">
                     <Editable value={char.name} onChange={updateString("name")} />
                 </Label></h1>
-                <Switch checked={char.enabled} onChange={updateToggle("enabled")} checkedChildren="Enabled" unCheckedChildren="Disabled" />
+                <Switch checked={char.enabled}     onChange={updateToggle("enabled")}     checkedChildren="Enabled"      unCheckedChildren="Disabled"     />
+                &nbsp;
+                <Switch checked={char.showDetails} onChange={updateToggle("showDetails")} checkedChildren="Show Details" unCheckedChildren="Hide Details" />
                 <br/><br/>
                 <Card size="small" title="Bio">
                     <MarkdownEditor value={char.bio || ""} onChange={updateString("bio")} />
