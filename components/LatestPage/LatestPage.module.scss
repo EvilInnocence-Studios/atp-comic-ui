@@ -3,11 +3,11 @@
 .latestPage {
     width: 100%;
     display: grid;
-    grid-template-columns: 3fr 1fr;
+    grid-template-columns: 5fr 1fr;
     align-items: start; 
     .newsFeed {
         overflow-y: auto;
-        aspect-ratio: 2/9;
+        aspect-ratio: 2/13;
         scrollbar-width: thin;
         padding-right: var(--padding);
         scrollbar-color: var(--bgColor) var(--bgLightColor);

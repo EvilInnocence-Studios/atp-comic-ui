@@ -1,7 +1,7 @@
 import { IMethods } from "@core/lib/types";
-import { arcServices } from "./lib/arc/services";
-import { pageServices } from "./lib/page/services";
-import { characterServices } from "./lib/character/services";
+import { arcServices } from "./arc/services";
+import { pageServices } from "./page/services";
+import { characterServices } from "./character/services";
 
 export const comicServices = (methods:IMethods) => ({
     ...arcServices(methods),
