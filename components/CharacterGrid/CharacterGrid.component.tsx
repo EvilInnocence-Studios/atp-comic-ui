@@ -19,10 +19,10 @@ export const CharacterGridComponent = ({characters, mode, selectedCharacter, set
         </Button>
     </Modal>}
     <div className={styles.characterGrid}>
-        {characters.map(char => <div className={styles.characterCard} key={char.id}>
+        {characters.map(char => <div className={clsx([styles.characterCard, !char.showDetails && styles.disabled])} key={char.id}>
             <a
                 href={mode !== 'popup' ? `#character-${char.id}` : undefined}
-                className={clsx([styles.anchor, !char.showDetails && styles.disabled])}
+                className={styles.anchor}
                 onClick={mode === "popup" && char.showDetails ? handle(setSelectedCharacter)(char) : undefined}
             >
                 {char.thumbnailId && <CharacterImage characterId={char.id} imageId={char.thumbnailId} />}
