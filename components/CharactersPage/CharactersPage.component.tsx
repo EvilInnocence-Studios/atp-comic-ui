@@ -11,6 +11,8 @@ export const CharactersPageComponent = ({characters, isLoading, mode}:Characters
             <CharacterPageHeader />
             <CharacterGrid characters={characters} />
 
-            {mode === "list" && characters.map(char => <CharacterView key={char.id} character={char} />)}
+            {mode === "list" && <div className={styles.characterList}>
+                {characters.map(char => <CharacterView key={char.id} character={char} />)}
+            </div>}
         </div>
     </Spin>;

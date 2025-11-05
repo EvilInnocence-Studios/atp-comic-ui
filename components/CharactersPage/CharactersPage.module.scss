@@ -3,4 +3,15 @@
 .characterPage {
     max-width: var(--comicArchiveWidth);
     margin: auto;
+    .characterList {
+        > * {
+            padding-bottom: var(--paddingLarge);
+            margin-bottom: var(--paddingLarge);
+            border-bottom: solid 5px var(--borderColor);
+            &:last-child {
+                border-bottom: none;
+                margin-bottom: 0;
+            }
+        }
+    }
 }
