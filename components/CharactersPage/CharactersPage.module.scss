@@ -3,6 +3,7 @@
 .characterPage {
     max-width: var(--comicArchiveWidth);
     margin: auto;
+    padding-bottom: 64px;
     .characterList {
         > * {
             padding-bottom: var(--paddingLarge);
