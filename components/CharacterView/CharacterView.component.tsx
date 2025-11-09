@@ -10,12 +10,14 @@ import { ICharacterMedia } from "@comic-shared/character/types";
 export const CharacterViewComponent = ({character, attributes, media, pages, goToPage}:CharacterViewProps) =>
     <div id={`character-${character.id}`} className={styles.characterView}>
         <Row gutter={[16, 16]}>
-            <Col xs={6}>
+            <Col xs={9} sm={8}>
                 {!!character.mainImageId && <CharacterImage characterId={character.id} imageId={character.mainImageId} />}
             </Col>
-            <Col xs={12}>
+            <Col xs={15} sm={16}>
                 <h2>{character.name}</h2>
                 <p>{character.bio}</p>
+            </Col>
+            <Col xs={24} sm={16}>
                 <table>
                     {attributes.map(attr =>
                         <tr key={attr.id}>
@@ -51,7 +53,7 @@ export const CharacterViewComponent = ({character, attributes, media, pages, goT
                     }))}
                 />
             </Col>
-            <Col xs={6}>
+            <Col xs={24} sm={8}>
                 <div className={styles.mediaList}>
                     <MediaPopup
                         vertical

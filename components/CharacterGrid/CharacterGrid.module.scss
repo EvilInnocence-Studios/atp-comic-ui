@@ -48,3 +48,8 @@
         }
     }
 }
+
+.characterModal {
+    max-width: calc(100% - var(--paddingLarge)) !important;
+    width: 800px !important;
+}

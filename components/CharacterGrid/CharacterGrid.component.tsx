@@ -9,7 +9,7 @@ import styles from './CharacterGrid.module.scss';
 import clsx from "clsx";
 
 export const CharacterGridComponent = ({characters, mode, selectedCharacter, setSelectedCharacter, close, next, prev}:CharacterGridProps) => <>
-    {mode === "popup" && !!selectedCharacter && <Modal open={!!selectedCharacter} onCancel={close} footer={null} width={800}>
+    {mode === "popup" && !!selectedCharacter && <Modal className={styles.characterModal} open={!!selectedCharacter} onCancel={close} footer={null}>
         <CharacterView character={selectedCharacter!} />
         <Button title="Previous Character" onClick={prev} style={{position: "absolute", top: "256px", left: 0, transform: "translateY(-50%)"}}>
             <FontAwesomeIcon icon={faChevronLeft} />
