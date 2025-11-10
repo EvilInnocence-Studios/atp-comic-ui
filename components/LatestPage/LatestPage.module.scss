@@ -7,7 +7,7 @@
     align-items: start; 
     .newsFeed {
         overflow-y: auto;
-        aspect-ratio: 2/13;
+        max-height: 1700px;
         scrollbar-width: thin;
         padding-right: var(--padding);
         scrollbar-color: var(--bgColor) var(--bgLightColor);
