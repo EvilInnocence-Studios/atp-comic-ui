@@ -1,13 +1,14 @@
+import { sitePlugins } from "@common/index";
 import { useSetting } from "@common/lib/setting/services";
 import { IModule } from "@core/lib/module";
-import { sitePlugins } from "@common/index";
+import { rendererPlugins } from "@core/lib/plugins/renderer";
+import { faImage } from "@fortawesome/free-solid-svg-icons";
+import { uacPlugins } from "@uac/lib/plugin/slots";
 import { LatestPage } from "./components/LatestPage";
+import { UserPreferences } from "./components/UserPreferences";
 import { comicMenus } from "./lib/menus";
 import { comicRoutes } from "./lib/routes";
 import { comicSettings } from "./lib/settings";
-import { uacPlugins } from "@uac/lib/plugin/slots";
-import { faImage } from "@fortawesome/free-solid-svg-icons";
-import { UserPreferences } from "./components/UserPreferences";
 
 export const module:IModule = {
     name: "comic",
@@ -28,3 +29,9 @@ uacPlugins.myAccount.tabs.register({
     priority: 500,
     component: UserPreferences,
 });
+
+export const comicPlugins = {
+    latestPage: {
+        extras: rendererPlugins(),
+    }
+};

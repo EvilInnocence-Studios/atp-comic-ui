@@ -1,29 +1,17 @@
 @use "@styles/globals.module.scss";
 
 .latestPage {
-    width: 100%;
-    display: grid;
-    grid-template-columns: 5fr 1fr;
-    align-items: start; 
     .newsFeed {
+        @include globals.contentBlock;
         overflow-y: auto;
         max-height: 1700px;
+        margin: var(--padding);
+        background-color: var(--bgLightColor);
         scrollbar-width: thin;
-        padding-right: var(--padding);
         scrollbar-color: var(--bgColor) var(--bgLightColor);
-    }
-}
-
-// Stack vertically under 700px and make newsFeed auto height
-@media (max-width: 700px) {
-    .latestPage {
-        grid-template-columns: 1fr;
-        .newsFeed {
-            overflow-y: visible;
-            aspect-ratio: auto;
-            max-width: 378px;
-            padding: var(--padding);
-            margin: auto;
+        @media (max-width: 767px) {
+            max-height: auto;
+            margin-bottom: 64px;
         }
     }
 }
