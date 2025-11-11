@@ -7,11 +7,11 @@ import { Col, Row } from "antd";
 
 export const LatestPageComponent = ({pageUrl}:LatestPageProps) => <>
     <Row className={styles.latestPage}>
-        <Col xs={24} md={18} xl={{span: 12, push: 6}} className={styles.pageView}>
+        <Col xs={24} md={18} xl={{span: 16, push: 4}} className={styles.pageView}>
             {pageUrl && <PageView url={pageUrl} />}
             {comicPlugins.latestPage.extras.render({})}
         </Col>
-        <Col xs={24} sm={24} md={6} xl={{span: 6, push: 6}}>
+        <Col xs={24} sm={24} md={6} xl={{span: 4, push: 4}}>
             <div className={styles.newsFeed}>
                 <h2>News Feed</h2>
                 <BlueskyFeed pageSize={5} />
