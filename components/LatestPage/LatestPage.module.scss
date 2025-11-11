@@ -13,5 +13,13 @@
             max-height: auto;
             margin-bottom: 64px;
         }
+        h2 {
+            background-color: var(--bgColor);
+            margin-top: 0;
+            padding: var(--padding);
+        }
+        :global(.feed) {
+            padding: var(--padding);
+        }
     }
 }
