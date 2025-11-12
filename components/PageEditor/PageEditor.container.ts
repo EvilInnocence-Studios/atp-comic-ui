@@ -13,7 +13,7 @@ const injectPageEditorProps = createInjector(({arcId, pageId}:IPageEditorInputPr
         {id: "", arcId, sortOrder: 0, postDate: null, enabled: false, name: "", url: "", imageUrl: "", transcript: ""},
         services().page.get,
         services().page.update,
-        "automatic",
+        "manual",
     )
     
     return {page: updater.history.entity, ...updater};

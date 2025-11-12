@@ -14,7 +14,7 @@ const injectArcEditorProps = createInjector(({arc, refresh}:IArcEditorInputProps
         arc,
         services().arc.get,
         services().arc.update,
-        "automatic",
+        "manual",
         () => refresh,
     );
     const loader = useLoaderAsync();
