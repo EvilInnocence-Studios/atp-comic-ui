@@ -1,19 +1,19 @@
 import { IComicCharacter } from "@comic-shared/character/types";
 import { IComicPage, NewComicPage } from "@comic-shared/page/types";
 import { Query } from "@core-shared/express/types";
+import { services } from "@core/lib/api";
 import { IMethods } from "@core/lib/types";
 import { getResults } from "@core/lib/util";
 import { Key } from "react";
 
 export const pageServices = ({get, post, /*put,*/ patch, remove}: IMethods) => ({
     page: {
-        create: (newPage:NewComicPage, file:File):Promise<IComicPage> => {
-            const formData = new FormData();
-            formData.append('file', file);
-            return post("page", newPage).then(getResults<IComicPage>).then((page:IComicPage) => 
-                post(`page/${page.id}/image`, formData).then(getResults)
-            );
+        getUploadUrl: async (fileName:string):Promise<string> => {
+            const folder = await services().setting.get("comicMediaFolder");
+            return get(`page/uploadUrl`, {path: `${folder}/${fileName}`})
+            .then(getResults<string>)
         },
+        create: (newPage:NewComicPage):Promise<IComicPage> => post("page", newPage).then(getResults<IComicPage>),
         search: (arcId:string, q:Query = {}): Promise<IComicPage[]> => get(`page`, {...q, arcId}).then(getResults),
         searchAll: (q:Query = {}): Promise<IComicPage[]> => get(`page`, q).then(getResults),
         get: (pageId: string):Promise<IComicPage> => get(`page/${pageId}`).then(getResults),
