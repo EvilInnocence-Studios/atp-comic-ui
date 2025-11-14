@@ -13,6 +13,7 @@ import { overridable } from "@core/lib/overridable";
 const injectCharacterViewProps = createInjector(({character}:ICharacterViewInputProps):ICharacterViewProps => {
     const [attributes, setAttributes] = useState<ICharacterAttribute[]>([]);
     const [media, setMedia] = useState<ICharacterMedia[]>([]);
+    const [pageIds, setPageIds] = useState<string[]>([]);
     const [pages, setPages] = useState<Array<{pageNumber: number | null, page: IComicPage | null}>>([]);
     const {arc, page} = useStory();
     const rootArc = useSetting("defaultStoryArc");
@@ -28,17 +29,19 @@ const injectCharacterViewProps = createInjector(({character}:ICharacterViewInput
                 .sort((a, b) => (a.order || 0) - (b.order || 0))
             );
         });
-        services().character.pages(character.id).then(pageIds => {
-            setPages(pageIds
-                .filter(pageId => arc.root(page.getById(pageId)?.arcId)?.id === arc.getById(rootArc)?.id)
-                .map(pageId => ({
-                    pageNumber: page.pageNumber(pageId),
-                    page: page.getById(pageId),
-                }))
-                .sort((a, b) => (a.pageNumber || 0) - (b.pageNumber || 0))
-            );
-        });
-    }, [character.id, page.isLoaded, rootArc])
+        services().character.pages(character.id).then(setPageIds);
+    }, [character.id]);
+
+    useEffect(() => {
+        setPages(pageIds
+            .filter(pageId => arc.root(page.getById(pageId)?.arcId)?.id === arc.getById(rootArc)?.id)
+            .map(pageId => ({
+                pageNumber: page.pageNumber(pageId),
+                page: page.getById(pageId),
+            }))
+            .sort((a, b) => (a.pageNumber || 0) - (b.pageNumber || 0))
+        );
+    }, [pageIds, page, rootArc])
 
     const goToPage = (url: string) => {
         if (url) {

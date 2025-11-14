@@ -2,23 +2,22 @@ import { IComicArc } from "@comic-shared/arc/types";
 import { IComicPage } from "@comic-shared/page/types";
 import { useSetting } from "@common/lib/setting/services";
 import { services } from "@core/lib/api";
-import { useEffect, useMemo } from "react";
-import { useSharedState } from "unstateless";
+import { useEffect, useMemo, useState } from "react";
+import { memoizePromise } from "ts-functional";
+
+const getArcs  = memoizePromise(() => services().arc.search()    );
+const getPages = memoizePromise(() => services().page.searchAll());
 
 export const useStory = () => {
-    const [arcs, setArcs] = useSharedState<IComicArc[]>("comicArcs", [])();
-    const [pages, setPages] = useSharedState<IComicPage[]>("comicPages", [])();
+    const [arcs, setArcs] = useState<IComicArc[]>([]);
+    const [pages, setPages] = useState<IComicPage[]>([]);
     const arcNames = (useSetting("comic.arcNames") || "").split(",");
     const arcsLoaded = arcs.length > 0;
     const pagesLoaded = pages.length > 0;
 
     useEffect(() => {
-        if (arcs.length === 0) {
-            services().arc.search().then(setArcs);
-        }
-        if (pages.length === 0) {
-            services().page.searchAll().then(setPages);
-        }
+        getArcs().then(setArcs);
+        getPages().then(setPages);
     }, []);
 
     return useMemo(() => {
@@ -131,5 +130,5 @@ export const useStory = () => {
         }
 
         return {arc, page};
-    }, [arcs, pages, arcsLoaded, pagesLoaded, arcNames]);
+    }, [arcs, pages, arcNames]);
 }
