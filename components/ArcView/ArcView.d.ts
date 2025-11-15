@@ -10,7 +10,6 @@ export declare interface IArcViewProps {
     arc: IComicArc | null;
     parents: IComicArc[];
     subArcs: IComicArc[];
-    pages: IComicPage[];
 }
 
 // What gets passed into the component from the parent as attributes

@@ -15,11 +15,11 @@ const injectArcViewProps = createInjector(({url, archive:{sortOrder}}:IArcViewIn
         ? a.sortOrder - b.sortOrder
         : b.sortOrder - a.sortOrder
     );
-    const pages = story.arc.pages(arc?.id);
 
     return {
-        subArcs, pages,
-        arc, parents,
+        parents,
+        subArcs,
+        arc,
     };
 });
 
