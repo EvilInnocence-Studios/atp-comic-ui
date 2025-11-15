@@ -46,5 +46,6 @@ const injectCharacterManagerProps = createInjector(({characterId}:ICharacterMana
 const connect = inject<ICharacterManagerInputProps, CharacterManagerProps>(mergeProps(
     injectCharacterManagerProps,
 ));
+export const connectCharacterManager = connect;
 
 export const CharacterManager = overridable<ICharacterManagerInputProps>(connect(CharacterManagerComponent));

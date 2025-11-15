@@ -10,5 +10,6 @@ const injectCharacterViewProps = createInjector(({}:ICharacterViewInputProps):IC
 const connect = inject<ICharacterViewInputProps, CharacterViewProps>(mergeProps(
     injectCharacterViewProps,
 ));
+export const connectCharacterView = connect;
 
 export const CharacterView = overridable<ICharacterViewInputProps>(connect(CharacterViewComponent));

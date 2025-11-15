@@ -74,5 +74,6 @@ const injectCharacterAttributeEditorProps = createInjector(({characterId}:IChara
 const connect = inject<ICharacterAttributeEditorInputProps, CharacterAttributeEditorProps>(mergeProps(
     injectCharacterAttributeEditorProps,
 ));
+export const connectCharacterAttributeEditor = connect;
 
 export const CharacterAttributeEditor = overridable<ICharacterAttributeEditorInputProps>(connect(CharacterAttributeEditorComponent));

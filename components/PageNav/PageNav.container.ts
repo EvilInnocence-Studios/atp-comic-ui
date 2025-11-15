@@ -28,5 +28,6 @@ const injectPageNavProps = createInjector(({page}:IPageNavInputProps):IPageNavPr
 const connect = inject<IPageNavInputProps, PageNavProps>(mergeProps(
     injectPageNavProps,
 ));
+export const connectPageNav = connect;
 
 export const PageNav = overridable<IPageNavInputProps>(connect(PageNavComponent));

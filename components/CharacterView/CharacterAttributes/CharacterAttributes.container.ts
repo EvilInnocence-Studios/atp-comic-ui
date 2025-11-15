@@ -21,6 +21,6 @@ const injectCharacterAttributesProps = createInjector(({characterId}:ICharacterA
 const connect = inject<ICharacterAttributesInputProps, CharacterAttributesProps>(mergeProps(
     injectCharacterAttributesProps,
 ));
+export const connectCharacterAttributes = connect;
 
 export const CharacterAttributes = overridable<ICharacterAttributesInputProps>(connect(CharacterAttributesComponent));
-export const connectCharacterAttributes = connect;

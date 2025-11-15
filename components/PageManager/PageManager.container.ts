@@ -73,5 +73,6 @@ const injectPageManagerProps = createInjector(({arcId}:IPageManagerInputProps):I
 const connect = inject<IPageManagerInputProps, PageManagerProps>(mergeProps(
     injectPageManagerProps,
 ));
+export const connectPageManager = connect;
 
 export const PageManager = overridable<IPageManagerInputProps>(connect(PageManagerComponent));

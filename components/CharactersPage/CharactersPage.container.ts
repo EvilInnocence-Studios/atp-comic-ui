@@ -28,5 +28,6 @@ const injectCharactersPageProps = createInjector(({}:ICharactersPageInputProps):
 const connect = inject<ICharactersPageInputProps, CharactersPageProps>(mergeProps(
     injectCharactersPageProps,
 ));
+export const connectCharactersPage = connect;
 
 export const CharactersPage = overridable<ICharactersPageInputProps>(connect(CharactersPageComponent));

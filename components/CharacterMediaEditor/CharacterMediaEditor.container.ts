@@ -54,5 +54,6 @@ const injectCharacterMediaEditorProps = createInjector(({character, update}:ICha
 const connect = inject<ICharacterMediaEditorInputProps, CharacterMediaEditorProps>(mergeProps(
     injectCharacterMediaEditorProps,
 ));
+export const connectCharacterMediaEditor = connect;
 
 export const CharacterMediaEditor = overridable<ICharacterMediaEditorInputProps>(connect(CharacterMediaEditorComponent));

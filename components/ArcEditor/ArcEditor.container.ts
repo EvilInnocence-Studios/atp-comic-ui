@@ -73,5 +73,6 @@ const injectArcEditorProps = createInjector(({arc, refresh}:IArcEditorInputProps
 const connect = inject<IArcEditorInputProps, ArcEditorProps>(mergeProps(
     injectArcEditorProps,
 ));
+export const connectArcEditor = connect;
 
 export const ArcEditor = overridable<IArcEditorInputProps>(connect(ArcEditorComponent));

@@ -43,6 +43,6 @@ const injectCharacterAppearancesProps = createInjector(({characterId}:ICharacter
 const connect = inject<ICharacterAppearancesInputProps, CharacterAppearancesProps>(mergeProps(
     injectCharacterAppearancesProps,
 ));
+export const connectCharacterAppearances = connect;
 
 export const CharacterAppearances = overridable<ICharacterAppearancesInputProps>(connect(CharacterAppearancesComponent));
-export const connectCharacterAppearances = connect;

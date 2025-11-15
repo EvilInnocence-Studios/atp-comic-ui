@@ -23,5 +23,6 @@ const injectCharacterEditorProps = createInjector(({character, refresh}:ICharact
 const connect = inject<ICharacterEditorInputProps, CharacterEditorProps>(mergeProps(
     injectCharacterEditorProps,
 ));
+export const connectCharacterEditor = connect;
 
 export const CharacterEditor = overridable<ICharacterEditorInputProps>(connect(CharacterEditorComponent));

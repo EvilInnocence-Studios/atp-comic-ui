@@ -10,5 +10,6 @@ const injectArchivesHeaderProps = createInjector(({}:IArchivesHeaderInputProps):
 const connect = inject<IArchivesHeaderInputProps, ArchivesHeaderProps>(mergeProps(
     injectArchivesHeaderProps,
 ));
+export const connectArchivesHeader = connect;
 
 export const ArchivesHeader = overridable<IArchivesHeaderInputProps>(connect(ArchivesHeaderComponent));

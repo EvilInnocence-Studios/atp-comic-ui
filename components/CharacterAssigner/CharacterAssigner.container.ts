@@ -45,5 +45,6 @@ const injectCharacterAssignerProps = createInjector(({pageId}:ICharacterAssigner
 const connect = inject<ICharacterAssignerInputProps, CharacterAssignerProps>(mergeProps(
     injectCharacterAssignerProps,
 ));
+export const connectCharacterAssigner = connect;
 
 export const CharacterAssigner = overridable<ICharacterAssignerInputProps>(connect(CharacterAssignerComponent));

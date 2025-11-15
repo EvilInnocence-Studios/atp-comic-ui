@@ -18,5 +18,6 @@ const injectLatestPageProps = createInjector(({arcId}:ILatestPageInputProps):ILa
 const connect = inject<ILatestPageInputProps, LatestPageProps>(mergeProps(
     injectLatestPageProps,
 ));
+export const connectLatestPage = connect;
 
 export const LatestPage = overridable<ILatestPageInputProps>(connect(LatestPageComponent));

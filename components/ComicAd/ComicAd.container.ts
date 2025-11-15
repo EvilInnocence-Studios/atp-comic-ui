@@ -10,5 +10,6 @@ const injectComicAdProps = createInjector(({}:IComicAdInputProps):IComicAdProps 
 const connect = inject<IComicAdInputProps, ComicAdProps>(mergeProps(
     injectComicAdProps,
 ));
+export const connectComicAd = connect;
 
 export const ComicAd = overridable<IComicAdInputProps>(connect(ComicAdComponent));

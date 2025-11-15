@@ -35,5 +35,6 @@ const injectCharacterGridProps = createInjector(({characters}:ICharacterGridInpu
 const connect = inject<ICharacterGridInputProps, CharacterGridProps>(mergeProps(
     injectCharacterGridProps,
 ));
+export const connectCharacterGrid = connect;
 
 export const CharacterGrid = overridable<ICharacterGridInputProps>(connect(CharacterGridComponent));

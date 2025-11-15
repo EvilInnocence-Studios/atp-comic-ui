@@ -24,6 +24,6 @@ const injectCharacterMediaProps = createInjector(({character}:ICharacterMediaInp
 const connect = inject<ICharacterMediaInputProps, CharacterMediaProps>(mergeProps(
     injectCharacterMediaProps,
 ));
+export const connectCharacterMedia = connect;
 
 export const CharacterMedia = overridable<ICharacterMediaInputProps>(connect(CharacterMediaComponent));
-export const connectCharacterMedia = connect;

@@ -14,5 +14,6 @@ const injectCharacterImageProps = createInjector(({characterId, imageId}:ICharac
 const connect = inject<ICharacterImageInputProps, CharacterImageProps>(mergeProps(
     injectCharacterImageProps,
 ));
+export const connectCharacterImage = connect;
 
 export const CharacterImage = overridable<ICharacterImageInputProps>(connect(CharacterImageComponent));

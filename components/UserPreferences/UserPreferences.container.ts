@@ -12,5 +12,6 @@ const connect = inject<IUserPreferencesInputProps, UserPreferencesProps>(mergePr
     injectUserPreferencesProps,
     injectUserPreferences,
 ));
+export const connectUserPreferences = connect;
 
 export const UserPreferences = overridable<IUserPreferencesInputProps>(connect(UserPreferencesComponent));

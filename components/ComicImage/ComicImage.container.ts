@@ -10,5 +10,6 @@ const injectComicImageProps = createInjector(({}:IComicImageInputProps):IComicIm
 const connect = inject<IComicImageInputProps, ComicImageProps>(mergeProps(
     injectComicImageProps,
 ));
+export const connectComicImage = connect;
 
 export const ComicImage = overridable<IComicImageInputProps>(connect(ComicImageComponent));

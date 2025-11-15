@@ -28,5 +28,6 @@ const connect = inject<IArcViewInputProps, ArcViewProps>(mergeProps(
     injectArcViewProps,
     injectArcSettings,
 ));
+export const connectArcView = connect;
 
 export const ArcView = overridable<IArcViewInputProps>(connect(ArcViewComponent));

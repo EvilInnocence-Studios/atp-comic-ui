@@ -12,5 +12,6 @@ const connect = inject<IArchiveViewModeToggleInputProps, ArchiveViewModeTogglePr
     injectArchiveViewModeToggleProps,
     injectUserPreferences,
 ));
+export const connectArchiveViewModeToggle = connect;
 
 export const ArchiveViewModeToggle = overridable<IArchiveViewModeToggleInputProps>(connect(ArchiveViewModeToggleComponent));

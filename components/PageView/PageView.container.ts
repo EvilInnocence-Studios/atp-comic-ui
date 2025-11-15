@@ -19,6 +19,7 @@ const injectPageViewProps = createInjector(({url}:IPageViewInputProps):IPageView
 const connect = inject<IPageViewInputProps, PageViewProps>(mergeProps(
     injectPageViewProps,
 ));
+export const PageViewPropsInjector = injectPageViewProps;
 
 export const PageView = overridable<IPageViewInputProps>(connect(PageViewComponent));
 export const connectPageView = connect;

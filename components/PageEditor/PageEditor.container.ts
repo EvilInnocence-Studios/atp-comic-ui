@@ -22,5 +22,6 @@ const injectPageEditorProps = createInjector(({arcId, pageId}:IPageEditorInputPr
 const connect = inject<IPageEditorInputProps, PageEditorProps>(mergeProps(
     injectPageEditorProps,
 ));
+export const connectPageEditor = connect;
 
 export const PageEditor = overridable<IPageEditorInputProps>(connect(PageEditorComponent));

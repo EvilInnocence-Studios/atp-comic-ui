@@ -75,5 +75,6 @@ const injectArcManagerProps = createInjector(({arcId}:IArcManagerInputProps):IAr
 const connect = inject<IArcManagerInputProps, ArcManagerProps>(mergeProps(
     injectArcManagerProps,
 ));
+export const connectArcManager = connect;
 
 export const ArcManager = overridable<IArcManagerInputProps>(connect(ArcManagerComponent));

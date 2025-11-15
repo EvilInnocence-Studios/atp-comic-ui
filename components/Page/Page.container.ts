@@ -10,5 +10,6 @@ const injectPageProps = createInjector(({}:IPageInputProps):IPageProps => {
 const connect = inject<IPageInputProps, PageProps>(mergeProps(
     injectPageProps,
 ));
+export const connectPage = connect;
 
 export const Page = overridable<IPageInputProps>(connect(PageComponent));

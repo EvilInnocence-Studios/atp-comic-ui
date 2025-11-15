@@ -12,5 +12,6 @@ const connect = inject<IArchiveSortOrderToggleInputProps, ArchiveSortOrderToggle
     injectArchiveSortOrderToggleProps,
     injectUserPreferences,
 ));
+export const connectArchiveSortOrderToggle = connect;
 
 export const ArchiveSortOrderToggle = overridable<IArchiveSortOrderToggleInputProps>(connect(ArchiveSortOrderToggleComponent));
