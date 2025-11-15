@@ -1,55 +1,10 @@
-import { createInjector, inject, mergeProps } from "unstateless";
-import {CharacterViewComponent} from "./CharacterView.component";
-import {ICharacterViewInputProps, CharacterViewProps, ICharacterViewProps} from "./CharacterView.d";
-import { ICharacterAttribute, ICharacterMedia } from "@comic-shared/character/types";
-import { useEffect, useState } from "react";
-import { services } from "@core/lib/api";
-import { IComicPage } from "@comic-shared/page/types";
-import { useStory } from "@comic/lib/useStory";
-import { useSetting } from "@common/lib/setting/services";
-import { useNavigate } from "react-router";
 import { overridable } from "@core/lib/overridable";
+import { createInjector, inject, mergeProps } from "unstateless";
+import { CharacterViewComponent } from "./CharacterView.component";
+import { CharacterViewProps, ICharacterViewInputProps, ICharacterViewProps } from "./CharacterView.d";
 
-const injectCharacterViewProps = createInjector(({character}:ICharacterViewInputProps):ICharacterViewProps => {
-    const [attributes, setAttributes] = useState<ICharacterAttribute[]>([]);
-    const [media, setMedia] = useState<ICharacterMedia[]>([]);
-    const [pageIds, setPageIds] = useState<string[]>([]);
-    const [pages, setPages] = useState<Array<{pageNumber: number | null, page: IComicPage | null}>>([]);
-    const {arc, page} = useStory();
-    const rootArc = useSetting("defaultStoryArc");
-    const navigate = useNavigate();
-
-    useEffect(() => {
-        services().character.attribute.search(character.id).then(atts => {
-            setAttributes(atts.sort((a, b) => (a.sortOrder || 0) - (b.sortOrder || 0)));
-        });
-        services().character.media.search(character.id).then(mediaItems => {
-            setMedia(mediaItems
-                .filter(m => ![character.mainImageId, character.thumbnailId].includes(m.id))
-                .sort((a, b) => (a.order || 0) - (b.order || 0))
-            );
-        });
-        services().character.pages(character.id).then(setPageIds);
-    }, [character.id]);
-
-    useEffect(() => {
-        setPages(pageIds
-            .filter(pageId => arc.root(page.getById(pageId)?.arcId)?.id === arc.getById(rootArc)?.id)
-            .map(pageId => ({
-                pageNumber: page.pageNumber(pageId),
-                page: page.getById(pageId),
-            }))
-            .sort((a, b) => (a.pageNumber || 0) - (b.pageNumber || 0))
-        );
-    }, [pageIds, page, rootArc])
-
-    const goToPage = (url: string) => {
-        if (url) {
-            navigate(`/comic/page/${url}/`);
-        }
-    };
-
-    return {attributes, media, pages, goToPage};
+const injectCharacterViewProps = createInjector(({}:ICharacterViewInputProps):ICharacterViewProps => {
+    return {};
 });
 
 const connect = inject<ICharacterViewInputProps, CharacterViewProps>(mergeProps(

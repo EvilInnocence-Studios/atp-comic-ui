@@ -1,0 +1,31 @@
+@use "@styles/globals.module.scss";
+
+table.characterAttributes {
+    width: 100%;
+    margin: var(--padding) 0;
+    th, td {
+        padding: 8px;
+        border: none;
+        border-collapse: collapse;
+    }
+    tr {
+        background-color: var(--bgColor);
+        &:first-child {
+            th:first-child {
+                border-top-left-radius: var(--borderRadius);
+            }
+            td:last-child {
+                border-top-right-radius: var(--borderRadius);
+            }
+        }
+        &:last-child {
+            th:first-child {
+                border-bottom-left-radius: var(--borderRadius);
+            }
+            td:last-child {
+                border-bottom-right-radius: var(--borderRadius);
+            }
+        }
+    }
+    th {text-align: right;}
+}
