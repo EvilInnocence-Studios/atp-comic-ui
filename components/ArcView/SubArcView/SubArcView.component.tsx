@@ -4,7 +4,7 @@ import { Col, Row } from "antd";
 import Markdown from 'react-markdown';
 import { Link } from "react-router";
 import { ArcTitle } from "../ArcTitle";
-import { ISubArcViewInputProps, SubArcViewProps } from "./SubArcView.d";
+import { SubArcViewProps } from "./SubArcView.d";
 import styles from './SubArcView.module.scss';
 
 export const SubArcGridComponent = overridable(({subArcs, archive:{mode}}:SubArcViewProps) => <>
