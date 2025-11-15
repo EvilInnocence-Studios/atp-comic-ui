@@ -10,10 +10,11 @@ import { ArcEditor } from "../ArcEditor";
 import { ArcManagerProps, IArcNodeProps } from "./ArcManager.d";
 import styles from './ArcManager.module.scss';
 import { ClearCacheButton } from "@common/components/ClearCacheButton";
+import { overridable } from "@core/lib/overridable";
 
 const sortArcs = sort.by(prop<IComicArc, "sortOrder">("sortOrder")).asc;
 
-const ArcNode = ({
+export const ArcNode = overridable(({
     arcId, arc, onCreate, onRemove,
     allArcs, level,
     isOpen, open, close,
@@ -53,9 +54,9 @@ const ArcNode = ({
             )}
         </div>}
     </div>;
-}
+});
 
-export const ArcManagerComponent = ({arcId, arcs, arc, isLoading, create, remove, isOpen, open, close, goToArc, refresh}:ArcManagerProps) =>
+export const ArcManagerComponent = overridable(({arcId, arcs, arc, isLoading, create, remove, isOpen, open, close, goToArc, refresh}:ArcManagerProps) =>
     <div className={styles.arcManager}>
         <Row gutter={16}>
             <Col span={6} className={styles.treeCol}>
@@ -90,4 +91,5 @@ export const ArcManagerComponent = ({arcId, arcs, arc, isLoading, create, remove
             </Col>
         </Row>
 
-    </div>;
+    </div>
+);

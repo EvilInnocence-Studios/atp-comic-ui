@@ -9,8 +9,9 @@ import { prop, sort } from "ts-functional";
 import { ComicImage } from "../ComicImage";
 import { PageManagerProps } from "./PageManager.d";
 import styles from './PageManager.module.scss';
+import { overridable } from "@core/lib/overridable";
 
-export const PageManagerComponent = ({arcId, pages, isLoading, remove, upload, onUploadSuccess}:PageManagerProps) =>
+export const PageManagerComponent = overridable(({arcId, pages, isLoading, remove, upload, onUploadSuccess}:PageManagerProps) =>
     <div className={styles.pageManager}>
         <Card size="small" title="Pages">
             {isLoading && <div>Loading...</div>}
@@ -38,4 +39,5 @@ export const PageManagerComponent = ({arcId, pages, isLoading, remove, upload, o
             }
             <Uploader upload={upload} onUploadSuccess={onUploadSuccess} />
         </Card>
-    </div>;
+    </div>
+);

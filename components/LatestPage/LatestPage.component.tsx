@@ -4,8 +4,9 @@ import { LatestPageProps } from "./LatestPage.d";
 import styles from "./LatestPage.module.scss";
 import { comicPlugins } from "@comic";
 import { Col, Row } from "antd";
+import { overridable } from "@core/lib/overridable";
 
-export const LatestPageComponent = ({pageUrl}:LatestPageProps) => <>
+export const LatestPageComponent = overridable(({pageUrl}:LatestPageProps) => <>
     <Row className={styles.latestPage}>
         <Col xs={24} md={18} xl={{span: 16, push: 4}} className={styles.pageView}>
             {pageUrl && <PageView url={pageUrl} />}
@@ -18,4 +19,4 @@ export const LatestPageComponent = ({pageUrl}:LatestPageProps) => <>
             </div>
         </Col>
     </Row>
-</>;
+</>);

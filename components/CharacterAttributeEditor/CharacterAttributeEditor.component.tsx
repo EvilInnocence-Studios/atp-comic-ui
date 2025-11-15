@@ -9,6 +9,7 @@ import { prop } from "ts-functional";
 import { onInputChange } from "@core/lib/onInputChange";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faAdd } from "@fortawesome/free-solid-svg-icons";
+import { overridable } from "@core/lib/overridable";
 
 const attId = (link:ICharacterAttribute,  index:number) => `${link.id}:${index}`;
 
@@ -17,15 +18,15 @@ interface ILinkItemProps {
     remove: (id: string) => () => void;
 }
 
-const AttItem = ({item:att, update, remove}:{item:ICharacterAttribute} & ILinkItemProps) => {
+export const AttItem = overridable(({item:att, update, remove}:{item:ICharacterAttribute} & ILinkItemProps) => {
     return <div className={styles.att}>
         <Editable value={att.name} onChange={update(att.id, "name")} />
         <Editable value={att.value } onChange={update(att.id, "value" )} />
         <DeleteBtn entityType="attribute" onClick={remove(att.id)} />
     </div>;
-}
+});
 
-export const CharacterAttributeEditorComponent = ({
+export const CharacterAttributeEditorComponent = overridable(({
     attributes, isLoading,
     name, setName,
     value, setValue,
@@ -57,4 +58,5 @@ export const CharacterAttributeEditorComponent = ({
             />
             <Button onClick={create} variant="link"><FontAwesomeIcon icon={faAdd} /></Button>
         </Space.Compact>
-    </Spin>;
+    </Spin>
+);

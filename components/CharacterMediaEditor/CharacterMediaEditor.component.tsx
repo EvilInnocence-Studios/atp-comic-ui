@@ -9,6 +9,7 @@ import { prop, sort } from "ts-functional";
 import { CharacterImage } from "../CharacterImage";
 import { CharacterMediaEditorProps } from "./CharacterMediaEditor.d";
 import styles from './CharacterMediaEditor.module.scss';
+import { overridable } from "@core/lib/overridable";
 
 interface IItemProps {
     item: ICharacterMedia,
@@ -18,7 +19,7 @@ interface IItemProps {
     remove: (id:string) => () => void;
 }
 
-const ImageItem = ({item:m, character, updateThumbnail, updateMainImage, remove}:IItemProps) => <div className={styles.mediaItem}>
+export const ImageItem = overridable(({item:m, character, updateThumbnail, updateMainImage, remove}:IItemProps) => <div className={styles.mediaItem}>
     <CharacterImage characterId={character.id} imageId={m.id} /><br/>
     <Space.Compact>
         <Button
@@ -35,9 +36,9 @@ const ImageItem = ({item:m, character, updateThumbnail, updateMainImage, remove}
         </Button>
     </Space.Compact>
     <DeleteBtn entityType="image" onClick={remove(m.id)} />
-</div>;
+</div>);
 
-export const CharacterMediaEditorComponent = ({
+export const CharacterMediaEditorComponent = overridable(({
     character, media, upload, isLoading,
     updateThumbnail, updateMainImage, remove, sort:sortMedia,
 }:CharacterMediaEditorProps) =>
@@ -62,4 +63,5 @@ export const CharacterMediaEditorComponent = ({
                 <p className="ant-upload-text">Click or drag file to this area to upload</p>
             </Upload.Dragger>
         </>}
-    </Spin>;
+    </Spin>
+);

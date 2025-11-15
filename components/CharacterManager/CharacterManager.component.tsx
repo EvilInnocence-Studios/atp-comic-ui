@@ -8,16 +8,18 @@ import { prop } from "ts-functional";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUsers } from "@fortawesome/free-solid-svg-icons";
 import { ClearCacheButton } from "@common/components/ClearCacheButton";
+import { overridable } from "@core/lib/overridable";
 
-const CharacterItem = ({item:character, setSelectedCharacter}:any) =>
+export const CharacterItem = overridable(({item:character, setSelectedCharacter}:any) =>
     <div
         className={styles.characterItem}
         onClick={setSelectedCharacter(character)}
     >
         {character.name}
     </div>
+);
 
-export const CharacterManagerComponent = ({
+export const CharacterManagerComponent = overridable(({
     characters, isLoading,
     selectedCharacter, setSelectedCharacter,
     sort, refresh,
@@ -45,4 +47,5 @@ export const CharacterManagerComponent = ({
                 </Col>
             </Row>
         </Spin>
-    </div>;
+    </div>
+);

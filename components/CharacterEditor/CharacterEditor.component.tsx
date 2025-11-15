@@ -6,8 +6,9 @@ import { MarkdownEditor } from "@core/components/MarkdownEditor";
 import { Card, Col, Row, Switch } from "antd";
 import { CharacterMediaEditor } from "../CharacterMediaEditor";
 import { CharacterAttributeEditor } from "../CharacterAttributeEditor";
+import { overridable } from "@core/lib/overridable";
 
-export const CharacterEditorComponent = ({
+export const CharacterEditorComponent = overridable(({
     history:{entity:char},
     updateString, updateToggle,
     UpdateButtons,
@@ -38,4 +39,5 @@ export const CharacterEditorComponent = ({
                 </Card>
             </Col>
         </Row>
-    </div>;
+    </div>
+);

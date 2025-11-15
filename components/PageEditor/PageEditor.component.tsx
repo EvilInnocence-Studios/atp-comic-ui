@@ -7,8 +7,9 @@ import { CharacterAssigner } from "../CharacterAssigner";
 import { ComicImage } from "../ComicImage";
 import { PageEditorProps } from "./PageEditor.d";
 import styles from './PageEditor.module.scss';
+import { overridable } from "@core/lib/overridable";
 
-export const PageEditorComponent = ({page, updateString, updateToggle, UpdateButtons}:PageEditorProps) =>
+export const PageEditorComponent = overridable(({page, updateString, updateToggle, UpdateButtons}:PageEditorProps) =>
     <div className={styles.pageEditor}>
         <Row gutter={16}>
             <Col xs={12}>
@@ -54,4 +55,5 @@ export const PageEditorComponent = ({page, updateString, updateToggle, UpdateBut
                 </Row>
             </Col>
         </Row>
-    </div>;
+    </div>
+);

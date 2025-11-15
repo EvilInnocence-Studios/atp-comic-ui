@@ -1,8 +1,9 @@
 import { Card, Transfer } from "antd";
 import {CharacterAssignerProps} from "./CharacterAssigner.d";
 import styles from './CharacterAssigner.module.scss';
+import { overridable } from "@core/lib/overridable";
 
-export const CharacterAssignerComponent = ({allCharacters, assigned, onChange}:CharacterAssignerProps) =>
+export const CharacterAssignerComponent = overridable(({allCharacters, assigned, onChange}:CharacterAssignerProps) =>
     <Card size="small" title="Characters">
         <Transfer
             className={styles.characterAssigner}
@@ -15,4 +16,5 @@ export const CharacterAssignerComponent = ({allCharacters, assigned, onChange}:C
             listStyle={{width: '45%', height: 300}}
             operations={['Assign', 'Unassign']}
         />
-    </Card>;
+    </Card>
+);

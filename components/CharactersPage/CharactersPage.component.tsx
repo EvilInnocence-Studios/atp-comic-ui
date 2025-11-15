@@ -5,8 +5,9 @@ import { CharacterPageHeader } from "./CharacterPageHeader";
 import { CharactersPageProps } from "./CharactersPage.d";
 import styles from './CharactersPage.module.scss';
 import { prop } from "ts-functional";
+import { overridable } from "@core/lib/overridable";
 
-export const CharactersPageComponent = ({characters, isLoading, mode}:CharactersPageProps) =>
+export const CharactersPageComponent = overridable(({characters, isLoading, mode}:CharactersPageProps) =>
     <Spin spinning={isLoading}>
         <div className={styles.characterPage}>
             <CharacterPageHeader />
@@ -16,4 +17,5 @@ export const CharactersPageComponent = ({characters, isLoading, mode}:Characters
                 {characters.filter(prop("showDetails")).map(char => <CharacterView key={char.id} character={char} />)}
             </div>}
         </div>
-    </Spin>;
+    </Spin>
+);

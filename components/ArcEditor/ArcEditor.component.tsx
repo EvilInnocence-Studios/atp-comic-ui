@@ -9,8 +9,9 @@ import { ComicImage } from "../ComicImage";
 import { PageManager } from "../PageManager";
 import { ArcEditorProps } from "./ArcEditor.d";
 import styles from './ArcEditor.module.scss';
+import { overridable } from "@core/lib/overridable";
 
-export const ArcEditorComponent = ({
+export const ArcEditorComponent = overridable(({
     history:{entity:arc}, updateString, updateToggle, UpdateButtons,
     uploadBanner, uploadThumbnail, removeThumbnail, removeBanner,
     allArcs,
@@ -77,4 +78,5 @@ export const ArcEditorComponent = ({
                 </Card>
             </Col>
         </Row>
-    </div>;
+    </div>
+);

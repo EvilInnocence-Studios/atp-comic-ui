@@ -6,8 +6,9 @@ import { CharacterAttributes } from "./CharacterAttributes";
 import { CharacterMedia } from "./CharacterMedia";
 import { CharacterViewProps } from "./CharacterView.d";
 import styles from './CharacterView.module.scss';
+import { overridable } from "@core/lib/overridable";
 
-export const CharacterViewComponent = ({character}:CharacterViewProps) =>
+export const CharacterViewComponent = overridable(({character}:CharacterViewProps) =>
     <div id={`character-${character.id}`} className={styles.characterView}>
         <Row gutter={[16, 16]}>
             <Col xs={9} sm={8}>
@@ -25,4 +26,5 @@ export const CharacterViewComponent = ({character}:CharacterViewProps) =>
                 <CharacterMedia character={character} />
             </Col>
         </Row>
-    </div>;
+    </div>
+);

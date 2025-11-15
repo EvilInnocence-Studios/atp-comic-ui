@@ -7,8 +7,9 @@ import { CharacterView } from "../CharacterView";
 import { CharacterGridProps } from "./CharacterGrid.d";
 import styles from './CharacterGrid.module.scss';
 import clsx from "clsx";
+import { overridable } from "@core/lib/overridable";
 
-export const CharacterGridComponent = ({characters, mode, selectedCharacter, setSelectedCharacter, close, next, prev}:CharacterGridProps) => <>
+export const CharacterGridComponent = overridable(({characters, mode, selectedCharacter, setSelectedCharacter, close, next, prev}:CharacterGridProps) => <>
     {mode === "popup" && !!selectedCharacter && <Modal className={styles.characterModal} open={!!selectedCharacter} onCancel={close} footer={null}>
         <CharacterView character={selectedCharacter!} />
         <Button title="Previous Character" onClick={prev} style={{position: "absolute", top: "256px", left: 0, transform: "translateY(-50%)"}}>
@@ -31,4 +32,5 @@ export const CharacterGridComponent = ({characters, mode, selectedCharacter, set
             </a>
         </div>)}
     </div>
-</>;
+</>
+);

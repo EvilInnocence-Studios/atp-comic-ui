@@ -6,8 +6,9 @@ import { PageNavProps } from "./PageNav.d";
 import styles from './PageNav.module.scss';
 import clsx from "clsx";
 import { MediaImage } from "@common/components/MediaImage";
+import { overridable } from "@core/lib/overridable";
 
-export const PageNavComponent = ({
+export const PageNavComponent = overridable(({
     firstPage, prevPage, lastPage, nextPage,
     arc,
     top, bottom,
@@ -51,4 +52,5 @@ export const PageNavComponent = ({
             </Link>}
             {lastPage && lastPage.imageUrl && <ComicImage className={styles.noShow} fileName={lastPage.imageUrl} />}
         </div>
-    </div>;
+    </div>
+);
