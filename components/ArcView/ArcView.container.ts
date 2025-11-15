@@ -1,10 +1,10 @@
 import { useStory } from "@comic/lib/useStory";
 import { IComicUserPreferences, injectUserPreferences } from "@comic/lib/useUserPreferences";
-import { useSetting } from "@common/lib/setting/services";
 import { overridable } from "@core/lib/overridable";
 import { createInjector, inject, mergeProps } from "unstateless";
 import { ArcViewComponent } from "./ArcView.component";
-import { ArcViewProps, BreadCrumbMode, IArcViewInputProps, IArcViewProps } from "./ArcView.d";
+import { ArcViewProps, IArcViewInputProps, IArcViewProps } from "./ArcView.d";
+import { injectArcSettings } from "./ArcView.helpers";
 
 const injectArcViewProps = createInjector(({url, archive:{sortOrder}}:IArcViewInputProps & IComicUserPreferences):IArcViewProps => {
     const story = useStory();
@@ -17,31 +17,16 @@ const injectArcViewProps = createInjector(({url, archive:{sortOrder}}:IArcViewIn
     );
     const pages = story.arc.pages(arc?.id);
 
-    const showDetails = useSetting("comic.showArchiveDetails") === "true";
-    const showBanner = useSetting("comic.showArchiveBanner") === "true";
-    const showViewModeToggle = useSetting("comic.showArchiveViewModeToggle") === "true";
-    const showSortOrderToggle = useSetting("comic.showArchiveSortOrderToggle") === "true";
-    const breadCrumbMode = (useSetting("comic.archiveBreadCrumbMode") || "full") as BreadCrumbMode;
-
-    const hasNoBreadcrumbs = breadCrumbMode === "none" || (breadCrumbMode === "parent" && parents.length === 0);
-    const showBar = (showViewModeToggle && subArcs.length > 0) || !hasNoBreadcrumbs || (showSortOrderToggle && subArcs.length > 0);
-
-    const subPages = story.arc.allPages;
-    const pageNumber = story.page.pageNumber;
-    const arcTypeName = story.arc.typeName;
-    const arcNumber = story.arc.arcNumber;
-
     return {
         subArcs, pages,
-        subPages, pageNumber, arcTypeName, arcNumber,
         arc, parents,
-        showDetails, showBanner, showViewModeToggle, showSortOrderToggle, breadCrumbMode, showBar,
     };
 });
 
 const connect = inject<IArcViewInputProps, ArcViewProps>(mergeProps(
     injectUserPreferences,
     injectArcViewProps,
+    injectArcSettings,
 ));
 
 export const ArcView = overridable<IArcViewInputProps>(connect(ArcViewComponent));

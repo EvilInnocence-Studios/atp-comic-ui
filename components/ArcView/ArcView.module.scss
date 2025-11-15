@@ -41,7 +41,7 @@
             }
         }
     }
-    .subArcGrid, .arcPages {
+    .arcPages {
         width: 100%;
         display: grid;
         grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
@@ -56,37 +56,6 @@
                 color: #ffffff;
                 font-weight: bold;
                 padding: var(--paddingSmall);
-            }
-        }
-    }
-    .subArcList {
-        list-style-type: none;
-        padding: 0;
-        p {
-            margin-top: 0;
-        }
-        h2 {
-            margin-top: 0;
-            text-align: center;
-        }
-        > li {
-            margin-bottom: var(--padding);
-            padding-bottom: var(--padding);
-            border-bottom: solid 2px var(--borderColor);
-            &:last-child {
-                border-bottom: none;
-            }
-        }
-        .pageList {
-            margin-top: var(--padding);
-            list-style-type: none;
-            padding: 0;
-            display: block;
-            li {
-                display: inline-block;
-                padding: var(--paddingSmall);
-                width: 44px;
-                text-align: right;
             }
         }
     }

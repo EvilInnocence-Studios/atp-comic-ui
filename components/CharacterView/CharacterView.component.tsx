@@ -11,7 +11,7 @@ export const CharacterViewComponent = ({character}:CharacterViewProps) =>
     <div id={`character-${character.id}`} className={styles.characterView}>
         <Row gutter={[16, 16]}>
             <Col xs={9} sm={8}>
-                {!!character.mainImageId && <CharacterImage characterId={character.id} imageId={character.mainImageId} />}
+                <CharacterImage characterId={character.id} imageId={character.mainImageId} />
             </Col>
             <Col xs={15} sm={16}>
                 <h2>{character.name}</h2>
