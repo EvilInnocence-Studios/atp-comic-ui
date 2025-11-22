@@ -11,13 +11,13 @@ import { SubArcView } from "./SubArcView";
 
 export const ArcViewComponent = overridable(({
     arc,
-    showDetails, showBanner
-}:ArcViewProps) => 
-    <div className={styles.arcContainer}>
+    showDetails, showBanner, classes = styles
+}: ArcViewProps) =>
+    <div className={classes.arcContainer}>
         <ArchivesHeader />
         {!!arc && <>
-            {showBanner && !!arc.bannerUrl && <ComicImage fileName={arc.bannerUrl} className={styles.banner}/>}
-            {showDetails && <div className={styles.arcDetails}>
+            {showBanner && !!arc.bannerUrl && <ComicImage fileName={arc.bannerUrl} className={classes.banner} />}
+            {showDetails && <div className={classes.arcDetails}>
                 <h2><ArcTitle arc={arc} /></h2>
                 <Markdown>{arc.summary}</Markdown>
             </div>}

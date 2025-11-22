@@ -15,6 +15,7 @@ export declare interface IPageNavInputProps {
     page: IComicPage;
     top?: boolean;
     bottom?: boolean;
+    classes?: any;
 }
 
 export type PageNavProps = IPageNavInputProps & IPageNavProps;

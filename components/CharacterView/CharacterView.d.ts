@@ -8,6 +8,7 @@ export declare interface ICharacterViewProps {
 // What gets passed into the component from the parent as attributes
 export declare interface ICharacterViewInputProps {
     character: IComicCharacter;
+    classes?: any;
 }
 
 export type CharacterViewProps = ICharacterViewInputProps & ICharacterViewProps;

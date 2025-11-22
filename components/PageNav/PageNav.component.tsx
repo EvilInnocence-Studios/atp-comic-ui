@@ -13,26 +13,27 @@ export const PageNavComponent = overridable(({
     arc,
     top, bottom,
     linkType,
-}:PageNavProps) =>
-    <div className={clsx([styles.comicNavLinksContainer, top && styles.top, bottom && styles.bottom])} style={{textAlign: "center", fontSize: "x-large"}}>
+    classes = styles
+}: PageNavProps) =>
+    <div className={clsx([classes.comicNavLinksContainer, top && classes.top, bottom && classes.bottom])} style={{ textAlign: "center", fontSize: "x-large" }}>
         <div>
             {firstPage && prevPage && <Link to={`/comic/page/${(firstPage.url)}`}>
                 {["icon", "text"].includes(linkType) && <FontAwesomeIcon icon={faAngleDoubleLeft} />}
                 {["text"].includes(linkType) && " First"}
                 {["image"].includes(linkType) && <MediaImage settingKey="comic.firstPageIcon" />}
             </Link>}
-            {firstPage && firstPage.imageUrl && <ComicImage className={styles.noShow} fileName={firstPage.imageUrl} />}
+            {firstPage && firstPage.imageUrl && <ComicImage className={classes.noShow} fileName={firstPage.imageUrl} />}
         </div>
         <div>
             {prevPage && <Link to={`/comic/page/${prevPage.url}`}>
-                {["icon", "text"].includes(linkType) && <FontAwesomeIcon icon={faAngleLeft}/>}
+                {["icon", "text"].includes(linkType) && <FontAwesomeIcon icon={faAngleLeft} />}
                 {["text"].includes(linkType) && " Previous"}
                 {["image"].includes(linkType) && <MediaImage settingKey="comic.previousPageIcon" />}
             </Link>}
-            {prevPage && prevPage.imageUrl && <ComicImage className={styles.noShow} fileName={prevPage.imageUrl} />}
+            {prevPage && prevPage.imageUrl && <ComicImage className={classes.noShow} fileName={prevPage.imageUrl} />}
         </div>
         {arc && <div><Link to={`/comic/arc/${arc.url}`}>
-            {["icon"].includes(linkType) && <FontAwesomeIcon icon={faBoxArchive}/>}
+            {["icon"].includes(linkType) && <FontAwesomeIcon icon={faBoxArchive} />}
             {["text"].includes(linkType) && `Archives`}
             {["image"].includes(linkType) && <MediaImage settingKey="comic.archiveIcon" />}
         </Link></div>}
@@ -42,7 +43,7 @@ export const PageNavComponent = overridable(({
                 {["icon", "text"].includes(linkType) && <FontAwesomeIcon icon={faAngleRight} />}
                 {["image"].includes(linkType) && <MediaImage settingKey="comic.nextPageIcon" />}
             </Link>}
-            {nextPage && nextPage.imageUrl && <ComicImage className={styles.noShow} fileName={nextPage.imageUrl} />}
+            {nextPage && nextPage.imageUrl && <ComicImage className={classes.noShow} fileName={nextPage.imageUrl} />}
         </div>
         <div>
             {lastPage && nextPage && <Link to={`/comic/page/${lastPage.url}`}>
@@ -50,7 +51,7 @@ export const PageNavComponent = overridable(({
                 {["icon", "text"].includes(linkType) && <FontAwesomeIcon icon={faAngleDoubleRight} />}
                 {["image"].includes(linkType) && <MediaImage settingKey="comic.lastPageIcon" />}
             </Link>}
-            {lastPage && lastPage.imageUrl && <ComicImage className={styles.noShow} fileName={lastPage.imageUrl} />}
+            {lastPage && lastPage.imageUrl && <ComicImage className={classes.noShow} fileName={lastPage.imageUrl} />}
         </div>
     </div>
 );

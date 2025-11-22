@@ -27,7 +27,7 @@ uacPlugins.myAccount.tabs.register({
     title: "Comic Preferences",
     icon: faImage,
     priority: 500,
-    component: UserPreferences,
+    component: UserPreferences as any,
 });
 
 export const comicPlugins = {

@@ -14,16 +14,17 @@ import { overridable } from "@core/lib/overridable";
 interface IItemProps {
     item: ICharacterMedia,
     character: IComicCharacter;
-    updateThumbnail: (id:string) => void;
-    updateMainImage: (id:string) => void;
-    remove: (id:string) => () => void;
+    updateThumbnail: (id: string) => void;
+    updateMainImage: (id: string) => void;
+    remove: (id: string) => () => void;
+    classes?: any;
 }
 
-export const ImageItem = overridable(({item:m, character, updateThumbnail, updateMainImage, remove}:IItemProps) => <div className={styles.mediaItem}>
-    <CharacterImage characterId={character.id} imageId={m.id} /><br/>
+export const ImageItem = overridable(({ item: m, character, updateThumbnail, updateMainImage, remove, classes = styles }: IItemProps) => <div className={classes.mediaItem}>
+    <CharacterImage characterId={character.id} imageId={m.id} /><br />
     <Space.Compact>
         <Button
-            type={m.id === character.thumbnailId ? "primary" : "default"} 
+            type={m.id === character.thumbnailId ? "primary" : "default"}
             onClick={handle(updateThumbnail)(m.id)}
         >
             Thumbnail
@@ -40,11 +41,12 @@ export const ImageItem = overridable(({item:m, character, updateThumbnail, updat
 
 export const CharacterMediaEditorComponent = overridable(({
     character, media, upload, isLoading,
-    updateThumbnail, updateMainImage, remove, sort:sortMedia,
-}:CharacterMediaEditorProps) =>
+    updateThumbnail, updateMainImage, remove, sort: sortMedia,
+    classes = styles
+}: CharacterMediaEditorProps) =>
     <Spin spinning={isLoading}>
         {!!character && <>
-            <div className={styles.characterMediaList}>
+            <div className={classes.characterMediaList}>
                 <SortableList
                     items={media.sort(sort.by(prop<any, any>("order")).asc)}
                     direction="horizontal"
@@ -52,14 +54,14 @@ export const CharacterMediaEditorComponent = overridable(({
                     getListId={(image, index) => `${image.id}:${index}`}
                     sort={sortMedia}
                     ItemComponent={ImageItem}
-                    itemProps={{character, updateThumbnail, updateMainImage, remove}}
+                    itemProps={{ character, updateThumbnail, updateMainImage, remove, classes }}
                 />
             </div>
             <Upload.Dragger
-                customRequest={({file}) => upload(file as File)}
+                customRequest={({ file }) => upload(file as File)}
                 showUploadList={false}
             >
-                <FontAwesomeIcon icon={faUpload} size="3x"/><br/>
+                <FontAwesomeIcon icon={faUpload} size="3x" /><br />
                 <p className="ant-upload-text">Click or drag file to this area to upload</p>
             </Upload.Dragger>
         </>}

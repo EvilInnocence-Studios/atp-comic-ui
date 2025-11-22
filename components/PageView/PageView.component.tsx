@@ -9,19 +9,19 @@ import { PageViewProps } from "./PageView.d";
 import styles from './PageView.module.scss';
 import { overridable } from "@core/lib/overridable";
 
-export const PageViewComponent = overridable(({page, pageNumber, nextPage, transcript}:PageViewProps) => <>
-    {!!page && <div className={styles.comicPage}>
+export const PageViewComponent = overridable(({ page, pageNumber, nextPage, transcript, classes = styles }: PageViewProps) => <>
+    {!!page && <div className={classes.comicPage}>
         <PageNav page={page} top />
         {!!nextPage && <Link to={`/comic/page/${nextPage.url}`}><ComicImage fileName={page.imageUrl || ""} /></Link>}
         {!nextPage && <ComicImage fileName={page.imageUrl || ""} />}
         <PageNav page={page} bottom />
-        <div className={styles.pageDetails}>
+        <div className={classes.pageDetails}>
             <h1>Page {pageNumber}: {page.name}</h1>
             <p><Date date={page.postDate} /></p>
         </div>
-        <div className={styles.pageTranscript}>
+        <div className={classes.pageTranscript}>
             <h1 onClick={transcript.toggle}><FontAwesomeIcon icon={faClosedCaptioning} /> Transcript</h1>
-            {transcript.isset && <div className={styles.transcriptCopy}>
+            {transcript.isset && <div className={classes.transcriptCopy}>
                 <Markdown>{page.transcript}</Markdown>
             </div>}
         </div>

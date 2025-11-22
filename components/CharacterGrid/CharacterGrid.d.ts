@@ -13,6 +13,7 @@ export declare interface ICharacterGridProps {
 // What gets passed into the component from the parent as attributes
 export declare interface ICharacterGridInputProps {
     characters: IComicCharacter[];
+    classes?: any;
 }
 
 export type CharacterGridProps = ICharacterGridInputProps & ICharacterGridProps;

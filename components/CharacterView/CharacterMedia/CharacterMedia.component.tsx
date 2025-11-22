@@ -6,13 +6,13 @@ import { prop } from "ts-functional";
 import { CharacterMediaProps } from "./CharacterMedia.d";
 import styles from './CharacterMedia.module.scss';
 
-export const CharacterMediaComponent = overridable(({media, character}:CharacterMediaProps) =>
-    <div className={styles.mediaList}>
+export const CharacterMediaComponent = overridable(({ media, character, classes = styles }: CharacterMediaProps) =>
+    <div className={classes.mediaList}>
         <MediaPopup
             vertical
             media={media}
             getId={prop<any, any>('id')}
-            render={(item:ICharacterMedia) => <CharacterImage characterId={character.id} imageId={item.id} />}
+            render={(item: ICharacterMedia) => <CharacterImage characterId={character.id} imageId={item.id} />}
         />
     </div>
 );

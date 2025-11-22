@@ -9,33 +9,33 @@ import { PageEditorProps } from "./PageEditor.d";
 import styles from './PageEditor.module.scss';
 import { overridable } from "@core/lib/overridable";
 
-export const PageEditorComponent = overridable(({page, updateString, updateToggle, UpdateButtons}:PageEditorProps) =>
-    <div className={styles.pageEditor}>
+export const PageEditorComponent = overridable(({ page, updateString, updateToggle, UpdateButtons, classes = styles }: PageEditorProps) =>
+    <div className={classes.pageEditor}>
         <Row gutter={16}>
             <Col xs={12}>
                 <h1>
                     <Label label="Name">
-                        <Editable value={page.name} onChange={updateString("name")}/>
+                        <Editable value={page.name} onChange={updateString("name")} />
                     </Label>
                 </h1>
                 <Label label="URL">
-                    <Editable value={page.url || ""} onChange={updateString("url")}/>
+                    <Editable value={page.url || ""} onChange={updateString("url")} />
                 </Label>
             </Col>
-            <Col className={styles.controls} xs={12}>
+            <Col className={classes.controls} xs={12}>
                 <UpdateButtons />
-                <br/><br/>
+                <br /><br />
                 <Switch checked={page.enabled} onChange={updateToggle("enabled")} checkedChildren="Enabled" unCheckedChildren="Disabled" />
-                <br/><br/>
+                <br /><br />
                 <DatePicker
-                    style={{marginLeft: 16}}
-                    value={page.postDate ?  dayjs(page.postDate) : null}
+                    style={{ marginLeft: 16 }}
+                    value={page.postDate ? dayjs(page.postDate) : null}
                     onChange={(date) => updateString("postDate")(date ? date.toISOString() : "")}
                     placeholder="Post Date"
                 />
             </Col>
             <Col xs={8}>
-                <Card className={styles.image} size="small" title="Page Image">
+                <Card className={classes.image} size="small" title="Page Image">
                     <ComicImage fileName={page.imageUrl || ""} />
                 </Card>
             </Col>

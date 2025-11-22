@@ -9,6 +9,7 @@ export declare interface ICharacterAppearancesProps {
 // What gets passed into the component from the parent as attributes
 export declare interface ICharacterAppearancesInputProps {
     characterId: string;
+    classes?: any;
 }
 
 export type CharacterAppearancesProps = ICharacterAppearancesInputProps & ICharacterAppearancesProps;

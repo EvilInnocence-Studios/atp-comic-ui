@@ -12,31 +12,32 @@ import styles from './ArcEditor.module.scss';
 import { overridable } from "@core/lib/overridable";
 
 export const ArcEditorComponent = overridable(({
-    history:{entity:arc}, updateString, updateToggle, UpdateButtons,
+    history: { entity: arc }, updateString, updateToggle, UpdateButtons,
     uploadBanner, uploadThumbnail, removeThumbnail, removeBanner,
     allArcs,
     setParent, moveUp, moveDown,
-}:ArcEditorProps) =>
-    <div className={styles.arcEditor}>
+    classes = styles
+}: ArcEditorProps) =>
+    <div className={classes.arcEditor}>
         <Row gutter={16}>
-            <Col className={styles.header} span={24}>
-                <UpdateButtons className={styles.updateButtons} />
-                <Switch checked={arc.enabled} onChange={updateToggle("enabled")} checkedChildren="Enabled" unCheckedChildren="Disabled"/>
+            <Col className={classes.header} span={24}>
+                <UpdateButtons className={classes.updateButtons} />
+                <Switch checked={arc.enabled} onChange={updateToggle("enabled")} checkedChildren="Enabled" unCheckedChildren="Disabled" />
                 <Select
-                    className={styles.parentSelect}
-                    style={{width:200}}
+                    className={classes.parentSelect}
+                    style={{ width: 200 }}
                     onChange={setParent}
                     allowClear
                     placeholder="Set Parent"
                     showSearch
                     optionFilterProp="label"
                     options={[
-                        {value:null, label:"--Root Arc--"},
-                        ...allArcs.filter(a => a.id !== arc.id).map(a => ({value:a.id, label:a.name}))
+                        { value: null, label: "--Root Arc--" },
+                        ...allArcs.filter(a => a.id !== arc.id).map(a => ({ value: a.id, label: a.name }))
                     ]}
                 />
-                <Button className={styles.moveBtn} onClick={moveUp}><FontAwesomeIcon icon={faCaretUp} /> Move up</Button>
-                <Button className={styles.moveBtn} onClick={moveDown}><FontAwesomeIcon icon={faCaretDown} /> Move down</Button>
+                <Button className={classes.moveBtn} onClick={moveUp}><FontAwesomeIcon icon={faCaretUp} /> Move up</Button>
+                <Button className={classes.moveBtn} onClick={moveDown}><FontAwesomeIcon icon={faCaretDown} /> Move down</Button>
             </Col>
             <Col span={16}>
                 <h1><Label label="Name">
@@ -47,31 +48,31 @@ export const ArcEditorComponent = overridable(({
                         <Editable value={arc.url || ""} onChange={updateString("url")} placeholder="URL" />
                     </Label>
                 </div>
-                <br/>
+                <br />
                 <Card size="small" title="Summary">
                     <MarkdownEditor value={arc.summary || ""} onChange={updateString("summary")} />
                 </Card>
-                <br/>
+                <br />
                 <PageManager arcId={arc.id} />
             </Col>
-            <Col className={styles.images} span={8}>
+            <Col className={classes.images} span={8}>
                 <Card size="small" title="Thumbnail" extra={<DeleteBtn entityType="arc thumbnail" onClick={removeThumbnail} />}>
-                    {arc.thumbnailUrl && <ComicImage className={styles.thumbnail} fileName={arc.thumbnailUrl} />}
-                    <br/>
+                    {arc.thumbnailUrl && <ComicImage className={classes.thumbnail} fileName={arc.thumbnailUrl} />}
+                    <br />
                     <Upload.Dragger
                         showUploadList={false}
-                        customRequest={({file}) => uploadThumbnail(file as File)}
+                        customRequest={({ file }) => uploadThumbnail(file as File)}
                     >
                         <FontAwesomeIcon icon={faUpload} /> Click or drag file to this area to upload
                     </Upload.Dragger>
                 </Card>
-                <br/>
+                <br />
                 <Card size="small" title="Banner" extra={<DeleteBtn entityType="arc banner" onClick={removeBanner} />}>
-                    {arc.bannerUrl && <ComicImage className={styles.banner} fileName={arc.bannerUrl} />}
-                    <br/>
+                    {arc.bannerUrl && <ComicImage className={classes.banner} fileName={arc.bannerUrl} />}
+                    <br />
                     <Upload.Dragger
                         showUploadList={false}
-                        customRequest={({file}) => uploadBanner(file as File)}
+                        customRequest={({ file }) => uploadBanner(file as File)}
                     >
                         <FontAwesomeIcon icon={faUpload} /> Click or drag file to this area to upload
                     </Upload.Dragger>

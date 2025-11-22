@@ -8,9 +8,10 @@ export declare interface IArcNodeProps {
     onCreate: (parentId?: string) => () => void;
     onRemove: (id: string) => () => void;
     isOpen: Set<string>;
-    open: (id:string) => () => void;
-    close: (id:string) => () => void;
-    goToArc: (id:string) => () => void;
+    open: (id: string) => () => void;
+    close: (id: string) => () => void;
+    goToArc: (id: string) => () => void;
+    classes?: any;
 }
 
 export declare interface IArcManagerProps {
@@ -18,17 +19,18 @@ export declare interface IArcManagerProps {
     arc: IComicArc | null;
     isLoading: boolean;
     isOpen: Set<string>;
-    open: (id:string) => () => void;
-    close: (id:string) => () => void;
+    open: (id: string) => () => void;
+    close: (id: string) => () => void;
     create: (parentId?: string) => () => void;
     remove: (id: string) => () => void;
-    goToArc: (id:string) => () => void;
+    goToArc: (id: string) => () => void;
     refresh: () => void;
 }
 
 // What gets passed into the component from the parent as attributes
 export declare interface IArcManagerInputProps {
     arcId?: string;
+    classes?: any;
 }
 
 export type ArcManagerProps = IArcManagerInputProps & IArcManagerProps;

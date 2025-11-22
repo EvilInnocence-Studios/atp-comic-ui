@@ -1,5 +1,5 @@
 import { Col, Row, Spin } from "antd";
-import {CharacterManagerProps} from "./CharacterManager.d";
+import { CharacterManagerProps } from "./CharacterManager.d";
 import styles from './CharacterManager.module.scss';
 import { CharacterEditor } from "../CharacterEditor";
 import { SortableList } from "@core/components/SortableList";
@@ -10,9 +10,9 @@ import { faUsers } from "@fortawesome/free-solid-svg-icons";
 import { ClearCacheButton } from "@common/components/ClearCacheButton";
 import { overridable } from "@core/lib/overridable";
 
-export const CharacterItem = overridable(({item:character, setSelectedCharacter}:any) =>
+export const CharacterItem = overridable(({ item: character, setSelectedCharacter, classes = styles }: any) =>
     <div
-        className={styles.characterItem}
+        className={classes.characterItem}
         onClick={setSelectedCharacter(character)}
     >
         {character.name}
@@ -23,8 +23,9 @@ export const CharacterManagerComponent = overridable(({
     characters, isLoading,
     selectedCharacter, setSelectedCharacter,
     sort, refresh,
-}:CharacterManagerProps) =>
-    <div className={styles.characterManager}>
+    classes = styles
+}: CharacterManagerProps) =>
+    <div className={classes.characterManager}>
         <Spin spinning={isLoading}>
             <h1><FontAwesomeIcon icon={faUsers} /> Characters</h1>
             <ClearCacheButton entity="character" cacheType="character" />
@@ -33,12 +34,12 @@ export const CharacterManagerComponent = overridable(({
                     <SortableList<IComicCharacter>
                         items={characters}
                         getId={prop<any, any>("id")}
-                        getListId={(character:IComicCharacter, index:number) => `${character.id}:${index}`}
+                        getListId={(character: IComicCharacter, index: number) => `${character.id}:${index}`}
                         isActive={(character) => selectedCharacter?.id === character.id}
-                        itemClassName={styles.characterListItem}
-                        activeClassName={styles.selected}
+                        itemClassName={classes.characterListItem}
+                        activeClassName={classes.selected}
                         ItemComponent={CharacterItem}
-                        itemProps={{setSelectedCharacter}}
+                        itemProps={{ setSelectedCharacter, classes }}
                         sort={sort}
                     />
                 </Col>

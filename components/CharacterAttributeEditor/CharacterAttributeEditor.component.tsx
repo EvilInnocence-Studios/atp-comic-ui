@@ -1,5 +1,5 @@
 import { ICharacterAttribute } from "@comic-shared/character/types";
-import {CharacterAttributeEditorProps} from "./CharacterAttributeEditor.d";
+import { CharacterAttributeEditorProps } from "./CharacterAttributeEditor.d";
 import styles from './CharacterAttributeEditor.module.scss';
 import { Editable } from "@core/components/Editable";
 import { DeleteBtn } from "@core/components/DeleteBtn";
@@ -11,17 +11,18 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faAdd } from "@fortawesome/free-solid-svg-icons";
 import { overridable } from "@core/lib/overridable";
 
-const attId = (link:ICharacterAttribute,  index:number) => `${link.id}:${index}`;
+const attId = (link: ICharacterAttribute, index: number) => `${link.id}:${index}`;
 
 interface ILinkItemProps {
     update: (id: string, field: keyof ICharacterAttribute) => (value: string | null) => void;
     remove: (id: string) => () => void;
+    classes?: any;
 }
 
-export const AttItem = overridable(({item:att, update, remove}:{item:ICharacterAttribute} & ILinkItemProps) => {
-    return <div className={styles.att}>
+export const AttItem = overridable(({ item: att, update, remove, classes = styles }: { item: ICharacterAttribute } & ILinkItemProps) => {
+    return <div className={classes.att}>
         <Editable value={att.name} onChange={update(att.id, "name")} />
-        <Editable value={att.value } onChange={update(att.id, "value" )} />
+        <Editable value={att.value} onChange={update(att.id, "value")} />
         <DeleteBtn entityType="attribute" onClick={remove(att.id)} />
     </div>;
 });
@@ -31,7 +32,8 @@ export const CharacterAttributeEditorComponent = overridable(({
     name, setName,
     value, setValue,
     create, update, remove, sort,
-}:CharacterAttributeEditorProps) =>
+    classes = styles
+}: CharacterAttributeEditorProps) =>
     <Spin spinning={isLoading}>
         <SortableList<ICharacterAttribute, ILinkItemProps>
             items={attributes}
@@ -39,21 +41,21 @@ export const CharacterAttributeEditorComponent = overridable(({
             getListId={attId}
             sort={sort}
             ItemComponent={AttItem}
-            itemProps={{update, remove}}
+            itemProps={{ update, remove, classes }}
         />
-        <Space.Compact style={{width: "100%"}}>
+        <Space.Compact style={{ width: "100%" }}>
             <Input
                 value={name}
                 onChange={onInputChange(setName)}
                 placeholder="Name"
-                className={styles.newAttForm}
+                className={classes.newAttForm}
                 onPressEnter={create}
             />
             <Input
                 value={value}
                 onChange={onInputChange(setValue)}
                 placeholder="Value"
-                className={styles.newAttForm}
+                className={classes.newAttForm}
                 onPressEnter={create}
             />
             <Button onClick={create} variant="link"><FontAwesomeIcon icon={faAdd} /></Button>

@@ -3,7 +3,7 @@ import { ComicAdProps, SizedComicAdProps } from "./ComicAd.d";
 import styles from './ComicAd.module.scss';
 import { overridable } from '@core/lib/overridable';
 
-export const ComicAdComponent = overridable(({code, width, height}:ComicAdProps) => {
+export const ComicAdComponent = overridable(({ code, width, height, classes = styles }: ComicAdProps) => {
 	const containerRef = useRef<HTMLDivElement | null>(null);
 
 	useEffect(() => {
@@ -25,8 +25,8 @@ export const ComicAdComponent = overridable(({code, width, height}:ComicAdProps)
 		};
 	}, [code]);
 
-	return <div className={styles.ad} ref={containerRef} style={{width, height}}/>;
+	return <div className={classes.ad} ref={containerRef} style={{ width, height }} />;
 });
 
-export const SizedComicAdComponent = (width:number, height: number) => (props: SizedComicAdProps) => 
-    <ComicAdComponent {...props} width={width} height={height} />;
+export const SizedComicAdComponent = (width: number, height: number) => (props: SizedComicAdProps) =>
+	<ComicAdComponent {...props} width={width} height={height} />;

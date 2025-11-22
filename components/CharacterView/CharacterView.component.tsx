@@ -8,8 +8,8 @@ import { CharacterViewProps } from "./CharacterView.d";
 import styles from './CharacterView.module.scss';
 import { overridable } from "@core/lib/overridable";
 
-export const CharacterViewComponent = overridable(({character}:CharacterViewProps) =>
-    <div id={`character-${character.id}`} className={styles.characterView}>
+export const CharacterViewComponent = overridable(({ character, classes = styles }: CharacterViewProps) =>
+    <div id={`character-${character.id}`} className={classes.characterView}>
         <Row gutter={[16, 16]}>
             <Col xs={9} sm={8}>
                 <CharacterImage characterId={character.id} imageId={character.mainImageId} />

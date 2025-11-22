@@ -7,6 +7,7 @@ export declare interface ICharacterMediaProps {
 // What gets passed into the component from the parent as attributes
 export declare interface ICharacterMediaInputProps {
     character: IComicCharacter;
+    classes?: any;
 }
 
 export type CharacterMediaProps = ICharacterMediaInputProps & ICharacterMediaProps;

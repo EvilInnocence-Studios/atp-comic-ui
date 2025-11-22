@@ -6,14 +6,14 @@ import { comicPlugins } from "@comic";
 import { Col, Row } from "antd";
 import { overridable } from "@core/lib/overridable";
 
-export const LatestPageComponent = overridable(({pageUrl}:LatestPageProps) => <>
-    <Row className={styles.latestPage}>
-        <Col xs={24} md={18} xl={{span: 16, push: 4}} className={styles.pageView}>
+export const LatestPageComponent = overridable(({ pageUrl, classes = styles }: LatestPageProps) => <>
+    <Row className={classes.latestPage}>
+        <Col xs={24} md={18} xl={{ span: 16, push: 4 }} className={classes.pageView}>
             {pageUrl && <PageView url={pageUrl} />}
             {comicPlugins.latestPage.extras.render({})}
         </Col>
-        <Col xs={24} sm={24} md={6} xl={{span: 4, push: 4}}>
-            <div className={styles.newsFeed}>
+        <Col xs={24} sm={24} md={6} xl={{ span: 4, push: 4 }}>
+            <div className={classes.newsFeed}>
                 <h2>News Feed</h2>
                 <BlueskyFeed pageSize={5} />
             </div>

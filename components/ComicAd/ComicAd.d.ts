@@ -7,6 +7,7 @@ export declare interface IComicAdInputProps {
     code: string;
     width: number;
     height: number;
+    classes?: any;
 }
 
 export type ComicAdProps = IComicAdInputProps & IComicAdProps;

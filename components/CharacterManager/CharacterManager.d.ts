@@ -12,6 +12,7 @@ export declare interface ICharacterManagerProps {
 // What gets passed into the component from the parent as attributes
 export declare interface ICharacterManagerInputProps {
     characterId?: string;
+    classes?: any;
 }
 
 export type CharacterManagerProps = ICharacterManagerInputProps & ICharacterManagerProps;

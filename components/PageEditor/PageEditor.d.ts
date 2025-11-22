@@ -11,6 +11,7 @@ export declare interface IPageEditorProps extends IUpdater<IComicPage> {
 export declare interface IPageEditorInputProps {
     arcId: string;
     pageId: string;
+    classes?: any;
 }
 
 export type PageEditorProps = IPageEditorInputProps & IPageEditorProps;

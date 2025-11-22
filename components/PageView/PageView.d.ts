@@ -12,6 +12,7 @@ export declare interface IPageViewProps {
 // What gets passed into the component from the parent as attributes
 export declare interface IPageViewInputProps {
     url: string;
+    classes?: any;
 }
 
 export type PageViewProps = IPageViewInputProps & IPageViewProps;

@@ -1,5 +1,5 @@
 import { Editable } from "@core/components/Editable";
-import {CharacterEditorProps} from "./CharacterEditor.d";
+import { CharacterEditorProps } from "./CharacterEditor.d";
 import styles from './CharacterEditor.module.scss';
 import { Label } from "@core/components/Label";
 import { MarkdownEditor } from "@core/components/MarkdownEditor";
@@ -9,21 +9,22 @@ import { CharacterAttributeEditor } from "../CharacterAttributeEditor";
 import { overridable } from "@core/lib/overridable";
 
 export const CharacterEditorComponent = overridable(({
-    history:{entity:char},
+    history: { entity: char },
     updateString, updateToggle,
     UpdateButtons,
-}:CharacterEditorProps) =>
-    <div className={styles.characterEditor}>
-        <div className={styles.actions}><UpdateButtons /></div>
+    classes = styles
+}: CharacterEditorProps) =>
+    <div className={classes.characterEditor}>
+        <div className={classes.actions}><UpdateButtons /></div>
         <Row gutter={[16, 16]}>
             <Col xs={12}>
                 <h1><Label label="Name">
                     <Editable value={char.name} onChange={updateString("name")} />
                 </Label></h1>
-                <Switch checked={char.enabled}     onChange={updateToggle("enabled")}     checkedChildren="Enabled"      unCheckedChildren="Disabled"     />
+                <Switch checked={char.enabled} onChange={updateToggle("enabled")} checkedChildren="Enabled" unCheckedChildren="Disabled" />
                 &nbsp;
                 <Switch checked={char.showDetails} onChange={updateToggle("showDetails")} checkedChildren="Show Details" unCheckedChildren="Hide Details" />
-                <br/><br/>
+                <br /><br />
                 <Card size="small" title="Bio">
                     <MarkdownEditor value={char.bio || ""} onChange={updateString("bio")} />
                 </Card>

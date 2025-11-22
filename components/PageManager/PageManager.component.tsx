@@ -11,26 +11,26 @@ import { PageManagerProps } from "./PageManager.d";
 import styles from './PageManager.module.scss';
 import { overridable } from "@core/lib/overridable";
 
-export const PageManagerComponent = overridable(({arcId, pages, isLoading, remove, upload, onUploadSuccess}:PageManagerProps) =>
-    <div className={styles.pageManager}>
+export const PageManagerComponent = overridable(({ arcId, pages, isLoading, remove, upload, onUploadSuccess, classes = styles }: PageManagerProps) =>
+    <div className={classes.pageManager}>
         <Card size="small" title="Pages">
             {isLoading && <div>Loading...</div>}
-            {!isLoading && pages.length === 0 && <div className={styles.noPages}>
+            {!isLoading && pages.length === 0 && <div className={classes.noPages}>
                 <FontAwesomeIcon icon={faInfoCircle} /> No pages yet. Use the uploader below to add pages.
             </div>}
-            {!isLoading && pages.length > 0 && 
-                <ul className={styles.pageList}>
+            {!isLoading && pages.length > 0 &&
+                <ul className={classes.pageList}>
                     {pages.sort(sort.by(prop<IComicPage, "sortOrder">("sortOrder")).asc).map(page => <li key={page.id}>
-                        <Card className={styles.pageEditor} size="small" title={page.name || page.url}>
+                        <Card className={classes.pageEditor} size="small" title={page.name || page.url}>
                             <Link to={`/comic/arc/${arcId}/page/${page.id}`}>
                                 <ComicImage fileName={page.imageUrl || ""} />
                             </Link>
-                            <div className={styles.date}>
+                            <div className={classes.date}>
                                 <Typography.Text type={page.enabled ? "success" : "danger"}>
                                     {page.enabled && page.postDate ? new Date(page.postDate).toDateString() : "Disabled"}
                                 </Typography.Text>
                             </div>
-                            <div className={styles.controls}>
+                            <div className={classes.controls}>
                                 <DeleteBtn entityType="page" onClick={remove(page.id)} />
                             </div>
                         </Card>

@@ -11,6 +11,7 @@ export declare interface IArcBreadcrumbsProps {
 // What gets passed into the component from the parent as attributes
 export declare interface IArcBreadcrumbsInputProps {
     url: string | null;
+    classes?: any;
 }
 
 export type ArcBreadcrumbsProps = IArcBreadcrumbsInputProps & IArcBreadcrumbsProps & IArcSettings & IComicUserPreferences;
