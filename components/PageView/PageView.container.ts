@@ -4,16 +4,23 @@ import { useToggle } from "@core/lib/useToggle";
 import { createInjector, inject, mergeProps } from "unstateless";
 import { PageViewComponent } from "./PageView.component";
 import { IPageViewInputProps, IPageViewProps, PageViewProps } from "./PageView.d";
+import { useLayoutData } from "@core/lib/useLayoutData";
+import { useEffect } from "react";
 
-const injectPageViewProps = createInjector(({url}:IPageViewInputProps):IPageViewProps => {
+const injectPageViewProps = createInjector(({ url }: IPageViewInputProps): IPageViewProps => {
     const story = useStory();
     const transcript = useToggle();
+    const [, setPageTitle] = useLayoutData<string>("pageTitle");
 
     const page = story.page.get(url);
     const nextPage = story.page.next(page?.id);
     const pageNumber = story.arc.allPages(story.arc.root(page?.arcId)?.id).findIndex(p => p.id === page?.id) + 1;
 
-    return {page, nextPage, transcript, pageNumber};
+    useEffect(() => {
+        setPageTitle(pageNumber ? `Page ${pageNumber}` : "Loading...");
+    }, [pageNumber]);
+
+    return { page, nextPage, transcript, pageNumber };
 });
 
 const connect = inject<IPageViewInputProps, PageViewProps>(mergeProps(

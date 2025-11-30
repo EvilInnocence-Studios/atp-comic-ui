@@ -197,14 +197,4 @@ export const comicSettings:ISettingContainer = {
             },
         }
     },
-    Layout: {
-        Homepage: {
-            "homepage.showLatestComicPage": {
-                displayName: "Show Latest Comic Page",
-                type: "boolean",
-                defaultValue: true,
-                description: "Show the latest comic page on the homepage."
-            }
-        }
-    }
 }
