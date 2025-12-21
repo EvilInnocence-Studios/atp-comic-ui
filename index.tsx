@@ -1,4 +1,4 @@
-import { ComponentRegistry } from "@core/lib/layout/componentRegistry";
+import { ComponentRegistry } from "@theming/lib/layout/componentRegistry";
 import { IModule } from "@core/lib/module";
 import { faImage } from "@fortawesome/free-solid-svg-icons";
 import { uacPlugins } from "@uac/lib/plugin/slots";

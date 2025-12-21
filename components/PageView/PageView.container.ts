@@ -4,7 +4,7 @@ import { useToggle } from "@core/lib/useToggle";
 import { createInjector, inject, mergeProps } from "unstateless";
 import { PageViewComponent } from "./PageView.component";
 import { IPageViewInputProps, IPageViewProps, PageViewProps } from "./PageView.d";
-import { useLayoutData } from "@core/lib/useLayoutData";
+import { useLayoutData } from "@theming/lib/useLayoutData";
 import { useEffect } from "react";
 
 const injectPageViewProps = createInjector(({ url }: IPageViewInputProps): IPageViewProps => {
