@@ -1,6 +1,6 @@
-import { ComponentRegistry } from "@theming/lib/layout/componentRegistry";
 import { IModule } from "@core/lib/module";
 import { faImage } from "@fortawesome/free-solid-svg-icons";
+import { ComponentRegistry } from "@theming/lib/layout/componentRegistry";
 import { uacPlugins } from "@uac/lib/plugin/slots";
 import { LatestPage } from "./components/LatestPage";
 import { UserPreferences } from "./components/UserPreferences";
@@ -15,7 +15,7 @@ export const module: IModule = {
     settings: comicSettings,
 }
 
-ComponentRegistry.register("LatestPage", LatestPage);
+ComponentRegistry.register(LatestPage);
 
 uacPlugins.myAccount.tabs.register({
     key: "comics",
