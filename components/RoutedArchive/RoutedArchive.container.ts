@@ -21,7 +21,7 @@ export const RoutedArchive = withLayoutMetadata(
     overridable<IRoutedArchiveInputProps>(connect(RoutedArchiveComponent)),
     {
         name: "RoutedArchive",
-        displayName: "RoutedArchive",
+        displayName: "Comic Archives",
         category: "Comic",
         description: "",
         icon,
