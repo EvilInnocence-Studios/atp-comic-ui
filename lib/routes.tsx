@@ -1,5 +1,4 @@
 import { ArcManager } from "@comic/components/ArcManager";
-import { ArcView } from "@comic/components/ArcView";
 import { CharacterManager } from "@comic/components/CharacterManager";
 import { CharactersPage } from "@comic/components/CharactersPage";
 import { LatestPage } from "@comic/components/LatestPage";
