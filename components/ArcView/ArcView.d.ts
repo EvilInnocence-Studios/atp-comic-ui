@@ -16,6 +16,7 @@ export declare interface IArcViewProps {
 export declare interface IArcViewInputProps {
     url: string;
     classes?: any;
+    className?: string;
 }
 
 export type ArcViewProps = IArcViewInputProps & IArcViewProps & IComicUserPreferences & IArcSettings;

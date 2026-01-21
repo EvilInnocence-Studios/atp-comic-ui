@@ -8,12 +8,13 @@ import { ArcTitle } from "./ArcTitle";
 import { ArcViewProps } from "./ArcView.d";
 import styles from './ArcView.module.scss';
 import { SubArcView } from "./SubArcView";
+import clsx from "clsx";
 
 export const ArcViewComponent = overridable(({
-    arc,
+    arc, className,
     showDetails, showBanner, classes = styles
 }: ArcViewProps) =>
-    <div className={classes.arcContainer}>
+    <div className={clsx(classes.arcContainer, className)}>
         <ArchivesHeader />
         {!!arc && <>
             {showBanner && !!arc.bannerUrl && <ComicImage fileName={arc.bannerUrl} className={classes.banner} />}
