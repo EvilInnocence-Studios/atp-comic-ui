@@ -1,5 +1,5 @@
 export declare interface IRoutedPageProps {
-
+    url: string;
 }
 
 // What gets passed into the component from the parent as attributes
