@@ -3,11 +3,12 @@ import { faImage } from "@fortawesome/free-solid-svg-icons";
 import { ComponentRegistry, LayoutRegistry } from "@theming/lib/layout/componentRegistry";
 import { uacPlugins } from "@uac/lib/plugin/slots";
 import { LatestPage } from "./components/LatestPage";
+import { RoutedArchive } from "./components/RoutedArchive";
+import { RoutedPage } from "./components/RoutedPage";
 import { UserPreferences } from "./components/UserPreferences";
 import { comicMenus } from "./lib/menus";
 import { comicRoutes } from "./lib/routes";
 import { comicSettings } from "./lib/settings";
-import { RoutedArchive } from "./components/RoutedArchive";
 
 export const module: IModule = {
     name: "comic",
@@ -18,6 +19,7 @@ export const module: IModule = {
 
 ComponentRegistry.register(LatestPage);
 ComponentRegistry.register(RoutedArchive);
+ComponentRegistry.register(RoutedPage);
 
 uacPlugins.myAccount.tabs.register({
     key: "comics",
@@ -29,4 +31,8 @@ uacPlugins.myAccount.tabs.register({
 
 LayoutRegistry.register({name: "comicArchives", displayName: "Comic Archives", description: "The comic archives layout and design", defaultLayout: {
     component: "RoutedArchive"
+}});
+
+LayoutRegistry.register({name: "comicPage", displayName: "Comic Page", description: "The comic page layout and design", defaultLayout: {
+    component: "RoutedPage"
 }});

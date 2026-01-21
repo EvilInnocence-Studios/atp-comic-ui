@@ -8,9 +8,10 @@ import { PageNav } from "../PageNav";
 import { PageViewProps } from "./PageView.d";
 import styles from './PageView.module.scss';
 import { overridable } from "@core/lib/overridable";
+import clsx from "clsx";
 
-export const PageViewComponent = overridable(({ page, pageNumber, nextPage, transcript, classes = styles }: PageViewProps) => <>
-    {!!page && <div className={classes.comicPage}>
+export const PageViewComponent = overridable(({ page, pageNumber, nextPage, transcript, classes = styles, className }: PageViewProps) => <>
+    {!!page && <div className={clsx(classes.comicPage, className)}>
         <PageNav page={page} top />
         {!!nextPage && <Link to={`/comic/page/${nextPage.url}`}><ComicImage fileName={page.imageUrl || ""} /></Link>}
         {!nextPage && <ComicImage fileName={page.imageUrl || ""} />}

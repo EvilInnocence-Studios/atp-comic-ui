@@ -13,6 +13,7 @@ export declare interface IPageViewProps {
 export declare interface IPageViewInputProps {
     url: string;
     classes?: any;
+    className?: string;
 }
 
 export type PageViewProps = IPageViewInputProps & IPageViewProps;

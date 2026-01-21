@@ -1,9 +1,7 @@
 import { ArcManager } from "@comic/components/ArcManager";
-import { ArcView } from "@comic/components/ArcView";
 import { CharacterManager } from "@comic/components/CharacterManager";
 import { CharactersPage } from "@comic/components/CharactersPage";
 import { LatestPage } from "@comic/components/LatestPage";
-import { Page } from "@comic/components/Page";
 import { PageEditor } from "@comic/components/PageEditor";
 import { withRoute } from "@core/lib/withRoute";
 import { Layout } from "@theming/components/Layout";
@@ -18,7 +16,7 @@ export const comicRoutes = {
     ],
     public: [
         {path: "/comic",            component: LatestPage},
-        {path: "/comic/page/:url",  component: withRoute(Page)},
+        {path: "/comic/page/:url",  component: () => <Layout element="comicPage" />},
         {path: "/comic/arc/:url",   component: () => <Layout element="comicArchives" />},
         {path: "/comic/characters", component: CharactersPage}
     ],
