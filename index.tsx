@@ -29,10 +29,6 @@ uacPlugins.myAccount.tabs.register({
     component: UserPreferences as any,
 });
 
-LayoutRegistry.register({name: "comicArchives", displayName: "Comic Archives", description: "The comic archives layout and design", defaultLayout: {
-    component: "RoutedArchive"
-}});
-
 LayoutRegistry.register({name: "comicPage", displayName: "Comic Page", description: "The comic page layout and design", defaultLayout: {
     component: "RoutedPage"
 }});
