@@ -1,6 +1,6 @@
 import { IModule } from "@core/lib/module";
 import { faImage } from "@fortawesome/free-solid-svg-icons";
-import { ComponentRegistry, LayoutRegistry } from "@theming/lib/layout/componentRegistry";
+import { ComponentRegistry } from "@theming/lib/layout/componentRegistry";
 import { uacPlugins } from "@uac/lib/plugin/slots";
 import { LatestPage } from "./components/LatestPage";
 import { RoutedArchive } from "./components/RoutedArchive";
@@ -28,7 +28,3 @@ uacPlugins.myAccount.tabs.register({
     priority: 500,
     component: UserPreferences as any,
 });
-
-LayoutRegistry.register({name: "comicPage", displayName: "Comic Page", description: "The comic page layout and design", defaultLayout: {
-    component: "RoutedPage"
-}});

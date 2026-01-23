@@ -4,8 +4,8 @@ import { CharacterManager } from "@comic/components/CharacterManager";
 import { CharactersPage } from "@comic/components/CharactersPage";
 import { LatestPage } from "@comic/components/LatestPage";
 import { PageEditor } from "@comic/components/PageEditor";
+import { PageView } from "@comic/components/PageView";
 import { withRoute } from "@core/lib/withRoute";
-import { Layout } from "@theming/components/Layout";
 
 export const comicRoutes = {
     admin: [
@@ -17,7 +17,7 @@ export const comicRoutes = {
     ],
     public: [
         {path: "/comic",            component: LatestPage},
-        {path: "/comic/page/:url",  component: () => <Layout element="comicPage" />},
+        {path: "/comic/page/:url",  component: withRoute(PageView)},
         {path: "/comic/arc/:url",   component: withRoute(ArcView)},
         {path: "/comic/characters", component: CharactersPage}
     ],
