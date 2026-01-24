@@ -53,6 +53,17 @@ export const ArcEditorComponent = overridable(({
                     <MarkdownEditor value={arc.summary || ""} onChange={updateString("summary")} />
                 </Card>
                 <br />
+                <Card size="small" title="Transcript">
+                    <MarkdownEditor value={arc.transcript || ""} onChange={updateString("transcript")} />
+                </Card>
+                <br />
+                {!arc.parentId && <Switch
+                    checked={arc.isVerticalScroll}
+                    onChange={updateToggle("isVerticalScroll")}
+                    checkedChildren="Vertical Scroll"
+                    unCheckedChildren="Paged Comic"
+                />}
+                <br /><br />
                 <PageManager arcId={arc.id} />
             </Col>
             <Col className={classes.images} span={8}>

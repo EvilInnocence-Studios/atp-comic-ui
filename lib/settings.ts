@@ -114,6 +114,12 @@ export const comicSettings:ISettingContainer = {
                 defaultValue: "Arc",
                 description: "Comma-separated names for the levels of story arcs."
             },
+            "comic.verticalScrollArcNames": {
+                displayName: "Vertical Scroll Arc Names",
+                type: "string",
+                defaultValue: "Series,Episode",
+                description: "Comma-separated names for the levels of vertical scroll story arcs."
+            },
         },
         Archives: {
             "comic.showArchiveDetails": {

@@ -60,7 +60,7 @@ const injectArcEditorProps = createInjector(({arc, refresh}:IArcEditorInputProps
             loader(() => services().arc.sort(arc.parentId as string, arc.id, arc.sortOrder + 1).then(refresh));
         }
     }
-    
+
     return {
         ...updater,
         uploadThumbnail, removeThumbnail,

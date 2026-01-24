@@ -97,6 +97,11 @@ export const useStory = () => {
                     : arcs.filter(a => !a.parentId).sort((a,b) => (a.sortOrder || 0) - (b.sortOrder || 0));
                 return siblingArcs.findIndex(a => a.id === arcId) + 1 || null;
             },
+            isVerticalScroll: (arcId?:string) => {
+                const root = arc.root(arcId);
+                if (!root) return false;
+                return root.isVerticalScroll;
+            },
         };
         const page = {
             isLoaded: pagesLoaded,

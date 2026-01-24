@@ -3,7 +3,7 @@ import { DeleteBtn } from "@core/components/DeleteBtn";
 import { Uploader } from "@core/components/Uploader";
 import { faInfoCircle } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { Card, Typography } from "antd";
+import { Button, Card, Space, Typography } from "antd";
 import { Link } from "react-router";
 import { prop, sort } from "ts-functional";
 import { ComicImage } from "../ComicImage";
@@ -11,9 +11,26 @@ import { PageManagerProps } from "./PageManager.d";
 import styles from './PageManager.module.scss';
 import { overridable } from "@core/lib/overridable";
 
-export const PageManagerComponent = overridable(({ arcId, pages, isLoading, remove, upload, onUploadSuccess, classes = styles }: PageManagerProps) =>
+export const PageManagerComponent = overridable(({
+    arcId, pages, isLoading, remove, upload, onUploadSuccess, enableAll, disableAll, classes = styles,
+}: PageManagerProps) =>
     <div className={classes.pageManager}>
-        <Card size="small" title="Pages">
+        <Card
+            size="small"
+            title="Pages"
+            extra={<Space.Compact>
+                <Button
+                    size="small"
+                    onClick={enableAll}
+                    type="primary"
+                >Enable All</Button>
+                <Button
+                    size="small"
+                    onClick={disableAll}
+                    type="primary"
+                >Disable All</Button>
+            </Space.Compact>}
+        >
             {isLoading && <div>Loading...</div>}
             {!isLoading && pages.length === 0 && <div className={classes.noPages}>
                 <FontAwesomeIcon icon={faInfoCircle} /> No pages yet. Use the uploader below to add pages.

@@ -6,6 +6,7 @@ import { useEffect, useState } from "react";
 import { createInjector, inject, mergeProps } from "unstateless";
 import { PageManagerComponent } from "./PageManager.component";
 import { IPageManagerInputProps, IPageManagerProps, PageManagerProps } from "./PageManager.d";
+import { flash } from "@core/lib/flash";
 
 const injectPageManagerProps = createInjector(({arcId}:IPageManagerInputProps):IPageManagerProps => {
     const [pages, setPages] = useState<IComicPage[]>([]);
@@ -17,6 +18,20 @@ const injectPageManagerProps = createInjector(({arcId}:IPageManagerInputProps):I
 
     const refresh = () => {
         loader(() => services().page.search(arcId).then(setPages));
+    }
+
+    const enableAll = () => {
+        loader(() => services().page.enableAll(arcId)
+            .then(refresh)
+            .then(flash.success("All pages enabled"))
+        );
+    }
+
+    const disableAll = () => {
+        loader(() => services().page.disableAll(arcId)
+            .then(refresh)
+            .then(flash.success("All pages disabled"))
+        );
     }
 
     useEffect(refresh, [arcId]);
@@ -46,16 +61,12 @@ const injectPageManagerProps = createInjector(({arcId}:IPageManagerInputProps):I
         );
 
     const onUploadSuccess = (newPages: IComicPage[]) => {
-        console.log("Uploaded pages:", newPages);
-        console.log("Sorting pages");
         // Get the current maximum sortOrder for the arc's pages
         const currentMaxSortOrder = pages.reduce((max, page) => page.sortOrder > max ? page.sortOrder : max, 0);
 
         // Make sure pages are in the right order based on file name
         // Extract any numbers from the url field, sort the pages based on that number,
         // set the sortOrder accordingly, then update the pages
-        const pageNumbers = newPages.map(page => page.imageUrl ? page.imageUrl.replace(/\D/g, '') : 0);
-        console.log("Page numbers extracted from URLs:", pageNumbers);
         const sorted = newPages.sort((a, b) => {
             const aNum = a.imageUrl ? parseInt(a.imageUrl.replace(/\D/g, '')) : 0;
             const bNum = b.imageUrl ? parseInt(b.imageUrl.replace(/\D/g, '')) : 0;
@@ -67,7 +78,7 @@ const injectPageManagerProps = createInjector(({arcId}:IPageManagerInputProps):I
             .then(refresh);
     }
 
-    return {pages, isLoading: loader.isLoading, refresh, remove, upload, onUploadSuccess};
+    return {pages, isLoading: loader.isLoading, refresh, remove, upload, onUploadSuccess, enableAll, disableAll};
 });
 
 const connect = inject<IPageManagerInputProps, PageManagerProps>(mergeProps(
