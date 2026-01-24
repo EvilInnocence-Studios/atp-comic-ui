@@ -109,7 +109,7 @@ export const comicSettings:ISettingContainer = {
         },
         Arcs: {
             "comic.arcNames": {
-                displayName: "Arc Names",
+                displayName: "Paged Comic Arc Names",
                 type: "string",
                 defaultValue: "Arc",
                 description: "Comma-separated names for the levels of story arcs."
