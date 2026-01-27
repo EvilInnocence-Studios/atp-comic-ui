@@ -16,10 +16,13 @@ const injectArcViewProps = createInjector(({url, archive:{sortOrder}}:IArcViewIn
         : b.sortOrder - a.sortOrder
     );
 
+    const isVerticalScroll = !!arc && story.arc.isVerticalScroll(arc.id);
+
     return {
         parents,
         subArcs,
         arc,
+        isVerticalScroll,
     };
 });
 

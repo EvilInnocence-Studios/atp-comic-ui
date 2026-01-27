@@ -77,6 +77,38 @@ export const useStory = () => {
                         .flat();
                 }
             },
+            leafArcs: (arcId:string):IComicArc[] => {
+                const subArcs = arc.subArcs(arcId);
+                return subArcs.length === 0
+                    ? [arc.getById(arcId) as IComicArc]
+                    : subArcs.map(sa => arc.leafArcs(sa.id)).flat();
+            },
+            first: (arcId:string):IComicArc | null => {
+                const rootArc = arc.root(arcId);
+                if (!rootArc) return null;
+                const leafArcs = arc.leafArcs(rootArc.id);
+                return leafArcs.length > 0 ? leafArcs[0] : null;
+            },
+            latest: (arcId:string):IComicArc | null => {
+                const rootArc = arc.root(arcId);
+                if (!rootArc) return null;
+                const leafArcs = arc.leafArcs(rootArc.id);
+                return leafArcs.slice(-1)[0] || null;
+            },
+            next: (arcId:string):IComicArc | null => {
+                const rootArc = arc.root(arcId);
+                if (!rootArc) return null;
+                const leafArcs = arc.leafArcs(rootArc.id);
+                const index = leafArcs.findIndex(a => a.id === arcId);
+                return leafArcs[index + 1] || null;
+            },
+            prev: (arcId:string):IComicArc | null => {
+                const rootArc = arc.root(arcId);
+                if (!rootArc) return null;
+                const leafArcs = arc.leafArcs(rootArc.id);
+                const index = leafArcs.findIndex(a => a.id === arcId);
+                return leafArcs[index - 1] || null;
+            },
             latestPage: (arcId?:string) => {
                 if (!arcId) return null;
                 const arcPages = arc.allPages(arc.root(arcId)?.id);

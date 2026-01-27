@@ -16,7 +16,9 @@ const injectSubArcGridProps = createInjector(({arcId, archive:{sortOrder}}:ISubA
     const subPages = story.arc.allPages;
     const pageNumber = story.page.pageNumber;
 
-    return {subArcs, subPages, pageNumber};
+    const isVerticalScroll = !!arcId && story.arc.isVerticalScroll(arcId);
+
+    return {subArcs, subPages, pageNumber, isVerticalScroll};
 });
 
 const connect = inject<ISubArcViewInputProps, SubArcViewProps>(mergeProps(
