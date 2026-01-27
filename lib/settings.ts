@@ -27,12 +27,6 @@ export const comicSettings:ISettingContainer = {
             },
         },
         Nav: {
-            "theme.comicNavBackgroundColor": {
-                displayName: "Comic Navigation Background Color",
-                type: "color",
-                defaultValue: "#f0f0f0",
-                description: "Background color for comic navigation elements."
-            },
             "comic.navLinkStyle": {
                 displayName: "Comic Navigation Link Style",
                 type: "select",
@@ -79,20 +73,8 @@ export const comicSettings:ISettingContainer = {
                 description: "Icon image for the 'Archive' navigation button.",
                 options: mediaOptions,
             },
-            "theme.comicNavIconSize": {
-                displayName: "Comic Navigation Icon Size",
-                type: "string",
-                defaultValue: "24px",
-                description: "Size of the icons used in comic navigation."
-            },
         },
         Pages: {
-            "theme.comicPageWidth": {
-                displayName: "Comic Page Width",
-                type: "string",
-                defaultValue: "100%",
-                description: "The width of comic pages as displayed on the site."
-            },
             "comic.ArchiveLinkLevel": {
                 displayName: "Archive Link Level",
                 type: "select",
@@ -144,18 +126,6 @@ export const comicSettings:ISettingContainer = {
                     { value: 'parent', label: 'Parent Only' },
                     { value: 'full', label: 'Full' },
                 ]),
-            },
-            "theme.comicArchiveWidth": {
-                displayName: "Archive Width",
-                type: "string",
-                defaultValue: "768px",
-                description: "The width of the archives."
-            },
-            "theme.comicArcDetailsWidth": {
-                displayName: "Archive Details Width",
-                type: "string",
-                defaultValue: "600px",
-                description: "The width of the details section in the archives."
             },
             "comic.defaultArchiveView": {
                 displayName: "Default Archive View",
