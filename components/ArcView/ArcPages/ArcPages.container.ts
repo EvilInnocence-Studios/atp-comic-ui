@@ -10,8 +10,12 @@ const injectArcPagesProps = createInjector(({url}:IArcPagesInputProps):IArcPages
     const arc = url ? story.arc.get(url) : null;
     const pages = story.arc.pages(arc?.id);
 
+    const isVerticalScroll = !!arc && story.arc.isVerticalScroll(arc.id);
+    
     return {
+        arc,
         pages,
+        isVerticalScroll,
     };
 });
 

@@ -23,7 +23,7 @@ export const SubArcGridComponent = overridable(({ subArcs, archive: { mode }, cl
     </div>}
 </>);
 
-export const SubArcListComponent = overridable(({ subArcs, archive: { mode }, subPages, pageNumber, classes = styles }: SubArcViewProps) => <>
+export const SubArcListComponent = overridable(({ subArcs, archive: { mode }, subPages, pageNumber, classes = styles, isVerticalScroll }: SubArcViewProps) => <>
     {mode === "list" && <ul className={classes.subArcList}>
         {subArcs.map(subArc =>
             <li key={subArc.id}>
@@ -40,7 +40,7 @@ export const SubArcListComponent = overridable(({ subArcs, archive: { mode }, su
                     </Col>
                     <Col span={18}>
                         <Markdown>{subArc.summary}</Markdown>
-                        {subPages(subArc.id).length > 0 && <ul className={classes.pageList}>
+                        {!isVerticalScroll && subPages(subArc.id).length > 0 && <ul className={classes.pageList}>
                             {subPages(subArc.id).map(page =>
                                 <li key={page.id}>
                                     <Link to={`/comic/page/${page.url}`} title={page.name}>

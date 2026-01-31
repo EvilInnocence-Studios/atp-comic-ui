@@ -1,0 +1,23 @@
+@use "@styles/globals.module.scss";
+
+.comicNavLinksContainer {
+    display: grid;
+    grid-template-columns: 15% 15% auto 15% 15%;
+    padding: var(--padding) 0;
+    background-color: var(--comicNavBackgroundColor);
+    img {
+        height: var(--comicNavIconSize);
+        width: auto;
+    }
+    .noShow {
+        display: none;
+    }
+    &.top {
+        border-top-left-radius: var(--borderRadius);
+        border-top-right-radius: var(--borderRadius);
+    }
+    &.bottom {
+        border-bottom-left-radius: var(--borderRadius);
+        border-bottom-right-radius: var(--borderRadius);
+    }
+}

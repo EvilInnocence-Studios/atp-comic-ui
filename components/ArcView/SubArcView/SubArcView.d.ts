@@ -5,6 +5,7 @@ export declare interface ISubArcViewProps {
     subArcs: IComicArc[];
     subPages: (arcId: string) => IComicPage[];
     pageNumber: (pageId: string) => number | null;
+    isVerticalScroll: boolean;
 }
 
 // What gets passed into the component from the parent as attributes
