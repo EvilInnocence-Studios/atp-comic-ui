@@ -47,6 +47,8 @@ const injectArcManagerProps = createInjector(({arcId}:IArcManagerInputProps):IAr
             name: 'New Arc',
             parentId,
             enabled: false,
+            isVerticalScroll: false,
+            transcript: null,
             url: null,
             sortOrder: 0,
             thumbnailUrl: null,
