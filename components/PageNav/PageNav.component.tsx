@@ -1,6 +1,6 @@
 import { faAngleDoubleLeft, faAngleDoubleRight, faAngleLeft, faAngleRight, faBoxArchive } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { Link } from "react-router";
+import { Link } from "react-router-dom";
 import { ComicImage } from "../ComicImage";
 import { PageNavProps } from "./PageNav.d";
 import styles from './PageNav.module.scss';

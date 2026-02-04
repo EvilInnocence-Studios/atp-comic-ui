@@ -4,7 +4,7 @@ import { useSetting } from "@common/lib/setting/services";
 import { services } from "@core/lib/api";
 import { overridable } from "@core/lib/overridable";
 import { useEffect, useState } from "react";
-import { useNavigate } from "react-router";
+import { useNavigate } from "react-router-dom";
 import { createInjector, inject, mergeProps } from "unstateless";
 import { CharacterAppearancesComponent } from "./CharacterAppearances.component";
 import { CharacterAppearancesProps, ICharacterAppearancesInputProps, ICharacterAppearancesProps } from "./CharacterAppearances.d";
@@ -33,7 +33,7 @@ const injectCharacterAppearancesProps = createInjector(({characterId}:ICharacter
 
     const goToPage = (url: string) => {
         if (url) {
-            navigate(`/comic/page/${url}/`);
+            navigate(`/comic/page/${url}`);
         }
     };
 

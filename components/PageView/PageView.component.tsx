@@ -2,7 +2,7 @@ import { Date } from "@core/components/Date";
 import { faClosedCaptioning } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Markdown from "react-markdown";
-import { Link } from "react-router";
+import { Link } from "react-router-dom";
 import { ComicImage } from "../ComicImage";
 import { PageNav } from "../PageNav";
 import { PageViewProps } from "./PageView.d";

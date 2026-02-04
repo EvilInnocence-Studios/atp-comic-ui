@@ -1,6 +1,6 @@
 import { overridable } from "@core/lib/overridable";
 import { Select } from "antd";
-import { Link } from "react-router";
+import { Link } from "react-router-dom";
 import { CharacterAppearancesProps } from "./CharacterAppearances.d";
 import styles from './CharacterAppearances.module.scss';
 

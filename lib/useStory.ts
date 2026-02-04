@@ -11,7 +11,8 @@ const getPages = memoizePromise(() => services().page.searchAll());
 export const useStory = () => {
     const [arcs, setArcs] = useState<IComicArc[]>([]);
     const [pages, setPages] = useState<IComicPage[]>([]);
-    const arcNames = (useSetting("comic.arcNames") || "").split(",");
+    const arcNamesRaw = useSetting("comic.arcNames") || "";
+    const arcNames = useMemo(() => arcNamesRaw.split(","), [arcNamesRaw]);
     const arcsLoaded = arcs.length > 0;
     const pagesLoaded = pages.length > 0;
 
