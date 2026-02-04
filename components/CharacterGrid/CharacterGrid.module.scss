@@ -50,6 +50,5 @@
 }
 
 .characterModal {
-    max-width: calc(100% - var(--paddingLarge)) !important;
-    width: 800px !important;
+    width: min(800px, 100%) !important;
 }
