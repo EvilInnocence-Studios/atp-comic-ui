@@ -9,9 +9,10 @@ import { ArcViewProps } from "./ArcView.d";
 import styles from './ArcView.module.scss';
 import { SubArcView } from "./SubArcView";
 import clsx from "clsx";
+import { VerticalScrollChapterView } from "./VerticalScrollChapterView";
 
 export const ArcViewComponent = overridable(({
-    arc, className,
+    arc, className, isVerticalScroll,
     showDetails, showBanner, classes = styles
 }: ArcViewProps) =>
     <div className={clsx(classes.arcContainer, className)}>
@@ -23,7 +24,7 @@ export const ArcViewComponent = overridable(({
                 <Markdown>{arc.summary}</Markdown>
             </div>}
             <ArcBreadcrumbs url={arc.url} />
-            <SubArcView arcId={arc.id} />
+            {isVerticalScroll ? <VerticalScrollChapterView arcId={arc.id} /> : <SubArcView arcId={arc.id} />}
             <ArcPages url={arc.url} />
         </>}
     </div>

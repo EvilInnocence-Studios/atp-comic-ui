@@ -8,11 +8,15 @@ import { memoizePromise } from "ts-functional";
 const getArcs  = memoizePromise(() => services().arc.search()    );
 const getPages = memoizePromise(() => services().page.searchAll());
 
+const sortByOrder = <T extends {sortOrder?:number}>(a:T, b:T) => (a.sortOrder || 0) - (b.sortOrder || 0);
+
 export const useStory = () => {
     const [arcs, setArcs] = useState<IComicArc[]>([]);
     const [pages, setPages] = useState<IComicPage[]>([]);
     const arcNamesRaw = useSetting("comic.arcNames") || "";
+    const vsArcNamesRaw = useSetting("comic.verticalScrollArcNames") || "";
     const arcNames = useMemo(() => arcNamesRaw.split(","), [arcNamesRaw]);
+    const vsArcNames = useMemo(() => vsArcNamesRaw.split(","), [vsArcNamesRaw]);
     const arcsLoaded = arcs.length > 0;
     const pagesLoaded = pages.length > 0;
 
@@ -27,17 +31,17 @@ export const useStory = () => {
             get: (url?:string) => url ? arcs.find(a => a.url === url) || null : null,
             getById: (id?:string) => id ? arcs.find(a => a.id === id) || null : null,
             list: () => arcs,
-            typeName: (arc?:IComicArc | null) => {
-                if (!arc) return "Arc";
+            typeName: (thisArc:IComicArc | null) => {
+                if (!thisArc) return "Arc";
                 let level = 1;
-                let curArc = arc;
+                let curArc = thisArc;
                 while (curArc.parentId) {
                     const parentArc = arcs.find(a => a.id === curArc?.parentId) || null;
                     if (!parentArc) break;
                     curArc = parentArc;
                     level++;
                 }
-                return arcNames[level - 1] || "Arc";
+                return (arc.isVerticalScroll(thisArc.id) ? vsArcNames : arcNames)[level - 1] || "Arc";
             },
             root: (arcId?: string) => {
                 if (!arcId) return null;
@@ -62,10 +66,10 @@ export const useStory = () => {
                 return parents;
             },
             subArcs: (parentId?:string) => parentId
-                ? arcs.filter(a => a.parentId === parentId && a.enabled).sort((a,b) => (a.sortOrder || 0) - (b.sortOrder || 0))
+                ? arcs.filter(a => a.parentId === parentId && a.enabled).sort(sortByOrder)
                 : [],
             pages: (arcId?:string) => arcId
-                ? pages.filter(p => p.arcId === arcId && p.enabled).sort((a,b) => (a.sortOrder || 0) - (b.sortOrder || 0))
+                ? pages.filter(p => p.arcId === arcId && p.enabled).sort(sortByOrder)
                 : [],
             allPages: (arcId?: string):IComicPage[] => {
                 if (!arcId) return [];
@@ -82,7 +86,10 @@ export const useStory = () => {
                 const subArcs = arc.subArcs(arcId);
                 return subArcs.length === 0
                     ? [arc.getById(arcId) as IComicArc]
-                    : subArcs.map(sa => arc.leafArcs(sa.id)).flat();
+                    : subArcs
+                        .sort(sortByOrder)
+                        .map(sa => arc.leafArcs(sa.id))
+                        .flat();
             },
             first: (arcId:string):IComicArc | null => {
                 const rootArc = arc.root(arcId);
@@ -126,8 +133,8 @@ export const useStory = () => {
                 if (!arcToFind) return null;
                 const parentArc = arcs.find(a => a.id === arcToFind.parentId) || null;
                 const siblingArcs = parentArc
-                    ? arcs.filter(a => a.parentId === parentArc.id).sort((a,b) => (a.sortOrder || 0) - (b.sortOrder || 0))
-                    : arcs.filter(a => !a.parentId).sort((a,b) => (a.sortOrder || 0) - (b.sortOrder || 0));
+                    ? arcs.filter(a => a.parentId === parentArc.id).sort(sortByOrder)
+                    : arcs.filter(a => !a.parentId).sort(sortByOrder);
                 return siblingArcs.findIndex(a => a.id === arcId) + 1 || null;
             },
             isVerticalScroll: (arcId?:string) => {

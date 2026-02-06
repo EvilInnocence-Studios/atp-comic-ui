@@ -1,0 +1,15 @@
+@use "@styles/globals.module.scss";
+
+.verticalScrollChapters {
+    ul {
+        list-style: none;
+        padding: 0;
+        li {
+            border-bottom: 1px solid var(--borderColor);
+            padding: var(--padding) 0;
+            h2 {
+                margin: 0;
+            }
+        }
+    }
+}
