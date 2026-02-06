@@ -1,7 +1,7 @@
 import { IComicArc } from "@comic-shared/arc/types";
 
 export declare interface IArcTitleProps {
-    arcTypeName: (arc?: IComicArc | null) => string;
+    arcTypeName: (arc: IComicArc | null) => string;
     arcNumber: (arcId: string) => number | null;
 }
 
