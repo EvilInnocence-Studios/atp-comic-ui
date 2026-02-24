@@ -2,6 +2,7 @@ import { IModule } from "@core/lib/module";
 import { faImage } from "@fortawesome/free-solid-svg-icons";
 import { ComponentRegistry } from "@theming/lib/layout/componentRegistry";
 import { uacPlugins } from "@uac/lib/plugin/slots";
+import { LatestArc } from "./components/LatestArc";
 import { LatestPage } from "./components/LatestPage";
 import { RoutedArchive } from "./components/RoutedArchive";
 import { RoutedPage } from "./components/RoutedPage";
@@ -18,6 +19,7 @@ export const module: IModule = {
 }
 
 ComponentRegistry.register(LatestPage);
+ComponentRegistry.register(LatestArc);
 ComponentRegistry.register(RoutedArchive);
 ComponentRegistry.register(RoutedPage);
 
