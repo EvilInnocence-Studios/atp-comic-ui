@@ -1,8 +1,9 @@
+import { IComicArc } from "@comic-shared/arc/types";
 import { IComicUserPreferences } from "@comic/lib/useUserPreferences";
 
 export declare interface IVerticalScrollChapterViewProps {
-    arc: IArc;
-    chapters: IArc[];
+    arc: IComicArc | null;
+    chapters: IComicArc[];
 }
 
 // What gets passed into the component from the parent as attributes

@@ -3,9 +3,9 @@ import { overridable } from "@core/lib/overridable";
 import { Col, Row } from "antd";
 import Markdown from "react-markdown";
 import { Link } from "react-router";
-import { ArcTitle } from "../ArcTitle";
 import { VerticalScrollChapterViewProps } from "./VerticalScrollChapterView.d";
 import styles from './VerticalScrollChapterView.module.scss';
+import { Date } from "@core/components/Date";
 
 export const VerticalScrollChapterViewComponent = overridable(({chapters, arc, classes = styles}:VerticalScrollChapterViewProps) =>
     <div className={classes.verticalScrollChapters}>
@@ -13,17 +13,31 @@ export const VerticalScrollChapterViewComponent = overridable(({chapters, arc, c
         <ul>
             {chapters.map(chapter =>
                 <li key={chapter.id}>
-                    <Row gutter={16}>
-                        <Col span={6}>
+                    <Row gutter={16} align="middle">
+                        <Col span={4}>
                             <Link to={`/comic/arc/${chapter.url}`}>
                                 {!!chapter.thumbnailUrl && <ComicImage fileName={chapter.thumbnailUrl} className={classes.thumbnail} />}
                             </Link>
                         </Col>
                         <Col span={18}>
-                            <h2><Link to={`/comic/arc/${chapter.url}`}>
-                                <ArcTitle arc={chapter} />
-                            </Link></h2>
-                            <Markdown>{chapter.summary}</Markdown>
+                            <Row gutter={16}>
+                                <Col span={12}>
+                                    <h2><Link to={`/comic/arc/${chapter.url}`}>
+                                        {chapter.name}
+                                    </Link></h2>
+                                </Col>
+                                <Col span={12}>
+                                    <h2><Date date={chapter.postDate} /></h2>
+                                </Col>
+                                <Col span={24}>
+                                    <Markdown>{chapter.summary}</Markdown>
+                                </Col>
+                            </Row>
+                        </Col>
+                        <Col span={2}>
+                            <h2>#{chapter.sortOrder + 1}</h2>
+                        </Col>
+                        <Col span={24}>
                         </Col>
                     </Row>
                 </li>
