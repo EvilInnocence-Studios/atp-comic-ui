@@ -1,6 +1,7 @@
 import { IComicArc } from "@comic-shared/arc/types";
 
 export declare interface IArcNavProps {
+    archiveArc: IComicArc;
     prevArc: IComicArc | null;
     nextArc: IComicArc | null;
     firstArc: IComicArc | null;

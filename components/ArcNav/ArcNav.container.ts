@@ -14,7 +14,14 @@ const injectArcNavProps = createInjector(({arc}:IArcNavInputProps):IArcNavProps 
     const firstArc = story.arc.first(arc.id);
     const latestArc = story.arc.latest(arc.id);
 
-    return {nextArc, prevArc, firstArc, latestArc, linkType};
+    const archiveLinkLevel = useSetting("comic.ArchiveLinkLevel");
+    const parents = [...story.arc.parents(arc?.id), arc].filter(a => a !== null);
+    const archiveArc = archiveLinkLevel === ""
+        ? arc
+        : parents[parseInt(archiveLinkLevel, 10)];    
+
+
+    return {nextArc, prevArc, firstArc, latestArc, linkType, archiveArc};
 });
 
 const connect = inject<IArcNavInputProps, ArcNavProps>(mergeProps(

@@ -1,15 +1,15 @@
-import { faAngleDoubleLeft, faAngleDoubleRight, faAngleLeft, faAngleRight } from "@fortawesome/free-solid-svg-icons";
+import { MediaImage } from "@common/components/MediaImage";
+import { overridable } from "@core/lib/overridable";
+import { faAngleDoubleLeft, faAngleDoubleRight, faAngleLeft, faAngleRight, faBoxArchive } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import clsx from "clsx";
 import { Link } from "react-router";
 import { ComicImage } from "../ComicImage";
 import { ArcNavProps } from "./ArcNav.d";
 import styles from './ArcNav.module.scss';
-import clsx from "clsx";
-import { MediaImage } from "@common/components/MediaImage";
-import { overridable } from "@core/lib/overridable";
 
 export const ArcNavComponent = overridable(({
-    firstArc, prevArc, latestArc, nextArc,
+    firstArc, prevArc, latestArc, nextArc, archiveArc,
     top, bottom,
     linkType,
     classes = styles
@@ -32,7 +32,12 @@ export const ArcNavComponent = overridable(({
             {prevArc && prevArc.thumbnailUrl && <ComicImage className={classes.noShow} fileName={prevArc.thumbnailUrl} />}
         </div>
         <div>
-            {/* Middle spacer - ArcNav doesn't have an 'Up' link equivalent to PageNav's 'Archives' link currently */}
+            {archiveArc && <Link to={`/comic/arc/${archiveArc.url}`}>
+                {["icon"].includes(linkType) && <FontAwesomeIcon icon={faBoxArchive} />}
+                {["text"].includes(linkType) && `Archives`}
+                {["image"].includes(linkType) && <MediaImage settingKey="comic.archiveIcon" />}
+            </Link>}
+            {archiveArc && archiveArc.thumbnailUrl && <ComicImage className={classes.noShow} fileName={archiveArc.thumbnailUrl} />}
         </div>
         <div>
             {nextArc && <Link to={`/comic/arc/${nextArc.url}`}>
