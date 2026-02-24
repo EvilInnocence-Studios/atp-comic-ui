@@ -7,7 +7,6 @@ import { useNavigate } from "react-router";
 import { createInjector, inject, mergeProps } from "unstateless";
 import { ArcManagerComponent } from "./ArcManager.component";
 import { ArcManagerProps, IArcManagerInputProps, IArcManagerProps } from "./ArcManager.d";
-import { all } from "ts-functional";
 
 const injectArcManagerProps = createInjector(({arcId}:IArcManagerInputProps):IArcManagerProps => {
     const [arcs, setArcs] = useState<IComicArc[]>([]);
