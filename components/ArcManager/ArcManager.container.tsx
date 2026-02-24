@@ -7,6 +7,7 @@ import { useNavigate } from "react-router";
 import { createInjector, inject, mergeProps } from "unstateless";
 import { ArcManagerComponent } from "./ArcManager.component";
 import { ArcManagerProps, IArcManagerInputProps, IArcManagerProps } from "./ArcManager.d";
+import { all } from "ts-functional";
 
 const injectArcManagerProps = createInjector(({arcId}:IArcManagerInputProps):IArcManagerProps => {
     const [arcs, setArcs] = useState<IComicArc[]>([]);
@@ -48,6 +49,7 @@ const injectArcManagerProps = createInjector(({arcId}:IArcManagerInputProps):IAr
         loader(() => services().arc.create({
             name: 'New Arc',
             parentId,
+            postDate: null,
             enabled: false,
             isVerticalScroll: false,
             transcript: null,
@@ -56,7 +58,11 @@ const injectArcManagerProps = createInjector(({arcId}:IArcManagerInputProps):IAr
             thumbnailUrl: null,
             bannerUrl: null,
             summary: null
-        }).then(refresh));
+        }).then(newArc => {
+            refresh();
+            open(newArc.id)();
+            goToArc(newArc.id)();
+        }));
     }
 
     const remove = (id: string) => () => {
