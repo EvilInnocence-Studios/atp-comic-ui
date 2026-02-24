@@ -6,7 +6,8 @@ import { UrlEditor } from "@core/components/UrlEditor";
 import { overridable } from "@core/lib/overridable";
 import { faCaretDown, faCaretUp, faUpload } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { Button, Card, Col, Row, Select, Switch, Upload } from "antd";
+import { Button, Card, Col, DatePicker, Row, Select, Switch, Upload } from "antd";
+import dayjs from "dayjs";
 import { ComicImage } from "../ComicImage";
 import { PageManager } from "../PageManager";
 import { ArcEditorProps } from "./ArcEditor.d";
@@ -24,6 +25,13 @@ export const ArcEditorComponent = overridable(({
             <Col className={classes.header} span={24}>
                 <UpdateButtons className={classes.updateButtons} />
                 <Switch checked={arc.enabled} onChange={updateToggle("enabled")} checkedChildren="Enabled" unCheckedChildren="Disabled" />
+                <DatePicker
+                    style={{ marginLeft: 16 }}
+                    value={arc.postDate ? dayjs(arc.postDate) : null}
+                    onChange={(date) => updateString("postDate")(date ? date.toISOString() : "")}
+                    placeholder="Post Date"
+                />
+
                 <Select
                     className={classes.parentSelect}
                     style={{ width: 200 }}
