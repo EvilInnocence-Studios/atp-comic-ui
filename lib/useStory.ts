@@ -82,14 +82,15 @@ export const useStory = () => {
                         .flat();
                 }
             },
-            leafArcs: (arcId:string):IComicArc[] => {
+            leafArcs: (arcId:string):Array<IComicArc & {index:number}> => {
                 const subArcs = arc.subArcs(arcId);
                 return subArcs.length === 0
-                    ? [arc.getById(arcId) as IComicArc]
+                    ? [{...(arc.getById(arcId) as IComicArc), index:0}]
                     : subArcs
                         .sort(sortByOrder)
-                        .map(sa => arc.leafArcs(sa.id))
-                        .flat();
+                        .map((sa) => arc.leafArcs(sa.id))
+                        .flat()
+                        .map((a, index) => ({...a, index}));
             },
             first: (arcId:string):IComicArc | null => {
                 const rootArc = arc.root(arcId);

@@ -3,7 +3,7 @@ import { IComicUserPreferences } from "@comic/lib/useUserPreferences";
 
 export declare interface IVerticalScrollChapterViewProps {
     arc: IComicArc | null;
-    chapters: IComicArc[];
+    chapters: (IComicArc & {index:number})[];
 }
 
 // What gets passed into the component from the parent as attributes

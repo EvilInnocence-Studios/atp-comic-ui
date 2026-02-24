@@ -35,7 +35,7 @@ export const VerticalScrollChapterViewComponent = overridable(({chapters, arc, c
                             </Row>
                         </Col>
                         <Col span={2}>
-                            <h2>#{chapter.sortOrder + 1}</h2>
+                            <h2>#{chapter.index + 1}</h2>
                         </Col>
                         <Col span={24}>
                         </Col>
