@@ -1,10 +1,9 @@
 import { Editable } from "@core/components/Editable";
 import { Label } from "@core/components/Label";
 import { MarkdownEditor } from "@core/components/MarkdownEditor";
+import { UrlEditor } from "@core/components/UrlEditor";
 import { overridable } from "@core/lib/overridable";
-import { faRefresh } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { Button, Card, Col, DatePicker, Row, Switch } from "antd";
+import { Card, Col, DatePicker, Row, Switch } from "antd";
 import dayjs from "dayjs";
 import { CharacterAssigner } from "../CharacterAssigner";
 import { ComicImage } from "../ComicImage";
@@ -20,31 +19,7 @@ export const PageEditorComponent = overridable(({ page, updateString, updateTogg
                         <Editable value={page.name} onChange={updateString("name")} />
                     </Label>
                 </h1>
-                <div style={{position: "relative"}}>
-                    <Label label="URL">
-                        <Editable value={page.url || ""} onChange={updateString("url")} />
-                        <Button
-                            onClick={() => {
-                                const name = page.name || "";
-                                const url = name.replace(/\s+/g, "-").toLowerCase();
-                                updateString("url")(url);
-                            }}
-                            type="link"
-                            style={{
-                                position: "absolute",
-                                right: 0,
-                                top: "50%",
-                                transform: "translateY(-50%)",
-                                width: "24px",
-                                height: "24px",
-                                background: "transparent",
-                                border: "none",
-                            }}
-                        >
-                            <FontAwesomeIcon icon={faRefresh} />
-                        </Button>
-                    </Label>
-                </div>
+                <UrlEditor value={page.url || ""} onChange={updateString("url")} srcValue={page.name} />
             </Col>
             <Col className={classes.controls} xs={12}>
                 <UpdateButtons />

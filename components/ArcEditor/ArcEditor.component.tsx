@@ -2,8 +2,9 @@ import { DeleteBtn } from "@core/components/DeleteBtn";
 import { Editable } from "@core/components/Editable";
 import { Label } from "@core/components/Label";
 import { MarkdownEditor } from "@core/components/MarkdownEditor";
+import { UrlEditor } from "@core/components/UrlEditor";
 import { overridable } from "@core/lib/overridable";
-import { faCaretDown, faCaretUp, faRefresh, faUpload } from "@fortawesome/free-solid-svg-icons";
+import { faCaretDown, faCaretUp, faUpload } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Button, Card, Col, Row, Select, Switch, Upload } from "antd";
 import { ComicImage } from "../ComicImage";
@@ -43,31 +44,7 @@ export const ArcEditorComponent = overridable(({
                 <h1><Label label="Name">
                     <Editable value={arc.name} onChange={updateString("name")} />
                 </Label></h1>
-                <div style={{position: "relative"}}>
-                    <Label label="Url">
-                        <Editable value={arc.url || ""} onChange={updateString("url")} placeholder="URL" />
-                        <Button
-                            onClick={() => {
-                                const name = arc.name || "";
-                                const url = name.replace(/\s+/g, "-").toLowerCase();
-                                updateString("url")(url);
-                            }}
-                            type="link"
-                            style={{
-                                position: "absolute",
-                                right: 0,
-                                top: "50%",
-                                transform: "translateY(-50%)",
-                                width: "24px",
-                                height: "24px",
-                                background: "transparent",
-                                border: "none",
-                            }}
-                        >
-                            <FontAwesomeIcon icon={faRefresh} />
-                        </Button>
-                    </Label>
-                </div>
+                <UrlEditor value={arc.url || ""} onChange={updateString("url")} srcValue={arc.name} />
                 <br />
                 <Card size="small" title="Summary">
                     <MarkdownEditor value={arc.summary || ""} onChange={updateString("summary")} />
