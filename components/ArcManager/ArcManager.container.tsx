@@ -43,6 +43,8 @@ const injectArcManagerProps = createInjector(({arcId}:IArcManagerInputProps):IAr
     useEffect(refresh, []);
 
     const create = (parentId: string|null = null) => () => {
+        const siblings = arcs.filter(a => a.parentId === parentId);
+        const maxSortOrder = siblings.length > 0 ? Math.max(...siblings.map(a => a.sortOrder)) : -1;
         loader(() => services().arc.create({
             name: 'New Arc',
             parentId,
@@ -50,7 +52,7 @@ const injectArcManagerProps = createInjector(({arcId}:IArcManagerInputProps):IAr
             isVerticalScroll: false,
             transcript: null,
             url: null,
-            sortOrder: 0,
+            sortOrder: maxSortOrder + 1,
             thumbnailUrl: null,
             bannerUrl: null,
             summary: null
