@@ -21,13 +21,13 @@ export const VerticalScrollChapterViewComponent = overridable(({chapters, arc, c
                         </Col>
                         <Col span={18}>
                             <Row gutter={16}>
-                                <Col span={12}>
+                                <Col span={16}>
                                     <h2><Link to={`/comic/arc/${chapter.url}`}>
                                         {chapter.name}
                                     </Link></h2>
                                 </Col>
-                                <Col span={12}>
-                                    <h2><Date date={chapter.postDate} /></h2>
+                                <Col span={8}>
+                                    <Date date={chapter.postDate} noWeekday />
                                 </Col>
                                 <Col span={24}>
                                     <Markdown>{chapter.summary}</Markdown>
