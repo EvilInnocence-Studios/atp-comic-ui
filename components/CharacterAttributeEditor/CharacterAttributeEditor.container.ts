@@ -37,7 +37,11 @@ const injectCharacterAttributeEditorProps = createInjector(({characterId}:IChara
         const [name, setName] = useState('');
         const [value, setValue] = useState('');
         const create = () => {
-            loader(() => att.create(characterId, name, value)
+            loader(() => att.create(characterId, {
+                name,
+                value,
+                sortOrder: Math.max(...attributes.map(a => a.sortOrder)) + 1,
+            })
                 .then(appendTo(attributes))
                 .then(all(
                     refresh,

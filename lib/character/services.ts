@@ -1,4 +1,4 @@
-import { ICharacterAttribute, ICharacterMedia, IComicCharacter, NewComicCharacter } from "@comic-shared/character/types";
+import { ICharacterAttribute, ICharacterMedia, IComicCharacter, NewCharacterAttribute, NewComicCharacter } from "@comic-shared/character/types";
 import { IMethods } from "@core/lib/types";
 import { getResults } from "@core/lib/util";
 
@@ -13,8 +13,8 @@ export const characterServices = ({get, post, /*put,*/ patch, remove}: IMethods)
         pages: (characterId:string):Promise<string[]> => get(`character/${characterId}/pages`).then(getResults),
         attribute: {
             search: (characterId:string):Promise<ICharacterAttribute[]> => get(`character/${characterId}/attribute`).then(getResults),
-            create: (characterId:string, name:string, value:string):Promise<ICharacterAttribute> => post(`character/${characterId}/attribute`, {name, value}).then(getResults),
-            update: (characterId:string, attributeId:string, value:string):Promise<ICharacterAttribute> => patch(`character/${characterId}/attribute/${attributeId}`, {value}).then(getResults),
+            create: (characterId:string, attribute:Partial<NewCharacterAttribute>):Promise<ICharacterAttribute> => post(`character/${characterId}/attribute`, attribute).then(getResults),
+            update: (characterId:string, attributeId:string, attribute:Partial<ICharacterAttribute>):Promise<ICharacterAttribute> => patch(`character/${characterId}/attribute/${attributeId}`, attribute).then(getResults),
             remove: (characterId:string, attributeId:string):Promise<null> => remove(`character/${characterId}/attribute/${attributeId}`),
             sort: (characterId:string, attributeId:string, newIndex:number):Promise<ICharacterAttribute[]> => post(`character/${characterId}/attribute/sort`, {attributeId, newIndex}).then(getResults),
         },

@@ -31,7 +31,7 @@ const injectCharacterManagerProps = createInjector(({characterId}:ICharacterMana
     const createCharacter = () => {
         loader(() => services().character.create({
             name: "New Character",
-            sortOrder: characters.length,
+            sortOrder: Math.max(...characters.map(c => c.sortOrder)) + 1,
             enabled: false,
             thumbnailId: null,
             mainImageId: null,
