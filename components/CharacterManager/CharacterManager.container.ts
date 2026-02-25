@@ -28,6 +28,21 @@ const injectCharacterManagerProps = createInjector(({characterId}:ICharacterMana
         }
     };
 
+    const createCharacter = () => {
+        loader(() => services().character.create({
+            name: "New Character",
+            sortOrder: characters.length,
+            enabled: false,
+            thumbnailId: null,
+            mainImageId: null,
+            showDetails: false,
+            bio: "",
+        }).then(newChar => {
+            refresh();
+            setSelectedCharacter(newChar)();
+        }));
+    };
+
     const selectedCharacter = characterId ? characters.find(c => c.id === characterId) || null : null;
 
     const sortChars = (characterId: string, newIndex: number) => {
@@ -36,6 +51,7 @@ const injectCharacterManagerProps = createInjector(({characterId}:ICharacterMana
 
     return {
         characters: characters.sort(sort.by(prop<any, any>("sortOrder")).asc),
+        createCharacter,
         isLoading: loader.isLoading,
         selectedCharacter, setSelectedCharacter,
         refresh,
