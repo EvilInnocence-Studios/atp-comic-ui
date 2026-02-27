@@ -1,14 +1,14 @@
-import { Col, Row, Spin } from "antd";
+import { IComicCharacter } from "@comic-shared/character/types";
+import { ClearCacheButton } from "@common/components/ClearCacheButton";
+import { SortableList } from "@core/components/SortableList";
+import { overridable } from "@core/lib/overridable";
+import { faPlus, faUsers } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { Button, Col, Row, Spin } from "antd";
+import { prop } from "ts-functional";
+import { CharacterEditor } from "../CharacterEditor";
 import { CharacterManagerProps } from "./CharacterManager.d";
 import styles from './CharacterManager.module.scss';
-import { CharacterEditor } from "../CharacterEditor";
-import { SortableList } from "@core/components/SortableList";
-import { IComicCharacter } from "@comic-shared/character/types";
-import { prop } from "ts-functional";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faUsers } from "@fortawesome/free-solid-svg-icons";
-import { ClearCacheButton } from "@common/components/ClearCacheButton";
-import { overridable } from "@core/lib/overridable";
 
 export const CharacterItem = overridable(({ item: character, setSelectedCharacter, classes = styles }: any) =>
     <div
@@ -22,13 +22,19 @@ export const CharacterItem = overridable(({ item: character, setSelectedCharacte
 export const CharacterManagerComponent = overridable(({
     characters, isLoading,
     selectedCharacter, setSelectedCharacter,
-    sort, refresh,
+    sort, refresh, createCharacter,
     classes = styles
 }: CharacterManagerProps) =>
     <div className={classes.characterManager}>
         <Spin spinning={isLoading}>
-            <h1><FontAwesomeIcon icon={faUsers} /> Characters</h1>
-            <ClearCacheButton entity="character" cacheType="character" />
+            <div style={{ position: "absolute", right: "10px", top: "10px" }}>
+                <ClearCacheButton entity="character" cacheType="character" />
+            </div>
+            <h1>
+                <FontAwesomeIcon icon={faUsers} /> Characters
+                &nbsp;
+                <Button onClick={createCharacter} type="primary"><FontAwesomeIcon icon={faPlus} /> Create Character</Button>
+            </h1>
             <Row gutter={[16, 16]}>
                 <Col xs={3}>
                     <SortableList<IComicCharacter>

@@ -7,6 +7,7 @@ export declare interface ICharacterManagerProps {
     selectedCharacter: IComicCharacter | null;
     setSelectedCharacter: (character: IComicCharacter | null) => () => void;
     sort: (characterId: string, newIndex: number) => void;
+    createCharacter: () => void;
 }
 
 // What gets passed into the component from the parent as attributes
