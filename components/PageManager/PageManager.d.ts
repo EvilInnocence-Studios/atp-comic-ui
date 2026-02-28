@@ -5,6 +5,7 @@ export declare interface IPageManagerProps {
     isLoading: boolean;
     refresh: () => void;
     remove: (pageId: string) => () => void;
+    removeAll: () => void;
     upload: (file: File) => Promise<IComicPage>;
     onUploadSuccess: (pages: IComicPage[]) => void;
     enableAll: () => void;

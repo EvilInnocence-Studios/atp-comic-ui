@@ -1,7 +1,7 @@
 import { IComicPage } from "@comic-shared/page/types";
 import { services } from "@core/lib/api";
 import { overridable } from "@core/lib/overridable";
-import { useLoaderAsync } from "@core/lib/useLoader";
+import { useLoader, useLoaderAsync } from "@core/lib/useLoader";
 import { useEffect, useState } from "react";
 import { createInjector, inject, mergeProps } from "unstateless";
 import { PageManagerComponent } from "./PageManager.component";
@@ -11,9 +11,14 @@ import { flash } from "@core/lib/flash";
 const injectPageManagerProps = createInjector(({arcId}:IPageManagerInputProps):IPageManagerProps => {
     const [pages, setPages] = useState<IComicPage[]>([]);
     const loader = useLoaderAsync();
+    const pageLoader = useLoader();
 
     const remove = (pageId:string) => () => {
         loader(() => services().page.remove(pageId).then(refresh));
+    }
+
+    const removeAll = () => {
+        loader(() => Promise.all(pages.map(page => services().page.remove(page.id))).then(refresh));
     }
 
     const refresh = () => {
@@ -36,8 +41,9 @@ const injectPageManagerProps = createInjector(({arcId}:IPageManagerInputProps):I
 
     useEffect(refresh, [arcId]);
 
-    const upload = (file:File):Promise<IComicPage> => 
-        services().page.getUploadUrl(file.name)
+    const upload = (file:File):Promise<IComicPage> => {
+        pageLoader.start();
+        return services().page.getUploadUrl(file.name)
         .then((uploadUrl:string) => 
             fetch(uploadUrl, {
                 method: 'PUT',
@@ -59,8 +65,10 @@ const injectPageManagerProps = createInjector(({arcId}:IPageManagerInputProps):I
                 arcId
             })
         );
+    }
 
     const onUploadSuccess = (newPages: IComicPage[]) => {
+        pageLoader.cancel();
         // Get the current maximum sortOrder for the arc's pages
         const currentMaxSortOrder = pages.reduce((max, page) => page.sortOrder > max ? page.sortOrder : max, 0);
 
@@ -78,7 +86,11 @@ const injectPageManagerProps = createInjector(({arcId}:IPageManagerInputProps):I
             .then(refresh);
     }
 
-    return {pages, isLoading: loader.isLoading, refresh, remove, upload, onUploadSuccess, enableAll, disableAll};
+    return {
+        pages,
+        isLoading: loader.isLoading || pageLoader.isLoading,
+        refresh, remove, removeAll, upload, onUploadSuccess, enableAll, disableAll,
+    };
 });
 
 const connect = inject<IPageManagerInputProps, PageManagerProps>(mergeProps(
