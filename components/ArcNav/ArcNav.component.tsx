@@ -15,7 +15,7 @@ export const ArcNavComponent = overridable(({
     classes = styles
 }: ArcNavProps) =>
     <div className={clsx([classes.comicNavLinksContainer, top && classes.top, bottom && classes.bottom])} style={{ textAlign: "center", fontSize: "x-large" }}>
-        <div>
+        <div className={classes.navItem}>
             {firstArc && prevArc && <Link to={`/comic/arc/${(firstArc.url)}`}>
                 {["icon", "text"].includes(linkType) && <FontAwesomeIcon icon={faAngleDoubleLeft} />}
                 {["text"].includes(linkType) && " First"}
@@ -23,7 +23,7 @@ export const ArcNavComponent = overridable(({
             </Link>}
             {firstArc && firstArc.thumbnailUrl && <ComicImage className={classes.noShow} fileName={firstArc.thumbnailUrl} />}
         </div>
-        <div>
+        <div className={classes.navItem}>
             {prevArc && <Link to={`/comic/arc/${prevArc.url}`}>
                 {["icon", "text"].includes(linkType) && <FontAwesomeIcon icon={faAngleLeft} />}
                 {["text"].includes(linkType) && " Previous"}
@@ -31,7 +31,7 @@ export const ArcNavComponent = overridable(({
             </Link>}
             {prevArc && prevArc.thumbnailUrl && <ComicImage className={classes.noShow} fileName={prevArc.thumbnailUrl} />}
         </div>
-        <div>
+        <div className={classes.navItem}>
             {archiveArc && <Link to={`/comic/arc/${archiveArc.url}`}>
                 {["icon"].includes(linkType) && <FontAwesomeIcon icon={faBoxArchive} />}
                 {["text"].includes(linkType) && `Archives`}
@@ -39,7 +39,7 @@ export const ArcNavComponent = overridable(({
             </Link>}
             {archiveArc && archiveArc.thumbnailUrl && <ComicImage className={classes.noShow} fileName={archiveArc.thumbnailUrl} />}
         </div>
-        <div>
+        <div className={classes.navItem}>
             {nextArc && <Link to={`/comic/arc/${nextArc.url}`}>
                 {["text"].includes(linkType) && " Next"}
                 {["icon", "text"].includes(linkType) && <FontAwesomeIcon icon={faAngleRight} />}
@@ -47,7 +47,7 @@ export const ArcNavComponent = overridable(({
             </Link>}
             {nextArc && nextArc.thumbnailUrl && <ComicImage className={classes.noShow} fileName={nextArc.thumbnailUrl} />}
         </div>
-        <div>
+        <div className={classes.navItem}>
             {latestArc && nextArc && <Link to={`/comic/arc/${latestArc.url}`}>
                 {["text"].includes(linkType) && " Latest"}
                 {["icon", "text"].includes(linkType) && <FontAwesomeIcon icon={faAngleDoubleRight} />}

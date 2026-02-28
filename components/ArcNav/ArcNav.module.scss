@@ -1,23 +1,41 @@
 @use "@styles/globals.module.scss";
 
 .comicNavLinksContainer {
-    display: grid;
-    grid-template-columns: 15% 15% auto 15% 15%;
-    padding: var(--padding) 0;
-    background-color: var(--comicNavBackgroundColor);
-    img {
-        height: var(--comicNavIconSize);
-        width: auto;
-    }
-    .noShow {
-        display: none;
-    }
-    &.top {
-        border-top-left-radius: var(--borderRadius);
-        border-top-right-radius: var(--borderRadius);
-    }
-    &.bottom {
-        border-bottom-left-radius: var(--borderRadius);
-        border-bottom-right-radius: var(--borderRadius);
-    }
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, max-content)); // content-based widths
+  justify-content: space-between; // spread items across the full row
+  align-items: center;
+
+  padding: 0;
+  background-color: var(--comicNavBackgroundColor);
+
+  // pick the shared height you want
+  --navThumbH: 64px; // tweak or use clamp(48px, 6vw, 80px);
+
+  .navItem {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: var(--padding);
+    min-width: 0; // helps prevent overflow surprises
+  }
+
+  // Target images inside the nav (covers <img> inside MediaImage/ComicImage)
+  img {
+    max-height: var(--navThumbH);
+    width: auto;        // preserve aspect ratio
+    max-width: 100%;    // don’t overflow the cell
+    display: block;
+  }
+
+  .noShow { display: none; }
+
+  &.top {
+    border-top-left-radius: var(--borderRadius);
+    border-top-right-radius: var(--borderRadius);
+  }
+  &.bottom {
+    border-bottom-left-radius: var(--borderRadius);
+    border-bottom-right-radius: var(--borderRadius);
+  }
 }
