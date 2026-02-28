@@ -12,10 +12,11 @@
     h1 {
         margin: 0;
         padding: 0;
+        @media (max-width: 768px) {
+            font-size: 12pt;
+        }
     }
     .pageDetails {
-        display: inline-block;
-        width: 50%;
         vertical-align: top;
         margin-top: var(--padding);
         p {
@@ -26,8 +27,6 @@
         }
     }
     .pageTranscript {
-        display: inline-block;
-        width: 50%;
         vertical-align: top;
         margin-top: var(--padding);
         h1 {
