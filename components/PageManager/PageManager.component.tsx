@@ -3,7 +3,7 @@ import { DeleteBtn } from "@core/components/DeleteBtn";
 import { Uploader } from "@core/components/Uploader";
 import { faInfoCircle } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { Button, Card, Space, Typography } from "antd";
+import { Button, Card, Col, Row, Space, Typography } from "antd";
 import { Link } from "react-router";
 import { prop, sort } from "ts-functional";
 import { ComicImage } from "../ComicImage";
@@ -51,14 +51,20 @@ export const PageManagerComponent = overridable(({
                             <Link to={`/comic/arc/${arcId}/page/${page.id}`}>
                                 <ComicImage fileName={page.imageUrl || ""} />
                             </Link>
-                            <div className={classes.date}>
-                                <Typography.Text type={page.enabled ? "success" : "danger"}>
-                                    {page.enabled && page.postDate ? new Date(page.postDate).toDateString() : "Disabled"}
-                                </Typography.Text>
-                            </div>
-                            <div className={classes.controls}>
-                                <DeleteBtn entityType="page" onClick={remove(page.id)} />
-                            </div>
+                            <Row>
+                                <Col xs={21}>
+                                    <div className={classes.date}>
+                                        <Typography.Text type={page.enabled ? "success" : "danger"}>
+                                            {page.enabled && page.postDate ? new Date(page.postDate).toDateString() : "Disabled"}
+                                        </Typography.Text>
+                                    </div>
+                                </Col>
+                                <Col xs={3}>
+                                    <div className={classes.controls}>
+                                        <DeleteBtn entityType="page" onClick={remove(page.id)} />
+                                    </div>
+                                </Col>
+                            </Row>
                         </Card>
                     </li>)}
                 </ul>
