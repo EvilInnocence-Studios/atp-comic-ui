@@ -1,12 +1,11 @@
-import { faAngleDoubleLeft, faAngleDoubleRight, faAngleLeft, faAngleRight, faBoxArchive } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { Link } from "react-router-dom";
-import { ComicImage } from "../ComicImage";
-import { PageNavProps } from "./PageNav.d";
-import styles from './PageNav.module.scss';
-import clsx from "clsx";
 import { MediaImage } from "@common/components/MediaImage";
 import { overridable } from "@core/lib/overridable";
+import { faAngleDoubleLeft, faAngleDoubleRight, faAngleLeft, faAngleRight, faBoxArchive } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import clsx from "clsx";
+import { Link } from "react-router-dom";
+import { PageNavProps } from "./PageNav.d";
+import styles from './PageNav.module.scss';
 
 export const PageNavComponent = overridable(({
     firstPage, prevPage, lastPage, nextPage,
