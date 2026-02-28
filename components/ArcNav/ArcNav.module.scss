@@ -28,7 +28,7 @@
     display: block;
   }
 
-  .noShow { display: none; }
+  .noShow { visibility: hidden; }
 
   &.top {
     border-top-left-radius: var(--borderRadius);

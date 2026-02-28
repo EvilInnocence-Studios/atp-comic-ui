@@ -4,7 +4,6 @@ import { faAngleDoubleLeft, faAngleDoubleRight, faAngleLeft, faAngleRight, faBox
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import clsx from "clsx";
 import { Link } from "react-router";
-import { ComicImage } from "../ComicImage";
 import { ArcNavProps } from "./ArcNav.d";
 import styles from './ArcNav.module.scss';
 
@@ -16,44 +15,39 @@ export const ArcNavComponent = overridable(({
 }: ArcNavProps) =>
     <div className={clsx([classes.comicNavLinksContainer, top && classes.top, bottom && classes.bottom])} style={{ textAlign: "center", fontSize: "x-large" }}>
         <div className={classes.navItem}>
-            {firstArc && prevArc && <Link to={`/comic/arc/${(firstArc.url)}`}>
+            <Link className={clsx(!prevArc && classes.noShow)} to={`/comic/arc/${(firstArc?.url)}`}>
                 {["icon", "text"].includes(linkType) && <FontAwesomeIcon icon={faAngleDoubleLeft} />}
                 {["text"].includes(linkType) && " First"}
                 {["image"].includes(linkType) && <MediaImage settingKey="comic.firstPageIcon" />}
-            </Link>}
-            {firstArc && firstArc.thumbnailUrl && <ComicImage className={classes.noShow} fileName={firstArc.thumbnailUrl} />}
+            </Link>
         </div>
         <div className={classes.navItem}>
-            {prevArc && <Link to={`/comic/arc/${prevArc.url}`}>
+            <Link className={clsx(!prevArc && classes.noShow)} to={`/comic/arc/${prevArc?.url}`}>
                 {["icon", "text"].includes(linkType) && <FontAwesomeIcon icon={faAngleLeft} />}
                 {["text"].includes(linkType) && " Previous"}
                 {["image"].includes(linkType) && <MediaImage settingKey="comic.previousPageIcon" />}
-            </Link>}
-            {prevArc && prevArc.thumbnailUrl && <ComicImage className={classes.noShow} fileName={prevArc.thumbnailUrl} />}
+            </Link>
         </div>
         <div className={classes.navItem}>
-            {archiveArc && <Link to={`/comic/arc/${archiveArc.url}`}>
+            <Link className={clsx(!archiveArc && classes.noShow)} to={`/comic/arc/${archiveArc?.url}`}>
                 {["icon"].includes(linkType) && <FontAwesomeIcon icon={faBoxArchive} />}
                 {["text"].includes(linkType) && `Archives`}
                 {["image"].includes(linkType) && <MediaImage settingKey="comic.archiveIcon" />}
-            </Link>}
-            {archiveArc && archiveArc.thumbnailUrl && <ComicImage className={classes.noShow} fileName={archiveArc.thumbnailUrl} />}
+            </Link>
         </div>
         <div className={classes.navItem}>
-            {nextArc && <Link to={`/comic/arc/${nextArc.url}`}>
+            <Link className={clsx(!nextArc && classes.noShow)} to={`/comic/arc/${nextArc?.url}`}>
                 {["text"].includes(linkType) && " Next"}
                 {["icon", "text"].includes(linkType) && <FontAwesomeIcon icon={faAngleRight} />}
                 {["image"].includes(linkType) && <MediaImage settingKey="comic.nextPageIcon" />}
-            </Link>}
-            {nextArc && nextArc.thumbnailUrl && <ComicImage className={classes.noShow} fileName={nextArc.thumbnailUrl} />}
+            </Link>
         </div>
         <div className={classes.navItem}>
-            {latestArc && nextArc && <Link to={`/comic/arc/${latestArc.url}`}>
+            <Link className={clsx(!nextArc && classes.noShow)} to={`/comic/arc/${latestArc?.url}`}>
                 {["text"].includes(linkType) && " Latest"}
                 {["icon", "text"].includes(linkType) && <FontAwesomeIcon icon={faAngleDoubleRight} />}
                 {["image"].includes(linkType) && <MediaImage settingKey="comic.lastPageIcon" />}
-            </Link>}
-            {latestArc && latestArc.thumbnailUrl && <ComicImage className={classes.noShow} fileName={latestArc.thumbnailUrl} />}
+            </Link>
         </div>
     </div>
 );
