@@ -3,7 +3,13 @@ export declare interface ICharacterAppearancesProps {
         pageNumber: number | null;
         page: IComicPage | null;
     }>;
+    arcs: Array<{
+        arcNumber: number | null;
+        arc: IArc | null;
+        typeName: string;
+    }>;
     goToPage: (url: string) => void;
+    goToArc: (url: string) => void;
 }
 
 // What gets passed into the component from the parent as attributes
