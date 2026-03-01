@@ -7,7 +7,12 @@ import { createInjector, inject, mergeProps } from "unstateless";
 import { CharacterAssignerComponent } from "./CharacterAssigner.component";
 import { CharacterAssignerProps, ICharacterAssignerInputProps, ICharacterAssignerProps } from "./CharacterAssigner.d";
 
-const injectCharacterAssignerProps = createInjector(({pageId}:ICharacterAssignerInputProps):ICharacterAssignerProps => {
+const injectCharacterAssignerProps = createInjector((props: ICharacterAssignerInputProps): ICharacterAssignerProps => {
+    const { pageId, arcId } = props;
+    const isPage = typeof pageId === "string";
+    const api = isPage ? services().page.character : services().arc.character;
+    const entityId = (isPage ? pageId : arcId) as string;
+
     // key, title
     const [allCharacters, setAllCharacters] = useState<IComicCharacter[]>([]);
     const [assigned, setAssigned] = useState<IComicCharacter[]>([]);
@@ -18,28 +23,26 @@ const injectCharacterAssignerProps = createInjector(({pageId}:ICharacterAssigner
     }, []);
 
     const refresh = () => {
-        if(pageId) {
-            loader(() => services().page.character.search(pageId).then(setAssigned));
-        }
+        loader(() => api.search(entityId).then(setAssigned));
     }
 
-    useEffect(refresh, [pageId]);
+    useEffect(refresh, [entityId]);
 
-    const onChange = (_nextTargetKeys:Key[], direction:string, moveKeys:Key[]) => {
+    const onChange = (_nextTargetKeys: Key[], direction: string, moveKeys: Key[]) => {
         if (direction === "right") {
             // Assign
-            Promise.all(moveKeys.map((characterId) =>
-                services().page.character.add(pageId, characterId)
-            )).then(refresh);
+            Promise.all(moveKeys.map((characterId) => {
+                return api.add(entityId, characterId);
+            })).then(refresh);
         } else if (direction === "left") {
             // Unassign
-            Promise.all(moveKeys.map((characterId) =>
-                services().page.character.remove(pageId, characterId)
-            )).then(refresh);
+            Promise.all(moveKeys.map((characterId) => {
+                return api.remove(entityId, characterId);
+            })).then(refresh);
         }
     }
-    
-    return {allCharacters, assigned, onChange, isLoading: loader.isLoading};
+
+    return { allCharacters, assigned, onChange, isLoading: loader.isLoading };
 });
 
 const connect = inject<ICharacterAssignerInputProps, CharacterAssignerProps>(mergeProps(

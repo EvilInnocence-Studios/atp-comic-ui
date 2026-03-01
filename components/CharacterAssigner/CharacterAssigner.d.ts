@@ -9,9 +9,11 @@ export declare interface ICharacterAssignerProps {
 }
 
 // What gets passed into the component from the parent as attributes
-export declare interface ICharacterAssignerInputProps {
-    pageId: string;
+export type ICharacterAssignerInputProps = {
     classes?: any;
-}
+} & (
+        | { pageId: string; arcId?: never }
+        | { arcId: string; pageId?: never }
+    );
 
 export type CharacterAssignerProps = ICharacterAssignerInputProps & ICharacterAssignerProps;

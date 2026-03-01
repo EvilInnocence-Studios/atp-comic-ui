@@ -8,6 +8,7 @@ import { faCaretDown, faCaretUp, faUpload } from "@fortawesome/free-solid-svg-ic
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Button, Card, Col, DatePicker, Row, Select, Switch, Upload } from "antd";
 import dayjs from "dayjs";
+import { CharacterAssigner } from "../CharacterAssigner";
 import { ComicImage } from "../ComicImage";
 import { PageManager } from "../PageManager";
 import { ArcEditorProps } from "./ArcEditor.d";
@@ -93,6 +94,8 @@ export const ArcEditorComponent = overridable(({
                         <FontAwesomeIcon icon={faUpload} /> Click or drag file to this area to upload
                     </Upload.Dragger>
                 </Card>
+                <br />
+                <CharacterAssigner arcId={arc.id} />
             </Col>
         </Row>
     </div>
