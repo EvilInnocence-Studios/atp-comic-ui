@@ -20,6 +20,7 @@ export const ComicAdPropEditor = (
         <Label label="Height">
             <Input type="number" value={height} onChange={onInputChange(updateProp("height"))} />
         </Label>
+        <p><b>Default Ad</b></p>
         <MediaPicker imageId={defaultAdId} onSelect={updateProp("defaultAdId")} />
         <Label label="Default Ad Link">
             <Editable value={defaultAdLink || ""} onChange={updateProp("defaultAdLink")} />
@@ -36,6 +37,7 @@ export const SizedComicAdPropEditor = (
         <Label label="Code">
             <Editable value={code} onChange={updateProp("code")} />
         </Label>
+        <p><b>Default Ad</b></p>
         <MediaPicker imageId={defaultAdId} onSelect={updateProp("defaultAdId")} />
         <Label label="Default Ad Link">
             <Editable value={defaultAdLink || ""} onChange={updateProp("defaultAdLink")} />
