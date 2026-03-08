@@ -34,7 +34,7 @@ uacPlugins.myAccount.tabs.register({
 });
 
 LayoutRegistry.register({
-    name: "comic",
+    name: "comicPage",
     displayName: "Comic Page Layout",
     description: "The comic page layout and design",
     defaultLayout: {
