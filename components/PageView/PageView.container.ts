@@ -15,14 +15,13 @@ const injectPageViewProps = createInjector(({ url }: IPageViewInputProps): IPage
     const pageUrl = useContext(ComicPageUrlContext);
 
     const page = story.page.get(url || pageUrl);
-    const nextPage = story.page.next(page?.id);
     const pageNumber = story.arc.allPages(story.arc.root(page?.arcId)?.id).findIndex(p => p.id === page?.id) + 1;
 
     useEffect(() => {
         setPageTitle(pageNumber ? `Page ${pageNumber}` : "Loading...");
     }, [pageNumber]);
 
-    return { page, nextPage, transcript, pageNumber };
+    return { page, transcript, pageNumber };
 });
 
 const connect = inject<IPageViewInputProps, PageViewProps>(mergeProps(

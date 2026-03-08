@@ -5,7 +5,6 @@ import { IToggle } from "@core/lib/useToggle";
 export declare interface IPageViewProps {
     page: IComicPage | null;
     pageNumber: number;
-    nextPage: IComicPage | null;
     transcript: IToggle;
 }
 

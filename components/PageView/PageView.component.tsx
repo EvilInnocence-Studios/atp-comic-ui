@@ -11,25 +11,30 @@ import { overridable } from "@core/lib/overridable";
 import clsx from "clsx";
 import { Col, Row } from "antd";
 import { Layout } from "@theming/components/Layout";
+import { ComicPageUrlContext } from "@comic/lib/context";
+import { PageImage } from "./PageImage";
 
-export const PageViewComponent = overridable(({ page, pageNumber, nextPage, transcript, classes = styles, className }: PageViewProps) => <>
-    <Layout element="comicPage" />
+const Provider = ComicPageUrlContext.Provider;
+
+export const PageViewComponent = overridable(({url, page, pageNumber, transcript, classes = styles, className }: PageViewProps) => <>
     {!!page && <div className={clsx(classes.comicPage, className)}>
-        <PageNav page={page} top />
-        {!!nextPage && <Link to={`/comic/page/${nextPage.url}`}><ComicImage fileName={page.imageUrl || ""} /></Link>}
-        {!nextPage && <ComicImage fileName={page.imageUrl || ""} />}
-        <PageNav page={page} bottom />
-        <Row gutter={8}>
-            <Col xs={24} md={12} className={classes.pageDetails}>
-                <h1>Page {pageNumber}: {page.name}</h1>
-                <p><Date date={page.postDate} /></p>
-            </Col>
-            <Col xs={24} md={12} className={classes.pageTranscript}>
-                <h1 onClick={transcript.toggle}><FontAwesomeIcon icon={faClosedCaptioning} /> Transcript</h1>
-                {transcript.isset && <div className={classes.transcriptCopy}>
-                    <Markdown>{page.transcript}</Markdown>
-                </div>}
-            </Col>
-        </Row>
+        <Layout element="comicPage" context={url} />
+        <Provider value={url || ""}>
+            <PageNav page={page} top />
+            <PageImage />
+            <PageNav page={page} bottom />
+            <Row gutter={8}>
+                <Col xs={24} md={12} className={classes.pageDetails}>
+                    <h1>Page {pageNumber}: {page.name}</h1>
+                    <p><Date date={page.postDate} /></p>
+                </Col>
+                <Col xs={24} md={12} className={classes.pageTranscript}>
+                    <h1 onClick={transcript.toggle}><FontAwesomeIcon icon={faClosedCaptioning} /> Transcript</h1>
+                    {transcript.isset && <div className={classes.transcriptCopy}>
+                        <Markdown>{page.transcript}</Markdown>
+                    </div>}
+                </Col>
+            </Row>
+        </Provider>
     </div>}
 </>);
