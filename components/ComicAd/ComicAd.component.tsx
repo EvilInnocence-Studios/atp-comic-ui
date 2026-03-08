@@ -2,8 +2,14 @@ import { useEffect, useRef } from 'react';
 import { ComicAdProps, SizedComicAdProps } from "./ComicAd.d";
 import styles from './ComicAd.module.scss';
 import { overridable } from '@core/lib/overridable';
+import { Link } from 'react-router';
+import { MediaImage } from '@common/components/MediaImage';
+import clsx from 'clsx';
 
-export const ComicAdComponent = overridable(({ code, width, height, classes = styles }: ComicAdProps) => {
+export const ComicAdComponent = overridable(({
+	code, width, height, defaultAdId, defaultAdLink,
+	classes = styles, className, css,
+}: ComicAdProps) => {
 	const containerRef = useRef<HTMLDivElement | null>(null);
 
 	useEffect(() => {
@@ -39,7 +45,14 @@ export const ComicAdComponent = overridable(({ code, width, height, classes = st
 		};
 	}, [code]);
 
-	return <div className={classes.ad} ref={containerRef} style={{ width, height }} />;
+	return <>
+		<style>{css}</style>
+		<div className={clsx(classes.ad, className)} ref={containerRef} style={{ width, height }}>
+			{defaultAdId && <Link to={defaultAdLink || ""}>
+				<MediaImage imageId={defaultAdId} />
+			</Link>}
+		</div>
+	</>;
 });
 
 export const SizedComicAdComponent = (width: number, height: number) => (props: SizedComicAdProps) =>
