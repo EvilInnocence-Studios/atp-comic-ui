@@ -7,6 +7,8 @@ export declare interface IComicAdInputProps {
     code: string;
     width: number;
     height: number;
+    defaultAdId?: string;
+    defaultAdLink?: string;
     classes?: any;
 }
 
