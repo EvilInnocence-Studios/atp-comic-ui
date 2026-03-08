@@ -29,9 +29,9 @@ export const connectPageImage = connect;
 export const PageImage = withLayoutMetadata(
     overridable<IPageImageInputProps>(connect(PageImageComponent)),
     {
-        name: "PageImage",
+        name: "Page Image",
         displayName: "PageImage",
-        category: "",
+        category: "Comic",
         description: "",
         icon,
         getSlotDisplayName: (slotName, props) => props[slotName] || slotName,

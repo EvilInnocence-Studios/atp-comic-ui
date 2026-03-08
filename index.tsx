@@ -11,6 +11,7 @@ import { comicMenus } from "./lib/menus";
 import { comicRoutes } from "./lib/routes";
 import { comicSettings } from "./lib/settings";
 import { ComicPageUrlContext } from "./lib/context";
+import { PageImage } from "./components/PageView/PageImage";
 
 export const module: IModule = {
     name: "comic",
@@ -24,6 +25,7 @@ ComponentRegistry.register(LatestPage);
 ComponentRegistry.register(LatestArc);
 ComponentRegistry.register(RoutedArchive);
 ComponentRegistry.register(RoutedPage);
+ComponentRegistry.register(PageImage);
 
 uacPlugins.myAccount.tabs.register({
     key: "comics",
