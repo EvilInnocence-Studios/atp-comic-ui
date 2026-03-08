@@ -32,10 +32,7 @@ export const useStory = () => {
             getById: (id?: string) => id ? arcs.find(a => a.id === id) || null : null,
             list: () => arcs,
             typeName: (thisArc: IComicArc | null) => {
-                console.log("arc.typeName", thisArc);
                 if (!thisArc) return "Arc";
-                console.log("arc.typeName", arcNames);
-                console.log("arc.typeName", vsArcNames);
                 let level = 1;
                 let curArc = thisArc;
                 while (curArc.parentId) {
@@ -44,8 +41,6 @@ export const useStory = () => {
                     curArc = parentArc;
                     level++;
                 }
-                console.log("arc.typeName", level);
-                console.log("arc.typeName", (arc.isVerticalScroll(thisArc.id) ? vsArcNames : arcNames)[level - 1] || "Arc");
                 return (arc.isVerticalScroll(thisArc.id) ? vsArcNames : arcNames)[level - 1] || "Arc";
             },
             root: (arcId?: string) => {
