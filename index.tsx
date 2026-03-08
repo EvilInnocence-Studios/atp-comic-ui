@@ -10,6 +10,7 @@ import { UserPreferences } from "./components/UserPreferences";
 import { comicMenus } from "./lib/menus";
 import { comicRoutes } from "./lib/routes";
 import { comicSettings } from "./lib/settings";
+import { ComicPageUrlContext } from "./lib/context";
 
 export const module: IModule = {
     name: "comic",
@@ -38,5 +39,10 @@ LayoutRegistry.register({
     description: "The comic page layout and design",
     defaultLayout: {
         component: "Empty"
+    },
+    priority: 500,
+    context: {
+        name: "comicPage",
+        context: ComicPageUrlContext,
     }
 });

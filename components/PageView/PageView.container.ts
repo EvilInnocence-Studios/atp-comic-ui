@@ -5,14 +5,16 @@ import { createInjector, inject, mergeProps } from "unstateless";
 import { PageViewComponent } from "./PageView.component";
 import { IPageViewInputProps, IPageViewProps, PageViewProps } from "./PageView.d";
 import { useLayoutData } from "@theming/lib/useLayoutData";
-import { useEffect } from "react";
+import { useContext, useEffect } from "react";
+import { ComicPageUrlContext } from "@comic/lib/context";
 
 const injectPageViewProps = createInjector(({ url }: IPageViewInputProps): IPageViewProps => {
     const story = useStory();
     const transcript = useToggle();
     const [, setPageTitle] = useLayoutData<string>("pageTitle");
+    const pageUrl = useContext(ComicPageUrlContext);
 
-    const page = story.page.get(url);
+    const page = story.page.get(url || pageUrl);
     const nextPage = story.page.next(page?.id);
     const pageNumber = story.arc.allPages(story.arc.root(page?.arcId)?.id).findIndex(p => p.id === page?.id) + 1;
 
