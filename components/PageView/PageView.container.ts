@@ -1,16 +1,14 @@
+import { ComicPageUrlContext } from "@comic/lib/context";
 import { useStory } from "@comic/lib/useStory";
 import { overridable } from "@core/lib/overridable";
-import { useToggle } from "@core/lib/useToggle";
+import { useLayoutData } from "@theming/lib/useLayoutData";
+import { useContext, useEffect } from "react";
 import { createInjector, inject, mergeProps } from "unstateless";
 import { PageViewComponent } from "./PageView.component";
 import { IPageViewInputProps, IPageViewProps, PageViewProps } from "./PageView.d";
-import { useLayoutData } from "@theming/lib/useLayoutData";
-import { useContext, useEffect } from "react";
-import { ComicPageUrlContext } from "@comic/lib/context";
 
 const injectPageViewProps = createInjector(({ url }: IPageViewInputProps): IPageViewProps => {
     const story = useStory();
-    const transcript = useToggle();
     const [, setPageTitle] = useLayoutData<string>("pageTitle");
     const pageUrl = useContext(ComicPageUrlContext);
 
@@ -21,7 +19,7 @@ const injectPageViewProps = createInjector(({ url }: IPageViewInputProps): IPage
         setPageTitle(pageNumber ? `Page ${pageNumber}` : "Loading...");
     }, [pageNumber]);
 
-    return { page, transcript, pageNumber };
+    return { page };
 });
 
 const connect = inject<IPageViewInputProps, PageViewProps>(mergeProps(

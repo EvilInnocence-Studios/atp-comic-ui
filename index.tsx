@@ -4,14 +4,17 @@ import { ComponentRegistry, LayoutRegistry } from "@theming/lib/layout/component
 import { uacPlugins } from "@uac/lib/plugin/slots";
 import { LatestArc } from "./components/LatestArc";
 import { LatestPage } from "./components/LatestPage";
+import { PageImage } from "./components/PageView/PageImage";
+import { PageName } from "./components/PageView/PageName";
+import { PageNumber } from "./components/PageView/PageNumber";
+import { PagePostDate } from "./components/PageView/PagePostDate";
 import { RoutedArchive } from "./components/RoutedArchive";
 import { RoutedPage } from "./components/RoutedPage";
 import { UserPreferences } from "./components/UserPreferences";
+import { ComicPageUrlContext } from "./lib/context";
 import { comicMenus } from "./lib/menus";
 import { comicRoutes } from "./lib/routes";
 import { comicSettings } from "./lib/settings";
-import { ComicPageUrlContext } from "./lib/context";
-import { PageImage } from "./components/PageView/PageImage";
 
 export const module: IModule = {
     name: "comic",
@@ -26,6 +29,10 @@ ComponentRegistry.register(LatestArc);
 ComponentRegistry.register(RoutedArchive);
 ComponentRegistry.register(RoutedPage);
 ComponentRegistry.register(PageImage);
+
+ComponentRegistry.register(PagePostDate);
+ComponentRegistry.register(PageName);
+ComponentRegistry.register(PageNumber);
 
 uacPlugins.myAccount.tabs.register({
     key: "comics",

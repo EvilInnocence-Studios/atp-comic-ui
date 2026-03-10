@@ -7,7 +7,7 @@ import styles from './PageImage.module.scss';
 import samplePage from "./sample-page.png";
 
 export const PageImageComponent = overridable(({
-    classes = styles, slots, __layoutId, className, css,
+    classes = styles, __layoutId, className, css,
     pageUrl, nextPage, page,
 }:PageImageProps) => <>
     {css && <style>{css}</style>}

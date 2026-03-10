@@ -24,14 +24,5 @@
     .pageTranscript {
         vertical-align: top;
         margin-top: var(--padding);
-        h1 {
-            cursor:pointer;
-        }
-        .transcriptCopy {
-            p {
-                margin: 0 0 var(--padding) 0;
-                line-height: 1.5em;
-            }
-        }
     }
 }

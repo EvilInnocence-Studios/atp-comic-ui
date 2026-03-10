@@ -4,8 +4,6 @@ import { IToggle } from "@core/lib/useToggle";
 
 export declare interface IPageViewProps {
     page: IComicPage | null;
-    pageNumber: number;
-    transcript: IToggle;
 }
 
 // What gets passed into the component from the parent as attributes

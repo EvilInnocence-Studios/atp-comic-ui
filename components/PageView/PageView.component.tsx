@@ -1,22 +1,20 @@
-import { Date } from "@core/components/Date";
-import { faClosedCaptioning } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import Markdown from "react-markdown";
-import { Link } from "react-router-dom";
-import { ComicImage } from "../ComicImage";
+import { ComicPageUrlContext } from "@comic/lib/context";
+import { overridable } from "@core/lib/overridable";
+import { Layout } from "@theming/components/Layout";
+import { Col, Row } from "antd";
+import clsx from "clsx";
 import { PageNav } from "../PageNav";
+import { PageImage } from "./PageImage";
+import { PageName } from "./PageName";
+import { PageNumber } from "./PageNumber";
+import { PagePostDate } from "./PagePostDate";
 import { PageViewProps } from "./PageView.d";
 import styles from './PageView.module.scss';
-import { overridable } from "@core/lib/overridable";
-import clsx from "clsx";
-import { Col, Row } from "antd";
-import { Layout } from "@theming/components/Layout";
-import { ComicPageUrlContext } from "@comic/lib/context";
-import { PageImage } from "./PageImage";
+import { PageTranscript } from "./PageTranscript";
 
 const Provider = ComicPageUrlContext.Provider;
 
-export const PageViewComponent = overridable(({url, page, pageNumber, transcript, classes = styles, className }: PageViewProps) => <>
+export const PageViewComponent = overridable(({url, page, classes = styles, className }: PageViewProps) => <>
     {!!page && <div className={clsx(classes.comicPage, className)}>
         <Layout element="comicPage" context={url} />
         <Provider value={url || ""}>
@@ -25,14 +23,11 @@ export const PageViewComponent = overridable(({url, page, pageNumber, transcript
             <PageNav page={page} bottom />
             <Row gutter={8}>
                 <Col xs={24} md={12} className={classes.pageDetails}>
-                    <h1>Page {pageNumber}: {page.name}</h1>
-                    <p><Date date={page.postDate} /></p>
+                    <h1>Page <PageNumber />: <PageName /></h1>
+                    <p><PagePostDate /></p>
                 </Col>
                 <Col xs={24} md={12} className={classes.pageTranscript}>
-                    <h1 onClick={transcript.toggle}><FontAwesomeIcon icon={faClosedCaptioning} /> Transcript</h1>
-                    {transcript.isset && <div className={classes.transcriptCopy}>
-                        <Markdown>{page.transcript}</Markdown>
-                    </div>}
+                    <PageTranscript />
                 </Col>
             </Row>
         </Provider>
