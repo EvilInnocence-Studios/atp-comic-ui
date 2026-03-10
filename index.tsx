@@ -6,8 +6,10 @@ import { LatestArc } from "./components/LatestArc";
 import { LatestPage } from "./components/LatestPage";
 import { PageImage } from "./components/PageView/PageImage";
 import { PageName } from "./components/PageView/PageName";
+import { PageNav } from "./components/PageView/PageNav";
 import { PageNumber } from "./components/PageView/PageNumber";
 import { PagePostDate } from "./components/PageView/PagePostDate";
+import { PageTranscript } from "./components/PageView/PageTranscript";
 import { RoutedArchive } from "./components/RoutedArchive";
 import { RoutedPage } from "./components/RoutedPage";
 import { UserPreferences } from "./components/UserPreferences";
@@ -28,11 +30,13 @@ ComponentRegistry.register(LatestPage);
 ComponentRegistry.register(LatestArc);
 ComponentRegistry.register(RoutedArchive);
 ComponentRegistry.register(RoutedPage);
-ComponentRegistry.register(PageImage);
 
+ComponentRegistry.register(PageImage);
 ComponentRegistry.register(PagePostDate);
 ComponentRegistry.register(PageName);
 ComponentRegistry.register(PageNumber);
+ComponentRegistry.register(PageNav);
+ComponentRegistry.register(PageTranscript);
 
 uacPlugins.myAccount.tabs.register({
     key: "comics",
