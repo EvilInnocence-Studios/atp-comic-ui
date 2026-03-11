@@ -54,5 +54,4 @@ LayoutRegistry.register({
         component: "Empty"
     },
     priority: 500,
-    context: ComicPageUrlContext,
 });

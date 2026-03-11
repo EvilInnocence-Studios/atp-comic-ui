@@ -8,6 +8,7 @@ import icon from './icon.svg';
 import { PageNumberComponent } from "./PageNumber.component";
 import { IPageNumberInputProps, IPageNumberProps, PageNumberProps } from "./PageNumber.d";
 import { PageNumberPropEditor } from "./PageNumber.props";
+import { PageNumberLayoutEditor } from "./PageNumber.layout";
 
 const injectPageNumberProps = createInjector(({url}:IPageNumberInputProps):IPageNumberProps => {
     const story = useStory();
@@ -34,5 +35,6 @@ export const PageNumber = withLayoutMetadata(
         icon,
         getSlotDisplayName: (slotName, props) => props[slotName] || slotName,
         propEditor: PageNumberPropEditor,
+        layoutEditor: PageNumberLayoutEditor,
     }
 );

@@ -16,8 +16,8 @@ const Provider = ComicPageUrlContext.Provider;
 
 export const PageViewComponent = overridable(({url, page, classes = styles, className }: PageViewProps) => <>
     {!!page && <div className={clsx(classes.comicPage, className)}>
-        <Layout element="comicPage" context={url} />
         <Provider value={url || ""}>
+            <Layout element="comicPage" />
             <PageNav page={page} top />
             <PageImage />
             <PageNav page={page} bottom />

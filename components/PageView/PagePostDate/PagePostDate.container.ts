@@ -8,6 +8,7 @@ import { PagePostDatePropEditor } from "./PagePostDate.props";
 import { useStory } from "@comic/lib/useStory";
 import { useContext } from "react";
 import { ComicPageUrlContext } from "@comic/lib/context";
+import { PagePostDateLayoutEditor } from "./PagePostDate.layout";
 
 const injectPagePostDateProps = createInjector(({url}:IPagePostDateInputProps):IPagePostDateProps => {
     const story = useStory();
@@ -31,5 +32,6 @@ export const PagePostDate = withLayoutMetadata(
         icon,
         getSlotDisplayName: (slotName, props) => props[slotName] || slotName,
         propEditor: PagePostDatePropEditor,
+        layoutEditor: PagePostDateLayoutEditor,
     }
 );

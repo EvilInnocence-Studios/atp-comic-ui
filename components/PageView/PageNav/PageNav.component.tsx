@@ -12,29 +12,29 @@ export const PageNavComponent = overridable(({
     {css && <style>{css}</style>}
     <div className={clsx(classes.comicNavLinksContainer, top && classes.top, bottom && classes.bottom, className)} style={{ textAlign: "center", fontSize: "x-large" }}>
         <div className={classes.navItem}>
-            {!__layoutId ? <Link className={clsx(!prevPage && classes.noShow)} to={`/comic/page/${(firstPage?.url)}`}>
+            <Link className={clsx(!prevPage && classes.noShow)} to={`/comic/page/${(firstPage?.url)}`}>
                 <SlotRenderer slots={slots?.firstPage} parentId={__layoutId} slotName="firstPage" />
-            </Link> : <SlotRenderer slots={slots?.firstPage} parentId={__layoutId} slotName="firstPage" />}
+            </Link>
         </div>
         <div className={classes.navItem}>
-            {!__layoutId ? <Link className={clsx(!prevPage && classes.noShow)} to={`/comic/page/${prevPage?.url}`}>
+            <Link className={clsx(!prevPage && classes.noShow)} to={`/comic/page/${prevPage?.url}`}>
                 <SlotRenderer slots={slots?.prevPage} parentId={__layoutId} slotName="prevPage" />
-            </Link> : <SlotRenderer slots={slots?.prevPage} parentId={__layoutId} slotName="prevPage" />}
+            </Link>
         </div>
         <div className={classes.navItem}>
-            {!__layoutId ? <Link className={clsx(!arc && classes.noShow)} to={`/comic/arc/${arc?.url}`}>
+            <Link className={clsx(!arc && classes.noShow)} to={`/comic/arc/${arc?.url}`}>
                 <SlotRenderer slots={slots?.arc} parentId={__layoutId} slotName="arc" />
-            </Link> : <SlotRenderer slots={slots?.arc} parentId={__layoutId} slotName="arc" />}
+            </Link>
         </div>
         <div className={classes.navItem}>
-            {!__layoutId ? <Link className={clsx(!nextPage && classes.noShow)} to={`/comic/page/${nextPage?.url}`}>
+            <Link className={clsx(!nextPage && classes.noShow)} to={`/comic/page/${nextPage?.url}`}>
                 <SlotRenderer slots={slots?.nextPage} parentId={__layoutId} slotName="nextPage" />
-            </Link> : <SlotRenderer slots={slots?.nextPage} parentId={__layoutId} slotName="nextPage" />}
+            </Link>
         </div>
         <div className={classes.navItem}>
-            {!__layoutId ? <Link className={clsx(!nextPage && classes.noShow)} to={`/comic/page/${lastPage?.url}`}>
+            <Link className={clsx(!nextPage && classes.noShow)} to={`/comic/page/${lastPage?.url}`}>
                 <SlotRenderer slots={slots?.lastPage} parentId={__layoutId} slotName="lastPage" />
-            </Link> : <SlotRenderer slots={slots?.lastPage} parentId={__layoutId} slotName="lastPage" />}
+            </Link>
         </div>
     </div>
 </>);

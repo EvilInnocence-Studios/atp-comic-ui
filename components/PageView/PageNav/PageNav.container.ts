@@ -9,6 +9,7 @@ import { useStory } from "@comic/lib/useStory";
 import { useContext } from "react";
 import { ComicPageUrlContext } from "@comic/lib/context";
 import { useSetting } from "@common/lib/setting/services";
+import { PageNavLayoutEditor } from "./PageNav.layout";
 
 const injectPageNavProps = createInjector(({url}:IPageNavInputProps):IPageNavProps => {
     const story = useStory();
@@ -47,5 +48,6 @@ export const PageNav = withLayoutMetadata(
         icon,
         getSlotDisplayName: (slotName, props) => props[slotName] || slotName,
         propEditor: PageNavPropEditor,
+        layoutEditor: PageNavLayoutEditor,
     }
 );

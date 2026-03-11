@@ -1,14 +1,15 @@
 import { ComicPageUrlContext } from "@comic/lib/context";
 import { useStory } from "@comic/lib/useStory";
 import { overridable } from "@core/lib/overridable";
+import { useToggle } from "@core/lib/useToggle";
 import { withLayoutMetadata } from "@theming/lib/layout/componentRegistry";
 import { useContext } from "react";
 import { createInjector, inject, mergeProps } from "unstateless";
 import icon from './icon.svg';
 import { PageTranscriptComponent } from "./PageTranscript.component";
 import { IPageTranscriptInputProps, IPageTranscriptProps, PageTranscriptProps } from "./PageTranscript.d";
+import { PageTranscriptLayoutEditor } from "./PageTranscript.layout";
 import { PageTranscriptPropEditor } from "./PageTranscript.props";
-import { useToggle } from "@core/lib/useToggle";
 
 const injectPageTranscriptProps = createInjector(({url}:IPageTranscriptInputProps):IPageTranscriptProps => {
     const story = useStory();
@@ -34,5 +35,6 @@ export const PageTranscript = withLayoutMetadata(
         icon,
         getSlotDisplayName: (slotName, props) => props[slotName] || slotName,
         propEditor: PageTranscriptPropEditor,
+        layoutEditor: PageTranscriptLayoutEditor,
     }
 );

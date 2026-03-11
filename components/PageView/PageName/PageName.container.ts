@@ -8,6 +8,7 @@ import { PageNamePropEditor } from "./PageName.props";
 import { useStory } from "@comic/lib/useStory";
 import { ComicPageUrlContext } from "@comic/lib/context";
 import { useContext } from "react";
+import { PageNameLayoutEditor } from "./PageName.layout";
 
 const injectPageNameProps = createInjector(({url}:IPageNameInputProps):IPageNameProps => {
     const story = useStory();
@@ -32,5 +33,6 @@ export const PageName = withLayoutMetadata(
         icon,
         getSlotDisplayName: (slotName, props) => props[slotName] || slotName,
         propEditor: PageNamePropEditor,
+        layoutEditor: PageNameLayoutEditor,
     }
 );

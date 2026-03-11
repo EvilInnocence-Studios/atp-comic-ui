@@ -1,13 +1,14 @@
-import { createInjector, inject, mergeProps } from "unstateless";
-import {PageImageComponent} from "./PageImage.component";
-import {IPageImageInputProps, PageImageProps, IPageImageProps} from "./PageImage.d";
-import { overridable } from "@core/lib/overridable";
-import { withLayoutMetadata } from "@theming/lib/layout/componentRegistry";
-import icon from './icon.svg';
-import { PageImagePropEditor } from "./PageImage.props";
-import { useContext } from "react";
 import { ComicPageUrlContext } from "@comic/lib/context";
 import { useStory } from "@comic/lib/useStory";
+import { overridable } from "@core/lib/overridable";
+import { withLayoutMetadata } from "@theming/lib/layout/componentRegistry";
+import { useContext } from "react";
+import { createInjector, inject, mergeProps } from "unstateless";
+import icon from './icon.svg';
+import { PageImageComponent } from "./PageImage.component";
+import { IPageImageInputProps, IPageImageProps, PageImageProps } from "./PageImage.d";
+import { PageImageLayoutEditor } from "./PageImage.layout";
+import { PageImagePropEditor } from "./PageImage.props";
 
 const injectPageImageProps = createInjector(({url}:IPageImageInputProps):IPageImageProps => {
     const contextUrl = useContext(ComicPageUrlContext);
@@ -36,5 +37,6 @@ export const PageImage = withLayoutMetadata(
         icon,
         getSlotDisplayName: (slotName, props) => props[slotName] || slotName,
         propEditor: PageImagePropEditor,
+        layoutEditor: PageImageLayoutEditor,
     }
 );
