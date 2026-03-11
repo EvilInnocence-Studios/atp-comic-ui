@@ -11,4 +11,10 @@ export const PageTranscriptLayoutEditor:LayoutEditor = ({
         ...props.page,
         transcript: "Page transcript goes here."
     }}
+    transcript={{
+        isset: true,
+        toggle: () => {},
+        on: () => {},
+        off: () => {},
+    }}
 />;
