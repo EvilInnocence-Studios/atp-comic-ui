@@ -25,8 +25,8 @@ export const PagePostDate = withLayoutMetadata(
     overridable<IPagePostDateInputProps>(connect(PagePostDateComponent)),
     {
         name: "PagePostDate",
-        displayName: "PagePostDate",
-        category: "",
+        displayName: "Page Post Date",
+        category: "Comic",
         description: "",
         icon,
         getSlotDisplayName: (slotName, props) => props[slotName] || slotName,

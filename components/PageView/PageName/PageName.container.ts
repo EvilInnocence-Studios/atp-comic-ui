@@ -26,8 +26,8 @@ export const PageName = withLayoutMetadata(
     overridable<IPageNameInputProps>(connect(PageNameComponent)),
     {
         name: "PageName",
-        displayName: "PageName",
-        category: "",
+        displayName: "Page Name",
+        category: "Comic",
         description: "",
         icon,
         getSlotDisplayName: (slotName, props) => props[slotName] || slotName,

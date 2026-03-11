@@ -41,8 +41,8 @@ export const PageNav = withLayoutMetadata(
     overridable<IPageNavInputProps>(connect(PageNavComponent)),
     {
         name: "PageNav",
-        displayName: "PageNav",
-        category: "",
+        displayName: "Page Nav",
+        category: "Comic",
         description: "",
         icon,
         getSlotDisplayName: (slotName, props) => props[slotName] || slotName,

@@ -28,8 +28,8 @@ export const PageTranscript = withLayoutMetadata(
     overridable<IPageTranscriptInputProps>(connect(PageTranscriptComponent)),
     {
         name: "PageTranscript",
-        displayName: "PageTranscript",
-        category: "",
+        displayName: "Page Transcript",
+        category: "Comic",
         description: "",
         icon,
         getSlotDisplayName: (slotName, props) => props[slotName] || slotName,
