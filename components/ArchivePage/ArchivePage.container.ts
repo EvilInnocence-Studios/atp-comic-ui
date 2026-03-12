@@ -4,7 +4,6 @@ import {IArchivePageInputProps, ArchivePageProps, IArchivePageProps} from "./Arc
 import { overridable } from "@core/lib/overridable";
 import { withLayoutMetadata } from "@theming/lib/layout/componentRegistry";
 import icon from './icon.svg';
-import { ArchivePageLayoutEditor } from "./ArchivePage.layout";
 import { ArchivePagePropEditor } from "./ArchivePage.props";
 
 const injectArchivePageProps = createInjector(({}:IArchivePageInputProps):IArchivePageProps => {
@@ -25,7 +24,6 @@ export const ArchivePage = withLayoutMetadata(
         description: "",
         icon,
         getSlotDisplayName: (slotName, props) => props[slotName] || slotName,
-        layoutEditor: ArchivePageLayoutEditor,
         propEditor: ArchivePagePropEditor,
     }
 );
