@@ -1,9 +1,9 @@
-export declare interface IRoutedArchiveProps {
-    url: string;
+export declare interface IArchivePageProps {
+
 }
 
 // What gets passed into the component from the parent as attributes
-export declare interface IRoutedArchiveInputProps {
+export declare interface IArchivePageInputProps {
     className?: string;
     css?: string;
     classes?: any;
@@ -11,4 +11,4 @@ export declare interface IRoutedArchiveInputProps {
     __layoutId?: string;
 }
 
-export type RoutedArchiveProps = IRoutedArchiveInputProps & IRoutedArchiveProps;
+export type ArchivePageProps = IArchivePageInputProps & IArchivePageProps;
