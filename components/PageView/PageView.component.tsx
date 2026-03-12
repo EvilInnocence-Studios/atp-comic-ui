@@ -7,9 +7,9 @@ import styles from './PageView.module.scss';
 
 const Provider = ComicPageUrlContext.Provider;
 
-export const PageViewComponent = overridable(({url, page, classes = styles, className }: PageViewProps) => <>
+export const PageViewComponent = overridable(({page, classes = styles, className }: PageViewProps) => <>
     {!!page && <div className={clsx(classes.comicPage, className)}>
-        <Provider value={url || ""}>
+        <Provider value={page?.url || ""}>
             <Layout element="comicPage" />
         </Provider>
     </div>}
