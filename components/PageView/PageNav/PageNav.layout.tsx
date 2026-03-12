@@ -1,17 +1,15 @@
+import { IComicArc } from "@comic-shared/arc/types";
+import { IComicPage } from "@comic-shared/page/types";
 import { ILayoutEditorProps, LayoutEditor } from "@theming/lib/layout/componentRegistry";
 import { PageNavComponent } from "./PageNav.component";
-import { PageNavProps } from "./PageNav";
-import { IComicPage } from "@comic-shared/page/types";
-import { IComicArc } from "@comic-shared/arc/types";
 
 export const PageNavLayoutEditor:LayoutEditor = ({
-    __layoutId, __update, __isSelected,
     ...props
 }:ILayoutEditorProps) => <PageNavComponent
-    {...props as PageNavProps}
+    {...props as any}
     arc={{} as IComicArc}
-    firstPage={{} as IComicPage}
-    prevPage={{} as IComicPage}
-    nextPage={{} as IComicPage}
-    lastPage={{} as IComicPage}
+    firstPage={{url: "first-page"} as IComicPage}
+    prevPage={{url: "prev-page"} as IComicPage}
+    nextPage={{url: "next-page"} as IComicPage}
+    lastPage={{url: "last-page"} as IComicPage}
 />;
