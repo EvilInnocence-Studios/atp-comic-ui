@@ -1,13 +1,18 @@
+import { Editable } from "@core/components/Editable";
+import { Label } from "@core/components/Label";
 import { IPageNumberInputProps } from "./PageNumber.d";
 
 export const PageNumberPropEditor = (
-    {}: IPageNumberInputProps,
-    updateProps: (props: any) => void,
+    {url}: IPageNumberInputProps,
+    _updateProps: (props: any) => void,
     updateProp: (prop: string) => (value: any) => void
 ) => {
     return (
-        <div>
-            Placeholder Prop Editor for PageNumber
-        </div>
+        <Label label="Page Url">
+            <Editable
+                value={url || ""}
+                onChange={updateProp("url")}
+            />
+        </Label>
     );
 }

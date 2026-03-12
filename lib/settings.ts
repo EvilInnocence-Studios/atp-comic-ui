@@ -1,11 +1,6 @@
 import { ISettingContainer } from "@common/lib/setting/types";
 import { services } from "@core/lib/api";
 
-const mediaOptions = () => services().media.search({}).then(images => [
-    { value: '', label: 'None' },
-    ...images.map(img => ({ value: img.id, label: img.url }))
-]);
-
 export const comicSettings:ISettingContainer = {
     Comic: {
         General: {

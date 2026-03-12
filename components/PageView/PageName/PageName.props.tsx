@@ -1,13 +1,18 @@
+import { Editable } from "@core/components/Editable";
+import { Label } from "@core/components/Label";
 import { IPageNameInputProps } from "./PageName.d";
 
 export const PageNamePropEditor = (
-    {}: IPageNameInputProps,
-    updateProps: (props: any) => void,
+    {url}: IPageNameInputProps,
+    _updateProps: (props: any) => void,
     updateProp: (prop: string) => (value: any) => void
 ) => {
     return (
-        <div>
-            Placeholder Prop Editor for PageName
-        </div>
+        <Label label="Page Url">
+            <Editable
+                value={url || ""}
+                onChange={updateProp("url")}
+            />
+        </Label>
     );
 }
