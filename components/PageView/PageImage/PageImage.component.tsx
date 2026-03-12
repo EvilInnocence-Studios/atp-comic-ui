@@ -13,7 +13,9 @@ export const PageImageComponent = overridable(({
     <div className={clsx(classes.pageImage, className)}>
         {page && <>
             {!!pageUrl && <Link to={`/comic/page/${pageUrl}`}><ComicImage fileName={page.imageUrl || ""} /></Link>}
-            {!nextPage && <ComicImage fileName={page.imageUrl || ""} />}
+            <div style={{display: "none"}}>
+                {nextPage && <ComicImage fileName={nextPage.imageUrl || ""} />}
+            </div>
         </>}
     </div>
 </>);
