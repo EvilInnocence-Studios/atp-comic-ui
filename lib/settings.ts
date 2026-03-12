@@ -26,54 +26,6 @@ export const comicSettings:ISettingContainer = {
                 description: "Folder to store comic media files."
             },
         },
-        Nav: {
-            "comic.navLinkStyle": {
-                displayName: "Comic Navigation Link Style",
-                type: "select",
-                defaultValue: "text",
-                description: "Style of links in the comic navigation.",
-                options: () => Promise.resolve([
-                    { value: 'text', label: 'Text' },
-                    { value: 'image', label: 'Image' },
-                    { value: 'icon', label: 'Icon' },
-                ]),
-            },
-            "comic.firstPageIcon": {
-                displayName: "First Page Icon Image",
-                type: "select",
-                defaultValue: "",
-                description: "Icon image for the 'First Page' navigation button.",
-                options: mediaOptions,
-            },
-            "comic.lastPageIcon": {
-                displayName: "Last Page Icon Image",
-                type: "select",
-                defaultValue: "",
-                description: "Icon image for the 'Last Page' navigation button.",
-                options: mediaOptions,
-            },
-            "comic.nextPageIcon": {
-                displayName: "Next Page Icon Image",
-                type: "select",
-                defaultValue: "",
-                description: "Icon image for the 'Next Page' navigation button.",
-                options: mediaOptions,
-            },
-            "comic.previousPageIcon": {
-                displayName: "Previous Page Icon Image",
-                type: "select",
-                defaultValue: "",
-                description: "Icon image for the 'Previous Page' navigation button.",
-                options: mediaOptions,
-            },
-            "comic.archiveIcon": {
-                displayName: "Archive Icon Image",
-                type: "select",
-                defaultValue: "",
-                description: "Icon image for the 'Archive' navigation button.",
-                options: mediaOptions,
-            },
-        },
         Pages: {
             "comic.ArchiveLinkLevel": {
                 displayName: "Archive Link Level",
