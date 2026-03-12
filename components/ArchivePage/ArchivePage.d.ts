@@ -9,6 +9,7 @@ export declare interface IArchivePageInputProps {
     classes?: any;
     slots?: Index<ILayoutComponent[]>;
     __layoutId?: string;
+    url?: string;
 }
 
 export type ArchivePageProps = IArchivePageInputProps & IArchivePageProps;
