@@ -13,6 +13,7 @@ export declare interface IPageNavInputProps {
     classes?: any;
     slots?: Index<ILayoutComponent[]>;
     __layoutId?: string;
+    name?: string;
     url?: string;
     top?: boolean;
     bottom?: boolean;
