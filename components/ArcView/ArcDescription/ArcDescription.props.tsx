@@ -1,9 +1,9 @@
 import { Editable } from "@core/components/Editable";
 import { Label } from "@core/components/Label";
-import { IArcTitleInputProps } from "./ArcTitle.d";
+import { IArcDescriptionInputProps } from "./ArcDescription.d";
 
-export const ArcTitlePropEditor = (
-    {url}: IArcTitleInputProps,
+export const ArcDescriptionPropEditor = (
+    {url}: IArcDescriptionInputProps,
     _updateProps: (props: any) => void,
     updateProp: (prop: string) => (value: any) => void
 ) => {
