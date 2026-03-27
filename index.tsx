@@ -2,6 +2,7 @@ import { IModule } from "@core/lib/module";
 import { faImage } from "@fortawesome/free-solid-svg-icons";
 import { ComponentRegistry, LayoutRegistry } from "@theming/lib/layout/componentRegistry";
 import { uacPlugins } from "@uac/lib/plugin/slots";
+import { ArcTitle } from "./components/ArcView/ArcTitle";
 import { LatestArc } from "./components/LatestArc";
 import { LatestPage } from "./components/LatestPage";
 import { PageView } from "./components/PageView";
@@ -34,6 +35,7 @@ ComponentRegistry.register(PageNumber);
 ComponentRegistry.register(PageNav);
 ComponentRegistry.register(PageTranscript);
 ComponentRegistry.register(PageView);
+ComponentRegistry.register(ArcTitle);
 
 uacPlugins.myAccount.tabs.register({
     key: "comics",

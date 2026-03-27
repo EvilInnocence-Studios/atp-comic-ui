@@ -29,7 +29,7 @@ export const ArcViewComponent = overridable(({
         {!!arc && <>
             {showBanner && !!arc.bannerUrl && <ComicImage fileName={arc.bannerUrl} className={classes.banner} />}
             {showDetails && <div className={classes.arcDetails}>
-                <h2><ArcTitle arc={arc} /></h2>
+                <h2><ArcTitle url={arc.url || ""} /></h2>
                 <Markdown>{arc.summary}</Markdown>
             </div>}
             <ArcBreadcrumbs url={arc.url} />

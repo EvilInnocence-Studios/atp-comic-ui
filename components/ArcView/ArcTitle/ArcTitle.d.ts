@@ -1,15 +1,18 @@
 import { IComicArc } from "@comic-shared/arc/types";
 
 export declare interface IArcTitleProps {
-    arcTypeName: (arc: IComicArc | null) => string;
-    arcNumber: (arcId: string) => number | null;
+    arc: IComicArc | null;
 }
 
 // What gets passed into the component from the parent as attributes
 export declare interface IArcTitleInputProps {
-    arc: IComicArc;
-    lineBreak?: boolean;
+    className?: string;
+    css?: string;
     classes?: any;
+    slots?: Index<ILayoutComponent[]>;
+    __layoutId?: string;
+    name?: string;
+    url?: string;
 }
 
 export type ArcTitleProps = IArcTitleInputProps & IArcTitleProps;
