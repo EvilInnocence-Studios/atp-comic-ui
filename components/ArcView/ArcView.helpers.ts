@@ -1,5 +1,8 @@
 import { IComicArc } from "@comic-shared/arc/types";
+import { ComicArcUrlContext } from "@comic/lib/context";
+import { useStory } from "@comic/lib/useStory";
 import { useSetting } from "@common/lib/setting/services";
+import { useContext } from "react";
 import { createInjector } from "unstateless";
 import { BreadCrumbMode } from "./ArcView";
 
@@ -29,4 +32,12 @@ export const useArcSettings = (parents:IComicArc[], subArcs:IComicArc[]):IArcSet
 
 export const injectArcSettings = createInjector(({parents, subArcs}:{parents:IComicArc[], subArcs:IComicArc[]}):IArcSettings => {
     return useArcSettings(parents, subArcs);
+});
+
+export const injectArcContextProps = createInjector(({url}:{url?:string}):{arc:IComicArc | null} => {
+    const defaultUrl = useContext(ComicArcUrlContext);
+    const story = useStory();
+    const arc = story.arc.get(url || defaultUrl);
+    
+    return {arc};
 });

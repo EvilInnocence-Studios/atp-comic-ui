@@ -1,22 +1,14 @@
-import { createInjector, inject, mergeProps } from "unstateless";
-import {ArcTitleComponent} from "./ArcTitle.component";
-import {IArcTitleInputProps, ArcTitleProps, IArcTitleProps} from "./ArcTitle.d";
 import { overridable } from "@core/lib/overridable";
 import { withLayoutMetadata } from "@theming/lib/layout/componentRegistry";
-import icon from './icon.svg';
+import { createInjector, inject, mergeProps } from "unstateless";
+import { injectArcContextProps } from "../ArcView.helpers";
+import { ArcTitleComponent } from "./ArcTitle.component";
+import { ArcTitleProps, IArcTitleInputProps } from "./ArcTitle.d";
 import { ArcTitleLayoutEditor } from "./ArcTitle.layout";
 import { ArcTitlePropEditor } from "./ArcTitle.props";
-import { useContext } from "react";
-import { ComicArcUrlContext } from "@comic/lib/context";
-import { useStory } from "@comic/lib/useStory";
+import icon from './icon.svg';
 
-const injectArcTitleProps = createInjector(({url}:IArcTitleInputProps):IArcTitleProps => {
-    const defaultUrl = useContext(ComicArcUrlContext);
-    const story = useStory();
-    const arc = story.arc.get(url || defaultUrl);
-    
-    return {arc};
-});
+const injectArcTitleProps = createInjector(injectArcContextProps);
 
 const connect = inject<IArcTitleInputProps, ArcTitleProps>(mergeProps(
     injectArcTitleProps,
