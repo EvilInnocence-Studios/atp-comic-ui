@@ -46,7 +46,7 @@ uacPlugins.myAccount.tabs.register({
 LayoutRegistry.register({
     name: "comicPage",
     displayName: "Comic Page Layout",
-    description: "The comic page layout and design",
+    description: "The layout and design for a comic page",
     defaultLayout: {
         component: "Empty"
     },
@@ -55,8 +55,58 @@ LayoutRegistry.register({
 
 LayoutRegistry.register({
     name: "comicArchive",
-    displayName: "Comic Archive Layout",
-    description: "The comic archive layout and design",
+    displayName: "Comic Archive Page Layout",
+    description: "The layout and design for a comic page in the archives",
+    defaultLayout: {
+        component: "Empty"
+    },
+    priority: 500,
+});
+
+LayoutRegistry.register({
+    name: "comicArc",
+    displayName: "Comic Arc Layout",
+    description: "The layout and design for an arc page",
+    defaultLayout: {
+        component: "Empty"
+    },
+    priority: 500,
+});
+
+LayoutRegistry.register({
+    name: "comicVerticalScrollArc",
+    displayName: "Comic Vertical Scroll Arc Layout",
+    description: "The layout and design for a vertical scroll arc page",
+    defaultLayout: {
+        component: "Empty"
+    },
+    priority: 500,
+});
+
+LayoutRegistry.register({
+    name: "comicVerticalScrollEpisode",
+    displayName: "Comic Vertical Scroll Episode Layout",
+    description: "The layout and design for a vertical scroll episode page",
+    defaultLayout: {
+        component: "Empty"
+    },
+    priority: 500,
+});
+
+LayoutRegistry.register({
+    name: "comicArcListItem",
+    displayName: "Comic Arc List Item Design",
+    description: "The design for an arc list item",
+    defaultLayout: {
+        component: "Empty"
+    },
+    priority: 500,
+});
+
+LayoutRegistry.register({
+    name: "comicVerticalScrollEpisodeListItem",
+    displayName: "Comic Vertical Scroll Episode List Item Design",
+    description: "The design for a vertical scroll episode list item",
     defaultLayout: {
         component: "Empty"
     },

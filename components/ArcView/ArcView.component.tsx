@@ -10,11 +10,20 @@ import styles from './ArcView.module.scss';
 import { SubArcView } from "./SubArcView";
 import clsx from "clsx";
 import { VerticalScrollChapterView } from "./VerticalScrollChapterView";
+import { Layout } from "@theming/components/Layout";
+import { ComicArcUrlContext } from "@comic/lib/context";
+
+const Provider = ComicArcUrlContext.Provider;
 
 export const ArcViewComponent = overridable(({
-    arc, className, isVerticalScroll,
+    arc, className, isVerticalScroll, hasPages,
     showDetails, showBanner, classes = styles
-}: ArcViewProps) =>
+}: ArcViewProps) => <>
+    <Provider value={arc?.url || ""}>
+        {!isVerticalScroll              && <Layout element="comicArc"                   />}
+        { isVerticalScroll && !hasPages && <Layout element="comicVerticalScrollArc"     />}
+        { isVerticalScroll && hasPages  && <Layout element="comicVerticalScrollEpisode" />}
+    </Provider>
     <div className={clsx(classes.arcContainer, className)}>
         <ArchivesHeader />
         {!!arc && <>
@@ -28,4 +37,4 @@ export const ArcViewComponent = overridable(({
             <ArcPages url={arc.url} />
         </>}
     </div>
-);
+</>);

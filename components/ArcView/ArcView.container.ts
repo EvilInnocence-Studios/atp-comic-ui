@@ -17,12 +17,14 @@ const injectArcViewProps = createInjector(({url, archive:{sortOrder}}:IArcViewIn
     );
 
     const isVerticalScroll = !!arc && story.arc.isVerticalScroll(arc.id);
+    const hasPages = !!arc && story.arc.pages(arc.id).length > 0;
 
     return {
         parents,
         subArcs,
         arc,
         isVerticalScroll,
+        hasPages,
     };
 });
 

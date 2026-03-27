@@ -11,6 +11,7 @@ export declare interface IArcViewProps {
     parents: IComicArc[];
     subArcs: IComicArc[];
     isVerticalScroll: boolean;
+    hasPages: boolean;
 }
 
 // What gets passed into the component from the parent as attributes
