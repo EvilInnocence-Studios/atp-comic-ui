@@ -5,6 +5,7 @@ import { uacPlugins } from "@uac/lib/plugin/slots";
 import { ArcBanner } from "./components/ArcView/ArcBanner";
 import { ArcDescription } from "./components/ArcView/ArcDescription";
 import { ArcNumber } from "./components/ArcView/ArcNumber";
+import { ArcPageNumberList } from "./components/ArcView/ArcPageNumberList";
 import { ArcThumbnail } from "./components/ArcView/ArcThumbnail";
 import { ArcTitle } from "./components/ArcView/ArcTitle";
 import { ArcType } from "./components/ArcView/ArcType";
@@ -48,6 +49,7 @@ ComponentRegistry.register(SubArcList);
 ComponentRegistry.register(ArcType);
 ComponentRegistry.register(ArcNumber);
 ComponentRegistry.register(ArcThumbnail);
+ComponentRegistry.register(ArcPageNumberList);
 
 uacPlugins.myAccount.tabs.register({
     key: "comics",
