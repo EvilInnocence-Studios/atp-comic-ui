@@ -12,8 +12,8 @@ import { SubArcListPropEditor } from "./SubArcList.props";
 
 const injectSubArcListProps = createInjector(({arc}:{arc:IComicArc | null} & ISubArcListInputProps):ISubArcListProps => {
     const story = useStory();
-    const arcs = story.arc.subArcs(arc?.url || "");
-    
+    const arcs = story.arc.subArcs(arc?.id || "");
+
     return {arcs};
 });
 
