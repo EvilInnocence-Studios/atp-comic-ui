@@ -10,11 +10,11 @@ export declare interface ISubArcListInputProps {
     className?: string;
     css?: string;
     classes?: any;
-    slots?: Index<ILayoutComponent[]>;
+    slots?: Record<string, ILayoutComponent[]>;
     __layoutId?: string;
     url?: string;
     mode?: "comicArcListItem" | "comicVerticalScrollEpisodeListItem";
     depth?: "children" | "leaves"
 }
 
-export type SubArcListProps = {arc: IComicArc | null} & ISubArcListInputProps & ISubArcListProps & IComicUserPreferences;
+export type SubArcListProps = {arc: IComicArc | null} & ISubArcListInputProps & ISubArcListProps;

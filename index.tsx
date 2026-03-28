@@ -11,6 +11,7 @@ import { ArcPageNumberList } from "./components/ArcView/ArcPageNumberList";
 import { ArcThumbnail } from "./components/ArcView/ArcThumbnail";
 import { ArcTitle } from "./components/ArcView/ArcTitle";
 import { ArcType } from "./components/ArcView/ArcType";
+import { EpisodeImages } from "./components/ArcView/EpisodeImages";
 import { SubArcList } from "./components/ArcView/SubArcList";
 import { LatestArc } from "./components/LatestArc";
 import { LatestPage } from "./components/LatestPage";
@@ -54,6 +55,7 @@ ComponentRegistry.register(ArcThumbnail);
 ComponentRegistry.register(ArcPageNumberList);
 ComponentRegistry.register(ArcLink);
 ComponentRegistry.register(ArcDate);
+ComponentRegistry.register(EpisodeImages);
 
 uacPlugins.myAccount.tabs.register({
     key: "comics",

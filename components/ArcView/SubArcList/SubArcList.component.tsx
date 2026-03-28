@@ -1,7 +1,7 @@
-import { overridable } from "@core/lib/overridable";
-import {SubArcListProps} from "./SubArcList.d";
 import { ComicArcUrlContext } from "@comic/lib/context";
+import { overridable } from "@core/lib/overridable";
 import { Layout } from "@theming/components/Layout";
+import { SubArcListProps } from "./SubArcList";
 
 const Provider = ComicArcUrlContext.Provider;
 
