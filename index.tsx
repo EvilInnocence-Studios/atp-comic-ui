@@ -3,6 +3,7 @@ import { faImage } from "@fortawesome/free-solid-svg-icons";
 import { ComponentRegistry, LayoutRegistry } from "@theming/lib/layout/componentRegistry";
 import { uacPlugins } from "@uac/lib/plugin/slots";
 import { ArcBanner } from "./components/ArcView/ArcBanner";
+import { ArcDate } from "./components/ArcView/ArcDate";
 import { ArcDescription } from "./components/ArcView/ArcDescription";
 import { ArcLink } from "./components/ArcView/ArcLink";
 import { ArcNumber } from "./components/ArcView/ArcNumber";
@@ -52,6 +53,7 @@ ComponentRegistry.register(ArcNumber);
 ComponentRegistry.register(ArcThumbnail);
 ComponentRegistry.register(ArcPageNumberList);
 ComponentRegistry.register(ArcLink);
+ComponentRegistry.register(ArcDate);
 
 uacPlugins.myAccount.tabs.register({
     key: "comics",
