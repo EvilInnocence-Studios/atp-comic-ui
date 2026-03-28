@@ -4,7 +4,9 @@ import { ComponentRegistry, LayoutRegistry } from "@theming/lib/layout/component
 import { uacPlugins } from "@uac/lib/plugin/slots";
 import { ArcBanner } from "./components/ArcView/ArcBanner";
 import { ArcDescription } from "./components/ArcView/ArcDescription";
+import { ArcNumber } from "./components/ArcView/ArcNumber";
 import { ArcTitle } from "./components/ArcView/ArcTitle";
+import { ArcType } from "./components/ArcView/ArcType";
 import { SubArcList } from "./components/ArcView/SubArcList";
 import { LatestArc } from "./components/LatestArc";
 import { LatestPage } from "./components/LatestPage";
@@ -42,6 +44,8 @@ ComponentRegistry.register(ArcTitle);
 ComponentRegistry.register(ArcBanner);
 ComponentRegistry.register(ArcDescription);
 ComponentRegistry.register(SubArcList);
+ComponentRegistry.register(ArcType);
+ComponentRegistry.register(ArcNumber);
 
 uacPlugins.myAccount.tabs.register({
     key: "comics",

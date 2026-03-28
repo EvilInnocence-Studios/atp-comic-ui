@@ -4,7 +4,7 @@ export const ArcTitleLayoutEditor:LayoutEditor = ({
     css, className,
 }:ILayoutEditorProps) => <>
    {css && <style>{css}</style>}
-    <div className={className}>
+    <span className={className}>
         Arc Title Goes Here
-    </div>
+    </span>
 </>;
