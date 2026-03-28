@@ -4,7 +4,7 @@ import { Label } from "@core/components/Label";
 import { Editable } from "@core/components/Editable";
 
 export const SubArcListPropEditor = (
-    {url, mode}: ISubArcListInputProps,
+    {url, mode, depth}: ISubArcListInputProps,
     _updateProps: (props: any) => void,
     updateProp: (prop: string) => (value: any) => void
 ) => {
@@ -20,6 +20,12 @@ export const SubArcListPropEditor = (
             onChange={(checked) => updateProp("mode")(checked ? "comicVerticalScrollEpisodeListItem" : "comicArcListItem")}
             checkedChildren="Vertical Scroll"
             unCheckedChildren="Paged"
+        />
+        <Switch
+            checked={depth === "leaves"}
+            onChange={(checked) => updateProp("depth")(checked ? "leaves" : "children")}
+            checkedChildren="Leaves"
+            unCheckedChildren="Children"
         />
     </>;
 }

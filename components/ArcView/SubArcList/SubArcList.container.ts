@@ -10,9 +10,11 @@ import { ISubArcListInputProps, ISubArcListProps, SubArcListProps } from "./SubA
 import { SubArcListLayoutEditor } from "./SubArcList.layout";
 import { SubArcListPropEditor } from "./SubArcList.props";
 
-const injectSubArcListProps = createInjector(({arc}:{arc:IComicArc | null} & ISubArcListInputProps):ISubArcListProps => {
+const injectSubArcListProps = createInjector(({arc, depth}:{arc:IComicArc | null} & ISubArcListInputProps):ISubArcListProps => {
     const story = useStory();
-    const arcs = story.arc.subArcs(arc?.id || "");
+    const arcs = depth === "leaves"
+        ? story.arc.leafArcs(arc?.id || "")
+        : story.arc.subArcs(arc?.id || "");
 
     return {arcs};
 });
