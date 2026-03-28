@@ -17,4 +17,4 @@ export declare interface ISubArcListInputProps {
     depth?: "children" | "leaves"
 }
 
-export type SubArcListProps = {arc: IComicArc | null} & ISubArcListInputProps & ISubArcListProps;
+export type SubArcListProps = {arc: IComicArc | null} & ISubArcListInputProps & ISubArcListProps & IComicUserPreferences;

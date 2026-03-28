@@ -9,17 +9,24 @@ import { SubArcListComponent } from "./SubArcList.component";
 import { ISubArcListInputProps, ISubArcListProps, SubArcListProps } from "./SubArcList.d";
 import { SubArcListLayoutEditor } from "./SubArcList.layout";
 import { SubArcListPropEditor } from "./SubArcList.props";
+import { IComicUserPreferences, injectUserPreferences } from "@comic/lib/useUserPreferences";
 
-const injectSubArcListProps = createInjector(({arc, depth}:{arc:IComicArc | null} & ISubArcListInputProps):ISubArcListProps => {
+const injectSubArcListProps = createInjector((
+    {arc, depth, archive:{sortOrder}}:{arc:IComicArc | null} & ISubArcListInputProps & IComicUserPreferences):ISubArcListProps => {
     const story = useStory();
-    const arcs = depth === "leaves"
+    let arcs = depth === "leaves"
         ? story.arc.leafArcs(arc?.id || "")
         : story.arc.subArcs(arc?.id || "");
+    
+    if (sortOrder === "desc") {
+        arcs = [...arcs].reverse();
+    }
 
     return {arcs};
 });
 
 const connect = inject<ISubArcListInputProps, SubArcListProps>(mergeProps(
+    injectUserPreferences,
     injectArcContextProps,
     injectSubArcListProps,
 ));
