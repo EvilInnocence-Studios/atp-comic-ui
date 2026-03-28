@@ -1,12 +1,12 @@
-import { createInjector, inject, mergeProps } from "unstateless";
-import {ArcThumbnailComponent} from "./ArcThumbnail.component";
-import {IArcThumbnailInputProps, ArcThumbnailProps, IArcThumbnailProps} from "./ArcThumbnail.d";
 import { overridable } from "@core/lib/overridable";
 import { withLayoutMetadata } from "@theming/lib/layout/componentRegistry";
-import icon from './icon.svg';
+import { createInjector, inject, mergeProps } from "unstateless";
+import { injectArcContextProps } from "../ArcView.helpers";
+import { ArcThumbnailComponent } from "./ArcThumbnail.component";
+import { ArcThumbnailProps, IArcThumbnailInputProps } from "./ArcThumbnail.d";
 import { ArcThumbnailLayoutEditor } from "./ArcThumbnail.layout";
 import { ArcThumbnailPropEditor } from "./ArcThumbnail.props";
-import { injectArcContextProps } from "../ArcView.helpers";
+import icon from './icon.svg';
 
 const injectArcThumbnailProps = createInjector(injectArcContextProps);
 
