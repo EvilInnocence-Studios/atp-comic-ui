@@ -13,7 +13,7 @@ import icon from './icon.svg';
 const injectArcPageNumberListProps = createInjector(({arc}:IArcPageNumberListInputProps & {arc: IComicArc | null}):IArcPageNumberListProps => {
     const story = useStory();
     
-    const pages = story.arc.pages(arc?.id);
+    const pages = story.arc.allPages(arc?.id);
     const pageNumber = story.page.pageNumber;
 
     return {pages, pageNumber};
