@@ -8,6 +8,9 @@
     .listItem {
         padding: 16px;
         position: relative;
+        img {
+            width: 100%;
+        }
         .title {
             text-align: center;
             border: solid 2px var(--bgLightColor);
@@ -15,15 +18,6 @@
             color: #ffffff;
             font-weight: bold;
             padding: var(--paddingSmall);
-        }
-    }
-}
-
-.arcPagesVertical {
-    width: 100%;
-    .listItem {
-        img {
-            display: block;
         }
     }
 }
