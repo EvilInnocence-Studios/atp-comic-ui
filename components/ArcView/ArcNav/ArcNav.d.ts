@@ -1,4 +1,5 @@
-import { IComicArc } from "@comic-shared/arc/types";
+import { ILayoutComponent } from "@theming/lib/layout/componentRegistry";
+import { IArcContextProps } from "../ArcView.helpers";
 
 export declare interface IArcNavProps {
     archiveArc: IComicArc;
@@ -6,15 +7,18 @@ export declare interface IArcNavProps {
     nextArc: IComicArc | null;
     firstArc: IComicArc | null;
     latestArc: IComicArc | null;
-    linkType: string;
 }
 
 // What gets passed into the component from the parent as attributes
 export declare interface IArcNavInputProps {
-    arc: IComicArc;
+    className?: string;
+    css?: string;
+    classes?: any;
+    slots?: Index<ILayoutComponent[]>;
+    __layoutId?: string;
+    url?: string;
     top?: boolean;
     bottom?: boolean;
-    classes?: any;
 }
 
-export type ArcNavProps = IArcNavInputProps & IArcNavProps;
+export type ArcNavProps = IArcNavInputProps & IArcContextProps & IArcNavProps;

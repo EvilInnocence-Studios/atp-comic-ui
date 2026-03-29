@@ -10,7 +10,7 @@ export const PageNavComponent = overridable(({
     top, bottom, prevPage, nextPage, firstPage, lastPage, arc,
 }:PageNavProps) => <>
     {css && <style>{css}</style>}
-    <div className={clsx(classes.comicNavLinksContainer, top && classes.top, bottom && classes.bottom, className)} style={{ textAlign: "center", fontSize: "x-large" }}>
+    <div className={clsx(classes.comicNavLinksContainer, top && classes.top, bottom && classes.bottom, className)}>
         <div className={classes.navItem}>
             <Link className={clsx(!prevPage && classes.noShow)} to={`/comic/page/${(firstPage?.url)}`}>
                 <SlotRenderer slots={slots?.firstPage} parentId={__layoutId} slotName="firstPage" componentName={name} />
