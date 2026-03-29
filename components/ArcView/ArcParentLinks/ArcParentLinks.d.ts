@@ -15,6 +15,7 @@ export declare interface IArcParentLinksInputProps {
     url?: string;
     show?: "all" | "root" | "parent";
     full?: boolean;
+    hideIfEmpty?: boolean;
 }
 
 export type ArcParentLinksProps = IArcParentLinksInputProps & IArcContextProps & IArcParentLinksProps;
