@@ -73,7 +73,7 @@ uacPlugins.myAccount.tabs.register({
 
 LayoutRegistry.register({
     name: "comicPage",
-    displayName: "Comic Page Layout",
+    displayName: "Comic Page",
     description: "The layout and design for a comic page",
     defaultLayout: {
         component: "Empty"
@@ -83,7 +83,7 @@ LayoutRegistry.register({
 
 LayoutRegistry.register({
     name: "comicArchive",
-    displayName: "Comic Archive Page Layout",
+    displayName: "Comic Archive Page",
     description: "The layout and design for a comic page in the archives",
     defaultLayout: {
         component: "Empty"
@@ -93,7 +93,7 @@ LayoutRegistry.register({
 
 LayoutRegistry.register({
     name: "comicArc",
-    displayName: "Comic Arc Layout",
+    displayName: "Comic Arc",
     description: "The layout and design for an arc page",
     defaultLayout: {
         component: "Empty"
@@ -103,7 +103,7 @@ LayoutRegistry.register({
 
 LayoutRegistry.register({
     name: "comicVerticalScrollArc",
-    displayName: "Comic Vertical Scroll Arc Layout",
+    displayName: "Comic Vertical Scroll Chapter List",
     description: "The layout and design for a vertical scroll arc page",
     defaultLayout: {
         component: "Empty"
@@ -113,7 +113,7 @@ LayoutRegistry.register({
 
 LayoutRegistry.register({
     name: "comicVerticalScrollEpisode",
-    displayName: "Comic Vertical Scroll Episode Layout",
+    displayName: "Comic Vertical Scroll Episode",
     description: "The layout and design for a vertical scroll episode page",
     defaultLayout: {
         component: "Empty"
@@ -123,8 +123,8 @@ LayoutRegistry.register({
 
 LayoutRegistry.register({
     name: "comicArcListItem",
-    displayName: "Comic Arc List Item Design",
-    description: "The design for an arc list item",
+    displayName: "Comic Arc List Item",
+    description: "The design for an arc in the arc list",
     defaultLayout: {
         component: "Empty"
     },
@@ -133,8 +133,8 @@ LayoutRegistry.register({
 
 LayoutRegistry.register({
     name: "comicVerticalScrollEpisodeListItem",
-    displayName: "Comic Vertical Scroll Episode List Item Design",
-    description: "The design for a vertical scroll episode list item",
+    displayName: "Comic Vertical Scroll Episode List Item",
+    description: "The design for an episode in the vertical scroll chapter list",
     defaultLayout: {
         component: "Empty"
     },
