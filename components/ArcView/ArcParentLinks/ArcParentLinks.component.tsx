@@ -11,7 +11,7 @@ export const ArcParentLinksComponent = overridable(({className, css, parents, fu
     <ul className={className}>
         {parents.map(parent => (
             <li key={parent.id}>
-                <Link to={parent.url}>
+                <Link to={`/comic/arc/${parent.url}`}>
                     <Provider value={parent.url}><ArcTitle full={full} /></Provider>
                 </Link>
             </li>
