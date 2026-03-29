@@ -12,7 +12,7 @@ export const ArcNavComponent = overridable(({
     {css && <style>{css}</style>}
     <div className={clsx(classes.comicNavLinksContainer, top && classes.top, bottom && classes.bottom, className)}>
         <div className={classes.navItem}>
-            <Link className={clsx(!firstArc && classes.noShow)} to={`/comic/arc/${(firstArc?.url)}`}>
+            <Link className={clsx(!prevArc && classes.noShow)} to={`/comic/arc/${(firstArc?.url)}`}>
                 <SlotRenderer slots={slots?.firstArc} parentId={__layoutId} slotName="firstArc" />
             </Link>
         </div>
