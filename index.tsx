@@ -8,6 +8,7 @@ import { ArcDescription } from "./components/ArcView/ArcDescription";
 import { ArcLink } from "./components/ArcView/ArcLink";
 import { ArcNumber } from "./components/ArcView/ArcNumber";
 import { ArcPageNumberList } from "./components/ArcView/ArcPageNumberList";
+import { ArcParentLinks } from "./components/ArcView/ArcParentLinks";
 import { ArcThumbnail } from "./components/ArcView/ArcThumbnail";
 import { ArcTitle } from "./components/ArcView/ArcTitle";
 import { ArcType } from "./components/ArcView/ArcType";
@@ -56,6 +57,7 @@ ComponentRegistry.register(ArcPageNumberList);
 ComponentRegistry.register(ArcLink);
 ComponentRegistry.register(ArcDate);
 ComponentRegistry.register(EpisodeImages);
+ComponentRegistry.register(ArcParentLinks);
 
 uacPlugins.myAccount.tabs.register({
     key: "comics",

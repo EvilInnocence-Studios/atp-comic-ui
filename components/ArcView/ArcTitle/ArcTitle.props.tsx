@@ -18,7 +18,7 @@ export const ArcTitlePropEditor = (
         <Switch
             checked={full}
             onChange={updateProp("full")}
-            checkedChildren="Full Title (Book 5: My Story)"
+            checkedChildren="Full Title (Book 5: My Book)"
             unCheckedChildren="Short Title (My Book)"
         />
     </>;

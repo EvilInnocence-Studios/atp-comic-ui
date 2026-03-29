@@ -1,15 +1,7 @@
 import { IComicArc } from "@comic-shared/arc/types";
-import { IComicPage } from "@comic-shared/page/types";
-import { ArchiveViewMode, IComicUserPreferences, SortOrder } from "@comic/lib/useUserPreferences";
-import { Setter } from "unstateless";
-import { IArcSettings } from "./ArcView.helpers";
-
-export declare type BreadCrumbMode = "full" | "parent" | "none";
 
 export declare interface IArcViewProps {
     arc: IComicArc | null;
-    parents: IComicArc[];
-    subArcs: IComicArc[];
     isVerticalScroll: boolean;
     hasPages: boolean;
 }
@@ -21,4 +13,4 @@ export declare interface IArcViewInputProps {
     className?: string;
 }
 
-export type ArcViewProps = IArcViewInputProps & IArcViewProps & IComicUserPreferences & IArcSettings;
+export type ArcViewProps = IArcViewInputProps & IArcViewProps;
