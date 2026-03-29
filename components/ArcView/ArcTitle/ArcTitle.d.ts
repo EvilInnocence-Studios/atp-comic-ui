@@ -11,8 +11,8 @@ export declare interface IArcTitleInputProps {
     classes?: any;
     slots?: Index<ILayoutComponent[]>;
     __layoutId?: string;
-    name?: string;
     url?: string;
+    full?: boolean;
 }
 
 export type ArcTitleProps = IArcTitleInputProps & IArcTitleProps;
