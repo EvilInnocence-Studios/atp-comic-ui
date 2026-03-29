@@ -32,7 +32,7 @@ export const ArcNavComponent = overridable(({
             </Link>
         </div>
         <div className={classes.navItem}>
-            <Link className={clsx(!latestArc && classes.noShow)} to={`/comic/arc/${latestArc?.url}`}>
+            <Link className={clsx(!nextArc && classes.noShow)} to={`/comic/arc/${latestArc?.url}`}>
                 <SlotRenderer slots={slots?.lastArc} parentId={__layoutId} slotName="lastArc" />
             </Link>
         </div>
