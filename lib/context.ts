@@ -40,8 +40,10 @@ export declare interface ICharacterContextProps {
 export const ComicCharacterIdContext = createContext<string>("");
 
 export const injectCharacterContextProps = createInjector(({id}:{id?:string | null}):ICharacterContextProps => {
+    const defaultId = useContext(ComicCharacterIdContext);
+    
     const story = useStory();
-    const character = story.character.get(id);
+    const character = story.character.get(id || defaultId);
     
     return {character};
 });

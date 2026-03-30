@@ -2,7 +2,6 @@ import { IComicCharacter } from "@comic-shared/character/types";
 
 export declare interface ICharactersPageProps {
     characters: IComicCharacter[];
-    isLoading: boolean;
     mode: string;
 }
 

@@ -9,6 +9,10 @@ import { memoizePromise } from "ts-functional";
 const getArcs = memoizePromise(() => services().arc.search());
 const getPages = memoizePromise(() => services().page.searchAll());
 const getCharacters = memoizePromise(() => services().character.search());
+const getCharacterPages = memoizePromise((id: string) => services().character.pages(id));
+const getCharacterArcs = memoizePromise((id: string) => services().character.arcs(id));
+const getCharacterAttributes = memoizePromise((id: string) => services().character.attribute.search(id));
+const getCharacterMedia = memoizePromise((id: string) => services().character.media.search(id));
 
 const sortByOrder = <T extends { sortOrder?: number }>(a: T, b: T) => (a.sortOrder || 0) - (b.sortOrder || 0);
 
@@ -32,20 +36,22 @@ export const useStory = () => {
     useEffect(() => {
         getArcs().then(setArcs);
         getPages().then(setPages);
-        getCharacters().then(async (chars) => {
-            setCharacters(chars);
-            
+        getCharacters().then(setCharacters);
+    }, []);
+
+    useEffect(() => {
+        const loadCharacterData = async () => {
             const pMap: Record<string, string[]> = {};
             const aMap: Record<string, string[]> = {};
             const attMap: Record<string, ICharacterAttribute[]> = {};
             const mMap: Record<string, ICharacterMedia[]> = {};
 
-            await Promise.all(chars.map(async (c) => {
+            await Promise.all(characters.map(async (c) => {
                 const [pages, arcs, attributes, media] = await Promise.all([
-                    services().character.pages(c.id).catch(() => []),
-                    services().character.arcs(c.id).catch(() => []),
-                    services().character.attribute.search(c.id).catch(() => []),
-                    services().character.media.search(c.id).catch(() => [])
+                    getCharacterPages(c.id).catch(() => []),
+                    getCharacterArcs(c.id).catch(() => []),
+                    getCharacterAttributes(c.id).catch(() => []),
+                    getCharacterMedia(c.id).catch(() => [])
                 ]);
                 pMap[c.id] = pages;
                 aMap[c.id] = arcs;
@@ -58,8 +64,10 @@ export const useStory = () => {
             setCharacterAttributes(attMap);
             setCharacterMedia(mMap);
             setCharactersPreloaded(true);
-        });
-    }, []);
+        };
+
+        loadCharacterData();
+    }, [characters]);
 
     return useMemo(() => {
         const arc = {
