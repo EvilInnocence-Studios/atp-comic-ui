@@ -1,9 +1,8 @@
 import { overridable } from "@core/lib/overridable";
-import {CharacterNameProps} from "./CharacterName.d";
-import styles from './CharacterName.module.scss';
+import { CharacterNameProps } from "./CharacterName.d";
 
-export const CharacterNameComponent = overridable(({classes = styles, slots, __layoutId, className, css}:CharacterNameProps) => <>
+export const CharacterNameComponent = overridable(({ className, css, character }: CharacterNameProps) => <>
     {css && <style>{css}</style>}
-    <div className={className}>CharacterName component goes here.</div>
+    <div className={className}>{character?.name}</div>
 </>);
 

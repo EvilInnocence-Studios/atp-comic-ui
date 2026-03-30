@@ -154,7 +154,7 @@ LayoutRegistry.register({
 });
 
 LayoutRegistry.register({
-    name: "comciCharacter",
+    name: "comicCharacter",
     displayName: "Comic Character",
     description: "The layout and design for a character details section",
     defaultLayout: {
