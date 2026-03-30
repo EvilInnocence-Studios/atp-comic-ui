@@ -14,7 +14,7 @@ const Provider = ComicCharacterIdContext.Provider;
 
 export const CharacterViewComponent = overridable(({ character, classes = styles }: CharacterViewProps) => <>
     <Provider value={character.id}>
-        <Layout element="comciCharacter" />
+        <Layout element="comicCharacter" />
     </Provider>
     <div id={`character-${character.id}`} className={classes.characterView}>
         <Row gutter={[16, 16]}>
