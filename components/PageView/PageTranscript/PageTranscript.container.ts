@@ -31,6 +31,7 @@ export const PageTranscript = withLayoutMetadata(
         name: "PageTranscript",
         displayName: "Page Transcript",
         category: "Comic",
+        subCategory: "Page",
         description: "",
         icon,
         getSlotDisplayName: (slotName, props) => props[slotName] || slotName,

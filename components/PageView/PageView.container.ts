@@ -38,6 +38,7 @@ export const PageView = withLayoutMetadata(
         name: "comicPageView",
         displayName: "Comic Page",
         category: "Comic",
+        subCategory: "Page",
         description: "The comic page layout and design",
         icon,
         getSlotDisplayName: (slotName, props) => props[slotName] || slotName,

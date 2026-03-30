@@ -31,6 +31,7 @@ export const PageNumber = withLayoutMetadata(
         name: "PageNumber",
         displayName: "Page Number",
         category: "Comic",
+        subCategory: "Page",
         description: "",
         icon,
         getSlotDisplayName: (slotName, props) => props[slotName] || slotName,

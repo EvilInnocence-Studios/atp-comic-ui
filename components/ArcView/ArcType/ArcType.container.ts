@@ -6,7 +6,7 @@ import { withLayoutMetadata } from "@theming/lib/layout/componentRegistry";
 import icon from './icon.svg';
 import { ArcTypeLayoutEditor } from "./ArcType.layout";
 import { ArcTypePropEditor } from "./ArcType.props";
-import { injectArcContextProps } from "../ArcView.helpers";
+import { injectArcContextProps } from "@comic/lib/context";
 import { useStory } from "@comic/lib/useStory";
 import { IComicArc } from "@comic-shared/arc/types";
 
@@ -29,6 +29,7 @@ export const ArcType = withLayoutMetadata(
         name: "ArcType",
         displayName: "Arc Type",
         category: "Comic",
+        subCategory: "Arc",
         description: "",
         icon,
         getSlotDisplayName: (slotName, props) => props[slotName] || slotName,

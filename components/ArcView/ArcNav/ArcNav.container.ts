@@ -3,7 +3,7 @@ import { useSetting } from "@common/lib/setting/services";
 import { overridable } from "@core/lib/overridable";
 import { withLayoutMetadata } from "@theming/lib/layout/componentRegistry";
 import { createInjector, inject, mergeProps } from "unstateless";
-import { IArcContextProps, injectArcContextProps } from "../ArcView.helpers";
+import { IArcContextProps, injectArcContextProps } from "@comic/lib/context";
 import { ArcNavComponent } from "./ArcNav.component";
 import { ArcNavProps, IArcNavInputProps, IArcNavProps } from "./ArcNav.d";
 import { ArcNavLayoutEditor } from "./ArcNav.layout";
@@ -40,6 +40,7 @@ export const ArcNav = withLayoutMetadata(
         name: "ArcNav",
         displayName: "Arc Nav",
         category: "Comic",
+        subCategory: "Arc",
         description: "",
         icon,
         getSlotDisplayName: (slotName, props) => props[slotName] || slotName,

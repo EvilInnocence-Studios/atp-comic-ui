@@ -1,7 +1,7 @@
 import { overridable } from "@core/lib/overridable";
 import { withLayoutMetadata } from "@theming/lib/layout/componentRegistry";
 import { createInjector, inject, mergeProps } from "unstateless";
-import { injectArcContextProps } from "../ArcView.helpers";
+import { injectArcContextProps } from "@comic/lib/context";
 import { ArcTitleComponent } from "./ArcTitle.component";
 import { ArcTitleProps, IArcTitleInputProps } from "./ArcTitle.d";
 import { ArcTitleLayoutEditor } from "./ArcTitle.layout";
@@ -21,6 +21,7 @@ export const ArcTitle = withLayoutMetadata(
         name: "ArcTitle",
         displayName: "Arc Title",
         category: "Comic",
+        subCategory: "Arc",
         description: "",
         icon,
         getSlotDisplayName: (slotName, props) => props[slotName] || slotName,

@@ -1,5 +1,6 @@
 import { IComicArc } from "@comic-shared/arc/types";
 import { IComicPage } from "@comic-shared/page/types";
+import { IComicCharacter, ICharacterAttribute, ICharacterMedia } from "@comic-shared/character/types";
 import { useSetting } from "@common/lib/setting/services";
 import { services } from "@core/lib/api";
 import { useEffect, useMemo, useState } from "react";
@@ -7,22 +8,57 @@ import { memoizePromise } from "ts-functional";
 
 const getArcs = memoizePromise(() => services().arc.search());
 const getPages = memoizePromise(() => services().page.searchAll());
+const getCharacters = memoizePromise(() => services().character.search());
 
 const sortByOrder = <T extends { sortOrder?: number }>(a: T, b: T) => (a.sortOrder || 0) - (b.sortOrder || 0);
 
 export const useStory = () => {
     const [arcs, setArcs] = useState<IComicArc[]>([]);
     const [pages, setPages] = useState<IComicPage[]>([]);
+    const [characters, setCharacters] = useState<IComicCharacter[]>([]);
+    const [charactersPreloaded, setCharactersPreloaded] = useState(false);
+    const [characterPages, setCharacterPages] = useState<Record<string, string[]>>({});
+    const [characterArcs, setCharacterArcs] = useState<Record<string, string[]>>({});
+    const [characterAttributes, setCharacterAttributes] = useState<Record<string, ICharacterAttribute[]>>({});
+    const [characterMedia, setCharacterMedia] = useState<Record<string, ICharacterMedia[]>>({});
     const arcNamesRaw = useSetting("comic.arcNames") || "";
     const vsArcNamesRaw = useSetting("comic.verticalScrollArcNames") || "";
     const arcNames = useMemo(() => arcNamesRaw.split(","), [arcNamesRaw]);
     const vsArcNames = useMemo(() => vsArcNamesRaw.split(","), [vsArcNamesRaw]);
     const arcsLoaded = arcs.length > 0;
     const pagesLoaded = pages.length > 0;
+    const charactersLoaded = characters.length > 0;
 
     useEffect(() => {
         getArcs().then(setArcs);
         getPages().then(setPages);
+        getCharacters().then(async (chars) => {
+            setCharacters(chars);
+            
+            const pMap: Record<string, string[]> = {};
+            const aMap: Record<string, string[]> = {};
+            const attMap: Record<string, ICharacterAttribute[]> = {};
+            const mMap: Record<string, ICharacterMedia[]> = {};
+
+            await Promise.all(chars.map(async (c) => {
+                const [pages, arcs, attributes, media] = await Promise.all([
+                    services().character.pages(c.id).catch(() => []),
+                    services().character.arcs(c.id).catch(() => []),
+                    services().character.attribute.search(c.id).catch(() => []),
+                    services().character.media.search(c.id).catch(() => [])
+                ]);
+                pMap[c.id] = pages;
+                aMap[c.id] = arcs;
+                attMap[c.id] = attributes;
+                mMap[c.id] = media;
+            }));
+
+            setCharacterPages(pMap);
+            setCharacterArcs(aMap);
+            setCharacterAttributes(attMap);
+            setCharacterMedia(mMap);
+            setCharactersPreloaded(true);
+        });
     }, []);
 
     return useMemo(() => {
@@ -54,6 +90,7 @@ export const useStory = () => {
                 }
                 return currentArc;
             },
+            rootArcs: () => arcs.filter(a => !a.parentId).sort(sortByOrder),
             parents: (arcId?: string | null): IComicArc[] => {
                 const parents: IComicArc[] = [];
                 let currentArc = arcs.find(a => a.id === arcId) || null;
@@ -175,6 +212,16 @@ export const useStory = () => {
             },
         }
 
-        return { arc, page };
-    }, [arcs, pages, arcNames]);
+        const character = {
+            isLoaded: charactersLoaded && charactersPreloaded,
+            get: (id?: string | null) => id ? characters.find(c => c.id === id) || null : null,
+            list: () => characters,
+            pages: (id: string) => characterPages[id] || [],
+            arcs: (id: string) => characterArcs[id] || [],
+            attributes: (id: string) => characterAttributes[id] || [],
+            media: (id: string) => characterMedia[id] || []
+        };
+
+        return { arc, page, character };
+    }, [arcs, pages, characters, characterPages, characterArcs, characterAttributes, characterMedia, charactersPreloaded, arcNames]);
 }

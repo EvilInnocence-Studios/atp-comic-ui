@@ -1,3 +1,6 @@
+import { ICharacterContextProps } from "@comic/lib/context";
+import { ILayoutComponent } from "@theming/lib/layout/componentRegistry";
+
 export declare interface ICharacterAppearancesProps {
     pages: Array<{
         pageNumber: number | null;
@@ -14,8 +17,13 @@ export declare interface ICharacterAppearancesProps {
 
 // What gets passed into the component from the parent as attributes
 export declare interface ICharacterAppearancesInputProps {
-    characterId: string;
+    className?: string;
+    css?: string;
     classes?: any;
+    slots?: Index<ILayoutComponent[]>;
+    __layoutId?: string;
+    id?: string | null;
+    rootArc?: string;
 }
 
-export type CharacterAppearancesProps = ICharacterAppearancesInputProps & ICharacterAppearancesProps;
+export type CharacterAppearancesProps = ICharacterAppearancesInputProps & ICharacterContextProps & ICharacterAppearancesProps;

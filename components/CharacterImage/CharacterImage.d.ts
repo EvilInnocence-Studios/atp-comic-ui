@@ -11,6 +11,7 @@ export declare interface ICharacterImageInputProps {
     characterId: string;
     imageId: string | null;
     classes?: any;
+    className?: string;
 }
 
 export type CharacterImageProps = ICharacterImageInputProps & ICharacterImageProps;

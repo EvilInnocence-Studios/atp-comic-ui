@@ -1,7 +1,7 @@
+import { injectArcContextProps } from "@comic/lib/context";
 import { overridable } from "@core/lib/overridable";
 import { withLayoutMetadata } from "@theming/lib/layout/componentRegistry";
 import { createInjector, inject, mergeProps } from "unstateless";
-import { injectArcContextProps } from "../ArcView.helpers";
 import { ArcBannerComponent } from "./ArcBanner.component";
 import { ArcBannerProps, IArcBannerInputProps } from "./ArcBanner.d";
 import { ArcBannerLayoutEditor } from "./ArcBanner.layout";
@@ -21,6 +21,7 @@ export const ArcBanner = withLayoutMetadata(
         name: "ArcBanner",
         displayName: "Arc Banner",
         category: "Comic",
+        subCategory: "Arc",
         description: "",
         icon,
         getSlotDisplayName: (slotName, props) => props[slotName] || slotName,

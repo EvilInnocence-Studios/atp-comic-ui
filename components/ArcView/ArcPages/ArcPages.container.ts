@@ -2,7 +2,7 @@ import { useStory } from "@comic/lib/useStory";
 import { overridable } from "@core/lib/overridable";
 import { withLayoutMetadata } from "@theming/lib/layout/componentRegistry";
 import { createInjector, inject, mergeProps } from "unstateless";
-import { IArcContextProps, injectArcContextProps } from "../ArcView.helpers";
+import { IArcContextProps, injectArcContextProps } from "@comic/lib/context";
 import { ArcPagesComponent } from "./ArcPages.component";
 import { ArcPagesProps, IArcPagesInputProps, IArcPagesProps } from "./ArcPages.d";
 import { ArcPagesLayoutEditor } from "./ArcPages.layout";
@@ -29,6 +29,7 @@ export const ArcPages = withLayoutMetadata(
         name: "ArcPages",
         displayName: "Arc Pages",
         category: "Comic",
+        subCategory: "Arc",
         description: "",
         icon,
         getSlotDisplayName: (slotName, props) => props[slotName] || slotName,

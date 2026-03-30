@@ -27,6 +27,7 @@ export const LatestPage = withLayoutMetadata(
     {
         name: "LatestPage",
         category: "Comic",
+        subCategory: "Page",
         icon,
         displayName: "Latest Page",
         description: "The latest page of the story",

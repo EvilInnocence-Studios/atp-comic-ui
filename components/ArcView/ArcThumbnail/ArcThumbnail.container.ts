@@ -1,7 +1,7 @@
 import { overridable } from "@core/lib/overridable";
 import { withLayoutMetadata } from "@theming/lib/layout/componentRegistry";
 import { createInjector, inject, mergeProps } from "unstateless";
-import { injectArcContextProps } from "../ArcView.helpers";
+import { injectArcContextProps } from "@comic/lib/context";
 import { ArcThumbnailComponent } from "./ArcThumbnail.component";
 import { ArcThumbnailProps, IArcThumbnailInputProps } from "./ArcThumbnail.d";
 import { ArcThumbnailLayoutEditor } from "./ArcThumbnail.layout";
@@ -21,6 +21,7 @@ export const ArcThumbnail = withLayoutMetadata(
         name: "ArcThumbnail",
         displayName: "Arc Thumbnail",
         category: "Comic",
+        subCategory: "Arc",
         description: "",
         icon,
         getSlotDisplayName: (slotName, props) => props[slotName] || slotName,

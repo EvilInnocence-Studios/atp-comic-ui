@@ -1,7 +1,7 @@
 import { overridable } from "@core/lib/overridable";
 import { withLayoutMetadata } from "@theming/lib/layout/componentRegistry";
 import { createInjector, inject, mergeProps } from "unstateless";
-import { injectArcContextProps } from "../ArcView.helpers";
+import { injectArcContextProps } from "@comic/lib/context";
 import { ArcLinkComponent } from "./ArcLink.component";
 import { ArcLinkProps, IArcLinkInputProps, IArcLinkProps } from "./ArcLink.d";
 import { ArcLinkPropEditor } from "./ArcLink.props";
@@ -23,6 +23,7 @@ export const ArcLink = withLayoutMetadata(
         name: "ArcLink",
         displayName: "Arc Link",
         category: "Comic",
+        subCategory: "Arc",
         description: "",
         icon,
         getSlotDisplayName: (slotName, props) => props[slotName] || slotName,

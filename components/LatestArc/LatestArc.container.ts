@@ -29,6 +29,7 @@ export const LatestArc = withLayoutMetadata(
         name: "LatestArc",
         displayName: "Latest Arc",
         category: "Comic",
+        subCategory: "Arc",
         description: "Latest Arc",
         icon,
         getSlotDisplayName: (slotName, props) => props[slotName] || slotName,

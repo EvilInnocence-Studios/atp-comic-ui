@@ -6,7 +6,7 @@ import { withLayoutMetadata } from "@theming/lib/layout/componentRegistry";
 import icon from './icon.svg';
 import { ArcDateLayoutEditor } from "./ArcDate.layout";
 import { ArcDatePropEditor } from "./ArcDate.props";
-import { injectArcContextProps } from "../ArcView.helpers";
+import { injectArcContextProps } from "@comic/lib/context";
 
 const injectArcDateProps = createInjector(({}:IArcDateInputProps):IArcDateProps => {
     return {};
@@ -24,6 +24,7 @@ export const ArcDate = withLayoutMetadata(
         name: "ArcDate",
         displayName: "Arc Date",
         category: "Comic",
+        subCategory: "Arc",
         description: "",
         icon,
         getSlotDisplayName: (slotName, props) => props[slotName] || slotName,

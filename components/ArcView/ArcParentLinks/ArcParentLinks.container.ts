@@ -2,7 +2,7 @@ import { useStory } from "@comic/lib/useStory";
 import { overridable } from "@core/lib/overridable";
 import { withLayoutMetadata } from "@theming/lib/layout/componentRegistry";
 import { createInjector, inject, mergeProps } from "unstateless";
-import { IArcContextProps, injectArcContextProps } from "../ArcView.helpers";
+import { IArcContextProps, injectArcContextProps } from "@comic/lib/context";
 import { ArcParentLinksComponent } from "./ArcParentLinks.component";
 import { ArcParentLinksProps, IArcParentLinksInputProps, IArcParentLinksProps } from "./ArcParentLinks.d";
 import { ArcParentLinksLayoutEditor } from "./ArcParentLinks.layout";
@@ -34,6 +34,7 @@ export const ArcParentLinks = withLayoutMetadata(
         name: "ArcParentLinks",
         displayName: "Arc Parent Links",
         category: "Comic",
+        subCategory: "Arc",
         description: "",
         icon,
         getSlotDisplayName: (slotName, props) => props[slotName] || slotName,

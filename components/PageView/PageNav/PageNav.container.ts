@@ -44,6 +44,7 @@ export const PageNav = withLayoutMetadata(
         name: "PageNav",
         displayName: "Page Nav",
         category: "Comic",
+        subCategory: "Page",
         description: "",
         icon,
         getSlotDisplayName: (slotName, props) => props[slotName] || slotName,

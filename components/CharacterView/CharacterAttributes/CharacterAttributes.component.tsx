@@ -1,9 +1,9 @@
 import { overridable } from "@core/lib/overridable";
 import { CharacterAttributesProps } from "./CharacterAttributes.d";
-import styles from './CharacterAttributes.module.scss';
 
-export const CharacterAttributesComponent = overridable(({ attributes, classes = styles }: CharacterAttributesProps) =>
-    <table className={classes.characterAttributes}>
+export const CharacterAttributesComponent = overridable(({className, css, attributes}:CharacterAttributesProps) => <>
+    {css && <style>{css}</style>}
+    <table className={className}>
         {attributes.map(attr =>
             <tr key={attr.id}>
                 <th>{attr.name}:</th>
@@ -11,4 +11,5 @@ export const CharacterAttributesComponent = overridable(({ attributes, classes =
             </tr>
         )}
     </table>
-);
+</>);
+

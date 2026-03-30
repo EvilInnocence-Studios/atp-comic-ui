@@ -3,7 +3,7 @@ import { useStory } from "@comic/lib/useStory";
 import { overridable } from "@core/lib/overridable";
 import { withLayoutMetadata } from "@theming/lib/layout/componentRegistry";
 import { createInjector, inject, mergeProps } from "unstateless";
-import { injectArcContextProps } from "../ArcView.helpers";
+import { injectArcContextProps } from "@comic/lib/context";
 import icon from './icon.svg';
 import { SubArcListComponent } from "./SubArcList.component";
 import { ISubArcListInputProps, ISubArcListProps, SubArcListProps } from "./SubArcList.d";
@@ -38,6 +38,7 @@ export const SubArcList = withLayoutMetadata(
         name: "SubArcList",
         displayName: "Sub Arc List",
         category: "Comic",
+        subCategory: "Arc",
         description: "",
         icon,
         getSlotDisplayName: (slotName, props) => props[slotName] || slotName,

@@ -16,6 +16,12 @@ import { ArcTitle } from "./components/ArcView/ArcTitle";
 import { ArcType } from "./components/ArcView/ArcType";
 import { EpisodeImages } from "./components/ArcView/EpisodeImages";
 import { SubArcList } from "./components/ArcView/SubArcList";
+import { CharacterAppearances } from "./components/CharacterView/CharacterAppearances";
+import { CharacterAttributes } from "./components/CharacterView/CharacterAttributes";
+import { CharacterBio } from "./components/CharacterView/CharacterBio";
+import { CharacterMedia } from "./components/CharacterView/CharacterMedia";
+import { CharacterName } from "./components/CharacterView/CharacterName";
+import { CharacterThumbnail } from "./components/CharacterView/CharacterThumbnail";
 import { LatestArc } from "./components/LatestArc";
 import { LatestPage } from "./components/LatestPage";
 import { PageView } from "./components/PageView";
@@ -62,6 +68,12 @@ ComponentRegistry.register(EpisodeImages);
 ComponentRegistry.register(ArcParentLinks);
 ComponentRegistry.register(ArcPages);
 ComponentRegistry.register(ArcNav);
+ComponentRegistry.register(CharacterName);
+ComponentRegistry.register(CharacterThumbnail);
+ComponentRegistry.register(CharacterBio);
+ComponentRegistry.register(CharacterAttributes);
+ComponentRegistry.register(CharacterAppearances);
+ComponentRegistry.register(CharacterMedia);
 
 uacPlugins.myAccount.tabs.register({
     key: "comics",
@@ -135,6 +147,16 @@ LayoutRegistry.register({
     name: "comicVerticalScrollEpisodeListItem",
     displayName: "Comic Vertical Scroll Episode List Item",
     description: "The design for an episode in the vertical scroll chapter list",
+    defaultLayout: {
+        component: "Empty"
+    },
+    priority: 500,
+});
+
+LayoutRegistry.register({
+    name: "comciCharacter",
+    displayName: "Comic Character",
+    description: "The layout and design for a character details section",
     defaultLayout: {
         component: "Empty"
     },

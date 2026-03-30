@@ -1,5 +1,5 @@
 import { ILayoutComponent } from "@theming/lib/layout/componentRegistry";
-import { IArcContextProps } from "../ArcView.helpers";
+import { IArcContextProps } from "@comic/lib/context";
 
 export declare interface IArcPagesProps {
     pages: IComicPage[];

@@ -1,15 +1,12 @@
 import { overridable } from "@core/lib/overridable";
 import { Select } from "antd";
-import { Link } from "react-router-dom";
+import { Link } from "react-router";
 import { CharacterAppearancesProps } from "./CharacterAppearances.d";
-import styles from './CharacterAppearances.module.scss';
 
-export const CharacterAppearancesComponent = overridable(({
-    pages, goToPage,
-    arcs, goToArc,
-    classes = styles
-}: CharacterAppearancesProps) => <div className={classes.characterAppearances}>
-        {pages.length > 0 && <>
+export const CharacterAppearancesComponent = overridable(({className, css, pages, arcs, goToPage, goToArc}:CharacterAppearancesProps) => <>
+    {css && <style>{css}</style>}
+    <div className={className}>
+            {pages.length > 0 && <>
             <table>
                 <tr>
                     <th>First appearance:</th>
@@ -60,4 +57,6 @@ export const CharacterAppearancesComponent = overridable(({
                 }))}
             />
         </>}
-    </div>);
+    </div>
+</>);
+

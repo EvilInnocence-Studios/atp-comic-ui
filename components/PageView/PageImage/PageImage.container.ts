@@ -33,6 +33,7 @@ export const PageImage = withLayoutMetadata(
         name: "PageImage",
         displayName: "Page Image",
         category: "Comic",
+        subCategory: "Page",
         description: "",
         icon,
         getSlotDisplayName: (slotName, props) => props[slotName] || slotName,

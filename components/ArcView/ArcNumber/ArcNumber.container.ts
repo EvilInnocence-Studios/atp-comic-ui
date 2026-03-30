@@ -6,7 +6,7 @@ import { withLayoutMetadata } from "@theming/lib/layout/componentRegistry";
 import icon from './icon.svg';
 import { ArcNumberLayoutEditor } from "./ArcNumber.layout";
 import { ArcNumberPropEditor } from "./ArcNumber.props";
-import { injectArcContextProps } from "../ArcView.helpers";
+import { injectArcContextProps } from "@comic/lib/context";
 import { useStory } from "@comic/lib/useStory";
 import { IComicArc } from "@comic-shared/arc/types";
 
@@ -29,6 +29,7 @@ export const ArcNumber = withLayoutMetadata(
         name: "ArcNumber",
         displayName: "Arc Number",
         category: "Comic",
+        subCategory: "Arc",
         description: "",
         icon,
         getSlotDisplayName: (slotName, props) => props[slotName] || slotName,

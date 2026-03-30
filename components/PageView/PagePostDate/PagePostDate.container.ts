@@ -28,6 +28,7 @@ export const PagePostDate = withLayoutMetadata(
         name: "PagePostDate",
         displayName: "Page Post Date",
         category: "Comic",
+        subCategory: "Page",
         description: "",
         icon,
         getSlotDisplayName: (slotName, props) => props[slotName] || slotName,
