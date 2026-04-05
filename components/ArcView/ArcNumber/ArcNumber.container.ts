@@ -10,9 +10,11 @@ import { injectArcContextProps } from "@comic/lib/context";
 import { useStory } from "@comic/lib/useStory";
 import { IComicArc } from "@comic-shared/arc/types";
 
-const injectArcNumberProps = createInjector(({arc}:IArcNumberInputProps & {arc: IComicArc | null}):IArcNumberProps => {
+const injectArcNumberProps = createInjector(({arc, mode}:IArcNumberInputProps & {arc: IComicArc | null}):IArcNumberProps => {
     const story = useStory();
-    const arcNumber = story.arc.arcNumber(arc?.id || "");
+    const arcNumber = mode === "relative"
+        ? story.arc.arcNumber(arc?.id || "")
+        : story.arc.arcIndex(arc?.id || "");
     
     return {arcNumber};
 });

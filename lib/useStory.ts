@@ -183,6 +183,11 @@ export const useStory = () => {
                     : arcs.filter(a => !a.parentId).sort(sortByOrder);
                 return siblingArcs.findIndex(a => a.id === arcId) + 1 || null;
             },
+            arcIndex: (arcId?: string) => {
+                if (!arcId) return null;
+                const allArcs = arc.leafArcs(arc.root(arcId)?.id || "");
+                return allArcs.find(a => a.id === arcId)?.index || null;
+            },
             isVerticalScroll: (arcId?: string) => {
                 const root = arc.root(arcId);
                 if (!root) return false;

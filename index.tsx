@@ -16,6 +16,8 @@ import { ArcTitle } from "./components/ArcView/ArcTitle";
 import { ArcType } from "./components/ArcView/ArcType";
 import { EpisodeImages } from "./components/ArcView/EpisodeImages";
 import { SubArcList } from "./components/ArcView/SubArcList";
+import { CharacterGrid } from "./components/CharacterGrid";
+import { CharacterView } from "./components/CharacterView";
 import { CharacterAppearances } from "./components/CharacterView/CharacterAppearances";
 import { CharacterAttributes } from "./components/CharacterView/CharacterAttributes";
 import { CharacterBio } from "./components/CharacterView/CharacterBio";
@@ -74,6 +76,8 @@ ComponentRegistry.register(CharacterBio);
 ComponentRegistry.register(CharacterAttributes);
 ComponentRegistry.register(CharacterAppearances);
 ComponentRegistry.register(CharacterMedia);
+ComponentRegistry.register(CharacterView);
+ComponentRegistry.register(CharacterGrid);
 
 uacPlugins.myAccount.tabs.register({
     key: "comics",

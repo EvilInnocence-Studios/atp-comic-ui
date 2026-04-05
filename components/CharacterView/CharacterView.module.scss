@@ -1,12 +1,1 @@
 @use "@styles/globals.module.scss";
-
-.characterView {
-    max-width: var(--comicArchiveWidth);
-    margin: auto;
-    margin-bottom: var(--padding);
-    position: relative;
-    h2 {
-        margin-top: 0;
-        border-bottom: solid 5px var(--borderColor);
-    }
-}

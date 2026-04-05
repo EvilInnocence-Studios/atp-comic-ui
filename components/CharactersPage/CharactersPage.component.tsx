@@ -9,10 +9,10 @@ import styles from './CharactersPage.module.scss';
 export const CharactersPageComponent = overridable(({ characters, mode, classes = styles }: CharactersPageProps) =>
     <div className={classes.characterPage}>
         <CharacterPageHeader />
-        <CharacterGrid characters={characters} />
+        <CharacterGrid characterIds={characters.map(prop("id"))} />
 
         {mode === "list" && <div className={classes.characterList}>
-            {characters.filter(prop("showDetails")).map(char => <CharacterView key={char.id} character={char} />)}
+            {characters.filter(prop("showDetails")).map(char => <CharacterView key={char.id} id={char.id} />)}
         </div>}
     </div>
 );

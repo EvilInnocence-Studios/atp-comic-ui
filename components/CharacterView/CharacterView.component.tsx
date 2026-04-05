@@ -5,8 +5,12 @@ import { CharacterViewProps } from "./CharacterView.d";
 
 const Provider = ComicCharacterIdContext.Provider;
 
-export const CharacterViewComponent = overridable(({ character }: CharacterViewProps) => <>
-    <Provider value={character.id}>
-        <Layout element="comicCharacter" />
-    </Provider>
+export const CharacterViewComponent = overridable(({className, css, id}:CharacterViewProps) => <>
+    {css && <style>{css}</style>}
+    <div id={`character-${id}`} className={className}>
+        <Provider value={id || ""}>
+            <Layout element="comicCharacter" />
+        </Provider>
+    </div>
 </>);
+

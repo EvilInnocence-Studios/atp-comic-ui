@@ -13,6 +13,7 @@ export declare interface IArcNumberInputProps {
     slots?: Index<ILayoutComponent[]>;
     __layoutId?: string;
     url?: string;
+    mode?: "relative" | "absolute";
 }
 
 export type ArcNumberProps = IArcNumberInputProps & {arc: IComicArc | null} & IArcNumberProps;

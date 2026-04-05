@@ -1,0 +1,14 @@
+import { ICharacterAttribute, ICharacterMedia, IComicCharacter } from "@comic-shared/character/types";
+import { IComicPage } from "@comic-shared/page/types";
+
+export declare interface ICharacterViewProps {
+
+}
+
+// What gets passed into the component from the parent as attributes
+export declare interface ICharacterViewInputProps {
+    id: string;
+    classes?: any;
+}
+
+export type CharacterViewProps = ICharacterViewInputProps & ICharacterViewProps;
