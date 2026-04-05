@@ -14,7 +14,7 @@ const injectArcNumberProps = createInjector(({arc, mode}:IArcNumberInputProps & 
     const story = useStory();
     const arcNumber = mode === "relative"
         ? story.arc.arcNumber(arc?.id || "")
-        : story.arc.arcIndex(arc?.id || "");
+        : (story.arc.arcIndex(arc?.id || "") || 0) + 1;
     
     return {arcNumber};
 });
