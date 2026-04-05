@@ -18,8 +18,8 @@ export const ArcNumberPropEditor = (
         <Switch
             checkedChildren="Relative"
             unCheckedChildren="Absolute"
-            checked={mode === "relative"}
-            onChange={updateProp("mode")}
+            checked={!mode || mode === "relative"}
+            onChange={(checked) => updateProp("mode")(checked ? "relative" : "absolute")}
         />
     </>;
 }
