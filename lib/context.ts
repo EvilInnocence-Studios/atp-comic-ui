@@ -5,6 +5,8 @@ import { useStory } from "@comic/lib/useStory";
 import { createContext, useContext } from "react";
 import { createInjector } from "unstateless";
 
+// --- Arc Context --- //
+
 export const ComicArcUrlContext = createContext<string>("");
 
 export declare interface IArcContextProps {
@@ -19,6 +21,8 @@ export const injectArcContextProps = createInjector(({url}:{url?:string}):IArcCo
     return {arc};
 });
 
+// --- Page Context -- //
+
 export const ComicPageUrlContext = createContext<string>("");
 
 export declare interface IPageContextProps {
@@ -32,6 +36,8 @@ export const injectPageContextProps = createInjector(({url}:{url?:string}):IPage
     
     return {page};
 });
+
+// --- Character Context -- //
 
 export declare interface ICharacterContextProps {
     character: IComicCharacter | null;
