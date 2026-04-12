@@ -40,7 +40,7 @@ const injectCharacterAttributeEditorProps = createInjector(({characterId}:IChara
             loader(() => att.create(characterId, {
                 name,
                 value,
-                sortOrder: Math.max(...attributes.map(a => a.sortOrder)) + 1,
+                sortOrder: Math.max(0, ...attributes.map(a => a.sortOrder)) + 1,
             })
                 .then(appendTo(attributes))
                 .then(all(
