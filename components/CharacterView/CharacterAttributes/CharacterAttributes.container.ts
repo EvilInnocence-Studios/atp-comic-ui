@@ -12,7 +12,7 @@ import { useStory } from "@comic/lib/useStory";
 const injectCharacterAttributesProps = createInjector(({character}:ICharacterAttributesInputProps & ICharacterContextProps):ICharacterAttributesProps => {
     const story = useStory();
 
-    const attributes = story.character.attributes(character?.id || "");
+    const attributes = story.character.attributes(character?.id || "").sort((a, b) => a.sortOrder - b.sortOrder);
     
     return {attributes};
 });
