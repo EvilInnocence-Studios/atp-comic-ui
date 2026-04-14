@@ -19,7 +19,7 @@ const injectCharacterAttributeEditorProps = createInjector(({characterId}:IChara
         const update = (id:string, field:keyof ICharacterAttribute) => (value:any) => {
             const oldAtts = attributes;
             setAttributes(attributes.map(a => a.id === id ? {...a, [field]: value} : a));
-            loader(() => att.update(characterId, id, value)
+            loader(() => att.update(characterId, id, { [field]: value })
                 .then(flash.success("Attribute updated"))
                 .catch(all(() => setAttributes(oldAtts), flash.error("Failed to update attribute")))
             );
@@ -40,7 +40,7 @@ const injectCharacterAttributeEditorProps = createInjector(({characterId}:IChara
             loader(() => att.create(characterId, {
                 name,
                 value,
-                sortOrder: Math.max(...attributes.map(a => a.sortOrder)) + 1,
+                sortOrder: Math.max(0, ...attributes.map(a => a.sortOrder)) + 1,
             })
                 .then(appendTo(attributes))
                 .then(all(
