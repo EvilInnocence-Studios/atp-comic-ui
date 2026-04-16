@@ -71,7 +71,7 @@ export const CharacterAppearances = withLayoutMetadata(
     overridable<ICharacterAppearancesInputProps>(connect(CharacterAppearancesComponent)),
     {
         name: "CharacterAppearances",
-        displayName: "CharacterAppearances",
+        displayName: "Character Appearances",
         category: "Comic",
         subCategory: "Character",
         description: "",

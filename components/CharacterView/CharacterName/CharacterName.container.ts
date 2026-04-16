@@ -22,7 +22,7 @@ export const CharacterName = withLayoutMetadata(
     overridable<ICharacterNameInputProps>(connect(CharacterNameComponent)),
     {
         name: "CharacterName",
-        displayName: "CharacterName",
+        displayName: "Character Name",
         category: "Comic",
         subCategory: "Character",
         description: "",

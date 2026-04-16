@@ -26,7 +26,7 @@ export const CharacterMedia = withLayoutMetadata(
     overridable<ICharacterMediaInputProps>(connect(CharacterMediaComponent)),
     {
         name: "CharacterMedia",
-        displayName: "CharacterMedia",
+        displayName: "Character Media",
         category: "Comic",
         subCategory: "Character",
         description: "",

@@ -22,7 +22,7 @@ export const CharacterThumbnail = withLayoutMetadata(
     overridable<ICharacterThumbnailInputProps>(connect(CharacterThumbnailComponent)),
     {
         name: "CharacterThumbnail",
-        displayName: "CharacterThumbnail",
+        displayName: "Character Thumbnail",
         category: "Comic",
         subCategory: "Character",
         description: "",

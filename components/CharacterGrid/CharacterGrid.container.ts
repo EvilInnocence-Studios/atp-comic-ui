@@ -49,7 +49,7 @@ export const CharacterGrid = withLayoutMetadata(
     overridable<ICharacterGridInputProps>(connect(CharacterGridComponent)),
     {
         name: "CharacterGrid",
-        displayName: "CharacterGrid",
+        displayName: "Character Grid",
         category: "Comic",
         subCategory: "Character",
         description: "",
