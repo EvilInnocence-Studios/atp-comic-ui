@@ -1,9 +1,10 @@
+import { useMemo } from "react";
 import { CharacterGridComponent } from "./CharacterGrid.component";
 import { connectCharacterGrid } from "./CharacterGrid.container";
 import { ILayoutEditorProps, LayoutEditor } from "@theming/lib/layout/componentRegistry";
 
 export const CharacterGridLayoutEditor:LayoutEditor = ({css, className, ...props}:ILayoutEditorProps) => {
-    const CharacterGridOrig = connectCharacterGrid(CharacterGridComponent);
+    const CharacterGridOrig = useMemo(() => connectCharacterGrid(CharacterGridComponent), []);
 
     return <>
         {css && <style>{css}</style>}
