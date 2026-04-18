@@ -19,7 +19,7 @@ export const pageServices = ({get, post, /*put,*/ patch, remove}: IMethods) => (
         get: (pageId: string):Promise<IComicPage> => get(`page/${pageId}`).then(getResults),
         update: (pageId: string, page: Partial<IComicPage>):Promise<IComicPage> => patch(`page/${pageId}`, page).then(getResults),
         remove: (pageId: string):Promise<any> => remove(`page/${pageId}`),
-        sort: (arcId:string, pageId:string, newIndex:number):Promise<IComicPage[]> => post(`page/sort`, {pageId, arcId, newIndex}).then(getResults),
+        sort: (arcId:string, pageId:string, newIndex:number):Promise<IComicPage[]> => post(`page/${pageId}/sort`, {arcId, newIndex}).then(getResults),
         enableAll: (arcId:string) => post(`page/enableAll`, {arcId}),
         disableAll: (arcId:string) => post(`page/disableAll`, {arcId}),
         character: {

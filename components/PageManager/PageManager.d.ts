@@ -10,6 +10,7 @@ export declare interface IPageManagerProps {
     onUploadSuccess: (pages: IComicPage[]) => void;
     enableAll: () => void;
     disableAll: () => void;
+    onDragEnd: (event: any) => void;
 }
 
 // What gets passed into the component from the parent as attributes

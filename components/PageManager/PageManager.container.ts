@@ -41,6 +41,18 @@ const injectPageManagerProps = createInjector(({arcId}:IPageManagerInputProps):I
 
     useEffect(refresh, [arcId]);
 
+    const handleDragEnd = (event: any) => {
+        const { active, over } = event;
+        if (!over || active.id === over.id) return;
+
+        const sortedPages = [...pages].sort((a, b) => a.sortOrder - b.sortOrder);
+        const newIndex = sortedPages.findIndex(p => p.id === over.id);
+
+        if (newIndex !== -1) {
+            loader(() => services().page.sort(arcId, active.id as string, newIndex).then(setPages));
+        }
+    };
+
     const upload = (file:File):Promise<IComicPage> => {
         pageLoader.start();
         return services().page.getUploadUrl(file.name)
@@ -89,7 +101,7 @@ const injectPageManagerProps = createInjector(({arcId}:IPageManagerInputProps):I
     return {
         pages,
         isLoading: loader.isLoading || pageLoader.isLoading,
-        refresh, remove, removeAll, upload, onUploadSuccess, enableAll, disableAll,
+        refresh, remove, removeAll, upload, onUploadSuccess, enableAll, disableAll, onDragEnd: handleDragEnd,
     };
 });
 
