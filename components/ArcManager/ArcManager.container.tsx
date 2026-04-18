@@ -78,7 +78,21 @@ const injectArcManagerProps = createInjector(({arcId}:IArcManagerInputProps):IAr
         setIsOpen(newSet);
     }
 
-    return {arcs, arc, isLoading: loader.isLoading, create, remove, isOpen, open, close, goToArc, refresh};
+    const handleDragEnd = (event: any) => {
+        const { active, over } = event;
+        if (!over) return;
+        
+        const dragArc = active.data.current?.arc;
+        const dragArcId = dragArc?.id;
+        const targetParentId = over.data.current?.parentId || null;
+        const targetIndex = over.data.current?.index;
+
+        if (!dragArcId || targetIndex === undefined || !dragArc) return;
+
+        loader(() => services().arc.sort(targetParentId || "null", dragArcId, targetIndex).then(refresh));
+    }
+
+    return {arcs, arc, isLoading: loader.isLoading, create, remove, isOpen, open, close, goToArc, refresh, onDragEnd: handleDragEnd};
 });
 
 const connect = inject<IArcManagerInputProps, ArcManagerProps>(mergeProps(

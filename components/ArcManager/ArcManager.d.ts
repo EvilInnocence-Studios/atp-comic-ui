@@ -12,6 +12,7 @@ export declare interface IArcNodeProps {
     close: (id: string) => () => void;
     goToArc: (id: string) => () => void;
     classes?: any;
+    isDraggingAncestor?: boolean;
 }
 
 export declare interface IArcManagerProps {
@@ -25,6 +26,7 @@ export declare interface IArcManagerProps {
     remove: (id: string) => () => void;
     goToArc: (id: string) => () => void;
     refresh: () => void;
+    onDragEnd: (event: any) => void;
 }
 
 // What gets passed into the component from the parent as attributes

@@ -6,9 +6,6 @@ export declare interface IArcEditorProps extends IUpdater<IComicArc> {
     removeThumbnail: () => void;
     uploadBanner: (file: File) => void;
     removeBanner: () => void;
-    setParent: (parentId: string | null) => void;
-    moveUp: () => void;
-    moveDown: () => void;
 }
 
 // What gets passed into the component from the parent as attributes
