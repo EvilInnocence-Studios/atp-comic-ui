@@ -26,6 +26,20 @@ export const pageServices = ({get, post, /*put,*/ patch, remove}: IMethods) => (
             search: (pageId:string):Promise<IComicCharacter[]> => get(`page/${pageId}/character`).then(getResults),
             add: (pageId:string, characterId:Key):Promise<any> => post(`page/${pageId}/character`, {characterId}).then(getResults),
             remove: (pageId:string, characterId:Key):Promise<any> => remove(`page/${pageId}/character/${characterId}`).then(getResults),
+        },
+        image: {
+            upload: (file:File):Promise<string> => 
+                services().page.getUploadUrl(file.name)
+                .then((uploadUrl:string) => 
+                    fetch(uploadUrl, {
+                        method: 'PUT',
+                        headers: {
+                            'Content-Type': file.type,
+                        },
+                        body: file,
+                    })
+                    .then(() => file.name)
+                ),
         }
     }
 });

@@ -15,8 +15,13 @@ const injectPageEditorProps = createInjector(({arcId, pageId}:IPageEditorInputPr
         services().page.update,
         "manual",
     )
+
+    const upload = (file: File) => services().page.image.upload(file);
+    const onUploadSuccess = (files: string[]) => {
+        updater.updateString("imageUrl")(files[0]);
+    }
     
-    return {page: updater.history.entity, ...updater};
+    return {upload, onUploadSuccess, page: updater.history.entity, ...updater};
 });
 
 const connect = inject<IPageEditorInputProps, PageEditorProps>(mergeProps(

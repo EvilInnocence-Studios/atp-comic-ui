@@ -1,6 +1,7 @@
 import { Editable } from "@core/components/Editable";
 import { Label } from "@core/components/Label";
 import { MarkdownEditor } from "@core/components/MarkdownEditor";
+import { Uploader } from "@core/components/Uploader";
 import { UrlEditor } from "@core/components/UrlEditor";
 import { overridable } from "@core/lib/overridable";
 import { Card, Col, DatePicker, Row, Switch } from "antd";
@@ -10,7 +11,12 @@ import { ComicImage } from "../ComicImage";
 import { PageEditorProps } from "./PageEditor.d";
 import styles from './PageEditor.module.scss';
 
-export const PageEditorComponent = overridable(({ page, updateString, updateToggle, UpdateButtons, classes = styles }: PageEditorProps) =>
+export const PageEditorComponent = overridable(({
+    page,
+    updateString, updateToggle, UpdateButtons,
+    upload, onUploadSuccess,
+    classes = styles,
+}: PageEditorProps) =>
     <div className={classes.pageEditor}>
         <Row gutter={16}>
             <Col xs={12}>
@@ -36,6 +42,7 @@ export const PageEditorComponent = overridable(({ page, updateString, updateTogg
             <Col xs={8}>
                 <Card className={classes.image} size="small" title="Page Image">
                     <ComicImage fileName={page.imageUrl || ""} />
+                    <Uploader upload={upload} onUploadSuccess={onUploadSuccess} />
                 </Card>
             </Col>
             <Col xs={16}>

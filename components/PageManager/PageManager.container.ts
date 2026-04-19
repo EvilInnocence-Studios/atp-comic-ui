@@ -55,28 +55,19 @@ const injectPageManagerProps = createInjector(({arcId}:IPageManagerInputProps):I
 
     const upload = (file:File):Promise<IComicPage> => {
         pageLoader.start();
-        return services().page.getUploadUrl(file.name)
-        .then((uploadUrl:string) => 
-            fetch(uploadUrl, {
-                method: 'PUT',
-                headers: {
-                    'Content-Type': file.type,
-                },
-                body: file,
-            })
-            .then(() => file.name)
-        ).then((imageUrl:string) => 
-            services().page.create({
-                name: "",
-                enabled: false,
-                url: null,
-                sortOrder: 0,
-                imageUrl,
-                transcript: null,
-                postDate: null,
-                arcId
-            })
-        );
+        return services().page.image.upload(file)
+            .then((imageUrl:string) => 
+                services().page.create({
+                    name: "",
+                    enabled: false,
+                    url: null,
+                    sortOrder: 0,
+                    imageUrl,
+                    transcript: null,
+                    postDate: null,
+                    arcId
+                })
+            );
     }
 
     const onUploadSuccess = (newPages: IComicPage[]) => {

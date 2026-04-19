@@ -5,6 +5,8 @@ export declare interface IPageEditorProps extends IUpdater<IComicPage> {
     page: IComicPage;
     isLoading: boolean;
     refresh: () => void;
+    upload: (file: File) => Promise<string>;
+    onUploadSuccess: (files: string[]) => void;
 }
 
 // What gets passed into the component from the parent as attributes
