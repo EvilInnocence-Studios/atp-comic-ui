@@ -91,6 +91,8 @@ LayoutRegistry.register({
     name: "comicPage",
     displayName: "Comic Page",
     description: "The layout and design for a comic page",
+    category: "Comic",
+    subCategory: "Paged",
     defaultLayout: {
         component: "Empty"
     },
@@ -101,6 +103,8 @@ LayoutRegistry.register({
     name: "comicArchive",
     displayName: "Comic Archive Page",
     description: "The layout and design for a comic page in the archives",
+    category: "Comic",
+    subCategory: "Paged",
     defaultLayout: {
         component: "Empty"
     },
@@ -111,6 +115,8 @@ LayoutRegistry.register({
     name: "comicArc",
     displayName: "Comic Arc",
     description: "The layout and design for an arc page",
+    category: "Comic",
+    subCategory: "Paged",
     defaultLayout: {
         component: "Empty"
     },
@@ -121,6 +127,8 @@ LayoutRegistry.register({
     name: "comicVerticalScrollArc",
     displayName: "Comic Vertical Scroll Chapter List",
     description: "The layout and design for a vertical scroll arc page",
+    category: "Comic",
+    subCategory: "Vertical Scroll",
     defaultLayout: {
         component: "Empty"
     },
@@ -131,6 +139,8 @@ LayoutRegistry.register({
     name: "comicVerticalScrollEpisode",
     displayName: "Comic Vertical Scroll Episode",
     description: "The layout and design for a vertical scroll episode page",
+    category: "Comic",
+    subCategory: "Vertical Scroll",
     defaultLayout: {
         component: "Empty"
     },
@@ -141,6 +151,8 @@ LayoutRegistry.register({
     name: "comicArcListItem",
     displayName: "Comic Arc List Item",
     description: "The design for an arc in the arc list",
+    category: "Comic",
+    subCategory: "Paged",
     defaultLayout: {
         component: "Empty"
     },
@@ -151,6 +163,8 @@ LayoutRegistry.register({
     name: "comicVerticalScrollEpisodeListItem",
     displayName: "Comic Vertical Scroll Episode List Item",
     description: "The design for an episode in the vertical scroll chapter list",
+    category: "Comic",
+    subCategory: "Vertical Scroll",
     defaultLayout: {
         component: "Empty"
     },
@@ -161,6 +175,8 @@ LayoutRegistry.register({
     name: "comicCharacter",
     displayName: "Comic Character",
     description: "The layout and design for a character details section",
+    category: "Comic",
+    subCategory: "Character",
     defaultLayout: {
         component: "Empty"
     },
