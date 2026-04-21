@@ -1,7 +1,1 @@
 @use "@styles/globals.module.scss";
-
-.characterListItem {
-    &.selected {
-        background-color: var(--bgColorLight);
-    }
-}

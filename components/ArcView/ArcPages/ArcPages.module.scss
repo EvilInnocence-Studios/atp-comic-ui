@@ -1,23 +1,2 @@
 @use "@styles/globals.module.scss";
 
-.arcPages {
-    width: 100%;
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-    justify-content: space-evenly;
-    .listItem {
-        padding: 16px;
-        position: relative;
-        img {
-            width: 100%;
-        }
-        .title {
-            text-align: center;
-            border: solid 2px var(--bgLightColor);
-            background-color: var(--primaryColor);
-            color: #ffffff;
-            font-weight: bold;
-            padding: var(--paddingSmall);
-        }
-    }
-}

@@ -1,16 +1,2 @@
 @use "@styles/globals.module.scss";
 
-.arcContainer {
-    position: relative;
-    padding: var(--padding);
-    max-width: var(--comicArchiveWidth);
-    margin: auto;
-    padding-bottom: 64px;
-    img {
-        width: 100%;
-    }
-    .arcDetails {
-        max-width: var(--comicArcDetailsWidth);
-        margin: auto;
-    }
-}

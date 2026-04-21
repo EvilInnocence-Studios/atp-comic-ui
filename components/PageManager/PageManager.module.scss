@@ -3,9 +3,9 @@
 .pageManager {
     .noPages {
         text-align: center;
-        padding: var(--padding) 0;
-        font-size: var(--textSizeXL);
-        color: var(--primaryColor);
+        padding: 16px 0;
+        font-size: 24px;
+        color: #880000;
     }
     ul.pageList {
         list-style: none;
@@ -23,9 +23,7 @@
                     height: auto;
                 }
                 .date {
-                    padding: var(--paddingSmall);
-                }
-                .controls {
+                    padding: 8px;
                 }
             }
         }

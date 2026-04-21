@@ -10,8 +10,6 @@ export const PageViewLayoutEditor:LayoutEditor = ({}:ILayoutEditorProps) => <div
         fontSize: "2rem",
         fontWeight: "bold",
         fontStyle: "italic",
-        color: "var(--textColor)",
-        border: "5px solid var(--borderColor)",
     }}
     >
         Comic Page goes here.

@@ -7,17 +7,17 @@
             .arcName {
                 display: inline-block;
                 width: calc(100% - 13px);
-                color: var(--errorColor);
-                padding: var(--paddingSmall) var(--padding);
+                color: #880000;
+                padding: 4px 8px;
                 &.enabled {
-                    color: var(--successColor);
+                    color: #008800;
                 }
                 &:hover {
-                    background-color: var(--borderColor);
+                    background-color: #222222;
                 }
                 &.selected {
-                    background-color: var(--secondaryColor);
-                    color: var(--bgColor);
+                    background-color: #444444;
+                    color: #ffffff;
                 }
             }
             .actions {
@@ -25,11 +25,11 @@
                 right: 12px;
                 top: 8px;
                 > * {
-                    margin-left: var(--padding);
+                    margin-left: 8px;
                 }
             }
             .nodeChildren {
-                padding-left: var(--paddingLarge);
+                padding-left: 16px;
             }
         }
     }

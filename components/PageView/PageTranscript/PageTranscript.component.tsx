@@ -11,7 +11,7 @@ export const PageTranscriptComponent = overridable(({classes = styles, css, page
     <div className={clsx(classes.pageTranscript, className)}>
         <div className={clsx(classes.transcriptHeader, "transcriptHeader")} onClick={transcript.toggle}><FontAwesomeIcon icon={faClosedCaptioning} /> Transcript</div>
         {transcript.isset && <div className={classes.transcriptCopy}>
-                <Markdown>{page?.transcript}</Markdown>
+            <Markdown>{page?.transcript}</Markdown>
         </div>}
     </div>
 </>);
