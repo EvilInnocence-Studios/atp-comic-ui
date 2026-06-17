@@ -1,7 +1,7 @@
 import { IModule } from "@core/lib/module";
-import { faImage } from "@fortawesome/free-solid-svg-icons";
+// import { faImage } from "@fortawesome/free-solid-svg-icons";
 import { ComponentRegistry, LayoutRegistry } from "@theming/lib/layout/componentRegistry";
-import { uacPlugins } from "@uac/lib/plugin/slots";
+// import { uacPlugins } from "@uac/lib/plugin/slots";
 import { ArcBanner } from "./components/ArcView/ArcBanner";
 import { ArcDate } from "./components/ArcView/ArcDate";
 import { ArcDescription } from "./components/ArcView/ArcDescription";
@@ -34,7 +34,7 @@ import { PageNav } from "./components/PageView/PageNav";
 import { PageNumber } from "./components/PageView/PageNumber";
 import { PagePostDate } from "./components/PageView/PagePostDate";
 import { PageTranscript } from "./components/PageView/PageTranscript";
-import { UserPreferences } from "./components/UserPreferences";
+// import { UserPreferences } from "./components/UserPreferences";
 import { comicMenus } from "./lib/menus";
 import { comicRoutes } from "./lib/routes";
 import { comicSettings } from "./lib/settings";
@@ -81,13 +81,13 @@ ComponentRegistry.register(CharacterMedia);
 ComponentRegistry.register(CharacterView);
 ComponentRegistry.register(CharacterGrid);
 
-uacPlugins.myAccount.tabs.register({
-    key: "comics",
-    title: "Comic Preferences",
-    icon: faImage,
-    priority: 500,
-    component: UserPreferences as any,
-});
+// uacPlugins.myAccount.tabs.register({
+//     key: "comics",
+//     title: "Comic Preferences",
+//     icon: faImage,
+//     priority: 500,
+//     component: UserPreferences as any,
+// });
 
 LayoutRegistry.register({
     name: "comicPage",
