@@ -1,11 +1,11 @@
+import { DatePicker } from "@core/components/DatePicker";
 import { Editable } from "@core/components/Editable";
 import { Label } from "@core/components/Label";
 import { MarkdownEditor } from "@core/components/MarkdownEditor";
 import { Uploader } from "@core/components/Uploader";
 import { UrlEditor } from "@core/components/UrlEditor";
 import { overridable } from "@core/lib/overridable";
-import { Card, Col, DatePicker, Row, Switch } from "antd";
-import dayjs from "dayjs";
+import { Card, Col, Row, Switch } from "antd";
 import { CharacterAssigner } from "../CharacterAssigner";
 import { ComicImage } from "../ComicImage";
 import { PageEditorProps } from "./PageEditor.d";
@@ -34,8 +34,8 @@ export const PageEditorComponent = overridable(({
                 <br /><br />
                 <DatePicker
                     style={{ marginLeft: 16 }}
-                    value={page.postDate ? dayjs(page.postDate) : null}
-                    onChange={(date) => updateString("postDate")(date ? date.toISOString() : "")}
+                    value={page.postDate}
+                    onChange={updateString("postDate")}
                     placeholder="Post Date"
                 />
             </Col>

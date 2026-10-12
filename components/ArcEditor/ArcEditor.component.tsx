@@ -2,12 +2,12 @@ import { DeleteBtn } from "@core/components/DeleteBtn";
 import { Editable } from "@core/components/Editable";
 import { Label } from "@core/components/Label";
 import { MarkdownEditor } from "@core/components/MarkdownEditor";
+import { DatePicker } from "@core/components/DatePicker";
 import { UrlEditor } from "@core/components/UrlEditor";
 import { overridable } from "@core/lib/overridable";
 import { faUpload } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { Card, Col, DatePicker, Row, Switch, Upload } from "antd";
-import dayjs from "dayjs";
+import { Card, Col, Row, Switch, Upload } from "antd";
 import { CharacterAssigner } from "../CharacterAssigner";
 import { ComicImage } from "../ComicImage";
 import { PageManager } from "../PageManager";
@@ -26,8 +26,8 @@ export const ArcEditorComponent = overridable(({
                 <Switch checked={arc.enabled} onChange={updateToggle("enabled")} checkedChildren="Enabled" unCheckedChildren="Disabled" />
                 <DatePicker
                     style={{ marginLeft: 16 }}
-                    value={arc.postDate ? dayjs(arc.postDate) : null}
-                    onChange={(date) => updateString("postDate")(date ? date.toISOString() : "")}
+                    value={arc.postDate}
+                    onChange={updateString("postDate")}
                     placeholder="Post Date"
                 />
             </Col>

@@ -4,6 +4,7 @@ import { Uploader } from "@core/components/Uploader";
 import { faInfoCircle } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Button, Card, Col, Row, Space, Typography } from "antd";
+import dayjs from "dayjs";
 import { useNavigate } from "react-router";
 import { prop, sort } from "ts-functional";
 import { ComicImage } from "../ComicImage";
@@ -37,7 +38,7 @@ const SortablePageNode = ({ page, arcId, remove, classes }: any) => {
                     <Col xs={21}>
                         <div className={classes.date}>
                             <Typography.Text type={page.enabled ? "success" : "danger"}>
-                                {page.enabled && page.postDate ? new Date(page.postDate).toDateString() : "Disabled"}
+                                {page.enabled && page.postDate ? dayjs(page.postDate.split('T')[0]).format("ddd MMM DD YYYY") : "Disabled"}
                             </Typography.Text>
                         </div>
                     </Col>

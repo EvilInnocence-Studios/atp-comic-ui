@@ -5,7 +5,7 @@ import { ArcDateProps } from "./ArcDate.d";
 export const ArcDateComponent = overridable(({className, css, arc, format}:ArcDateProps) => <>
     {css && <style>{css}</style>}
     <span className={className}>
-        {dayjs(arc?.postDate).format(format || "MMMM D, YYYY")}
+        {arc?.postDate ? dayjs(arc.postDate.split('T')[0]).format(format || "MMMM D, YYYY") : ""}
     </span>
 </>);
 
