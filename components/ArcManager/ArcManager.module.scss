@@ -4,30 +4,37 @@
     .treeCol {
         .arcNode {
             position: relative;
+
             .arcName {
                 display: inline-block;
                 width: calc(100% - 13px);
                 color: #880000;
                 padding: 4px 8px;
+
                 &.enabled {
                     color: #008800;
                 }
+
                 &:hover {
                     background-color: #222222;
                 }
+
                 &.selected {
                     background-color: #444444;
                     color: #ffffff;
                 }
             }
+
             .actions {
                 position: absolute;
                 right: 12px;
-                top: 8px;
-                > * {
+                top: 0px;
+
+                >* {
                     margin-left: 8px;
                 }
             }
+
             .nodeChildren {
                 padding-left: 16px;
             }
